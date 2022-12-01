@@ -95,3 +95,12 @@ button:focus-visible {
     background-color: #f9f9f9;
   }
 }
+
+#app {
+	position: absolute;
+	top: 10px;
+	width: 100%;
+	text-align: center;
+	z-index: 100;
+	display:block;
+}
