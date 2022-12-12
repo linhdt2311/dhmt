@@ -36,7 +36,14 @@ export class Auth {
         const credential = GoogleAuthProvider.credentialFromResult(result);
         const token = credential.accessToken;
         // The signed-in user info.
-        const user = result.user;
+        const user =
+        {
+          displayName: result.user.displayName,
+          email: result.user.email,
+          photoURL: result.user.photoURL,
+          lastSignInTime: result.user.metadata.lastSignInTime
+        }
+        localStorage.setItem('user', JSON.stringify(user));
         window.location.assign("/model.html");
 
         // ...
