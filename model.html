@@ -34,7 +34,15 @@
       </div>
       <div class="side-nav model-nav p-2">
         <h4 class="fs-5 text-center text-white">Models</h4>
-        <div id="modelList"></div>
+        <div id="modelList">
+          <ul style="list-style-type:none" class="p-0">
+            <li id="box">
+              <div class="d-flex">
+                Name: Box
+              </div>
+            </li>
+          </ul>
+        </div>
       </div>
         <div id="app"></div>
         <script type="module" src="/main.js"></script>
@@ -49,4 +57,8 @@
   signOut.addEventListener("click", (e) => {
     auth.signOut();
   });
+  modelList.addEventListener('click', (e) => {
+  debugger
+
+})
 </script>

@@ -5,6 +5,8 @@
 
 import * as THREE from "three";
 import { OrbitControls } from "three/examples/jsm/controls/OrbitControls";
+import { OrbitControlsGizmo } from "three/examples/jsm/controls/OrbitControlsGizmo";
+
 import { OBJLoader } from "three/examples/jsm/loaders/OBJLoader";
 import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader.js";
 
@@ -27,7 +29,7 @@ animate();
 setLight();
 setCamera();
 plane();
-box();
+// box();
 sphere();
 cylinder();
 batmanObj();
@@ -189,11 +191,19 @@ function intersect(pos) {
   return raycaster.intersectObjects(scene.children);
 }
 
+var box1 = document.getElementById('modelList');
+console.log(box1)
+box1.addEventListener("click", (event) => {
+  debugger
+  box();
+})
+
 window.addEventListener("click", (event) => {
   if (draggable != null) {
     draggable = null;
     return;
   }
+ 
 
   clickMouse.x = (event.clientX / window.innerWidth) * 2 - 1;
   clickMouse.y = -(event.clientY / window.innerHeight) * 2 + 1;
@@ -210,6 +220,7 @@ window.addEventListener("click", (event) => {
     }
   }
 });
+
 
 window.addEventListener("mousemove", (event) => {
   moveMouse.x = (event.clientX / window.innerWidth) * 2 - 1;
@@ -233,4 +244,7 @@ function dragObject() {
       }
     }
   }
+
+  const controlsGizmo = new  OrbitControlsGizmo(controls, { size:  100, padding:  8 });
+  document.body.appendChild(controlsGizmo.domElement);  
 }

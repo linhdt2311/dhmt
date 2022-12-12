@@ -7,3 +7,5 @@ userDetail.innerHTML = `
 <h4 class="text-white fs-6">
 <img src="${userInfo.photoURL}" width="40px" height="40px"  class="user-img"></img>
 ${userInfo.displayName}</h4>`
+
+
