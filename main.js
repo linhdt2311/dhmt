@@ -5,7 +5,7 @@
 
 import * as THREE from "three";
 import { OrbitControls } from "three/examples/jsm/controls/OrbitControls";
-import { TransformControls } from 'three/examples/jsm/controls/TransformControls'
+import { TransformControls } from "three/examples/jsm/controls/TransformControls";
 import { OBJLoader } from "three/examples/jsm/loaders/OBJLoader";
 import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader.js";
 
@@ -21,14 +21,14 @@ const controls = new OrbitControls(camera, renderer.domElement);
 const raycaster = new THREE.Raycaster();
 const clickMouse = new THREE.Vector2();
 const moveMouse = new THREE.Vector2();
+const transformControls = new TransformControls(camera, renderer.domElement);
 let draggable;
-
 
 init();
 animate();
 setLight();
 setCamera();
-plane();
+// plane();
 // box();
 sphere();
 cylinder();
@@ -44,16 +44,23 @@ function init() {
   renderer.shadowMap.enabled = true;
   document.body.appendChild(renderer.domElement);
   window.addEventListener("resize", onWindowResize);
-  const transformControls1 = new TransformControls(
-	camera,
-	renderer.domElement,
-  );
-transformControls1.addEventListener('change', () => renderer.render(scene, camera));
-// transformControls1.setSpace('local');
-transformControls1.mode = 'translate';
+  transformControls.enabled = false;
+}
 
-scene.add(transformControls1);
-transformControls1.attach(box());
+function addTransformControl(model) {
+  transformControls.addEventListener("objectChange", () =>
+    renderer.render(scene, camera)
+  );
+  // transformControls.setSpace('local');
+  transformControls.mode = "translate";
+  transformControls.addEventListener("mouseDown", function () {
+    orbitControls.enabled = false;
+  });
+  transformControls.addEventListener("mouseUp", function () {
+    orbitControls.enabled = true;
+  });
+  scene.add(transformControls);
+  transformControls.attach(model);
 }
 
 function onWindowResize() {
@@ -63,7 +70,7 @@ function onWindowResize() {
 }
 
 function animate() {
-  dragObject();
+  // dragObject();
   renderer.render(scene, camera);
   requestAnimationFrame(animate);
 }
@@ -100,7 +107,8 @@ function loadFloor() {
     floor.castShadow = true;
     floor.receiveShadow = true;
     floor.userData.name = "FloorPlan";
-    floor.userData.ground = true;
+    floor.userData.type = "Plane";
+
     scene.add(floor);
     // batman.userData.draggable = true;
   });
@@ -124,18 +132,17 @@ function box() {
     new THREE.BoxBufferGeometry(),
     new THREE.MeshPhongMaterial({ color: 0xdc143c })
   );
-  box.position.set(15, 3, 15);
+  box.position.set(15, 3, 18);
   box.scale.set(6, 6, 6);
   box.castShadow = true;
   box.receiveShadow = true;
   scene.add(box);
-//   box.userData.draggable = true;
- 
+  //   box.userData.draggable = true;
+
   box.userData.name = "BOX";
   box.userData.material = "Wood";
 
   return box;
-
 }
 
 function sphere() {
@@ -150,7 +157,6 @@ function sphere() {
   sphere.userData.draggable = true;
   sphere.userData.name = "SPHERE";
   sphere.userData.material = "Vibranium";
-
 }
 
 function cylinder() {
@@ -165,7 +171,6 @@ function cylinder() {
   cylinder.userData.draggable = true;
   cylinder.userData.name = "CYLINDER";
   cylinder.userData.material = "Vibranium";
-
 }
 
 function batmanObj() {
@@ -180,7 +185,6 @@ function batmanObj() {
     batman.userData.draggable = true;
     batman.userData.name = "BATMANOBJ";
     batman.userData.material = "Platinum";
-
   });
 }
 
@@ -203,41 +207,45 @@ function intersect(pos) {
   return raycaster.intersectObjects(scene.children);
 }
 
-var box1 = document.getElementById('modelList');
-console.log(box1)
+var box1 = document.getElementById("modelList");
+console.log(box1);
 box1.addEventListener("click", (event) => {
-  debugger
+  debugger;
   box();
-})
+});
 
 window.addEventListener("click", (event) => {
-  if (draggable != null) {
-    draggable = null;
-    return;
-  }
- 
+  // if (draggable != null) {
+  //   draggable = null;
+  //   return;
+  // }
 
   clickMouse.x = (event.clientX / window.innerWidth) * 2 - 1;
   clickMouse.y = -(event.clientY / window.innerHeight) * 2 + 1;
 
   const found = intersect(clickMouse);
-  if (found.length > 0) {
-    if (found[0].object.userData.draggable) {
-      draggable = found[0].object;
-	  var userDetail = document.getElementById("userDetail");
-	  userDetail.innerHTML = `
+  transformControls.enabled = false;
+  debugger
+  transformControls.detach();
+  if (found.length > 0 && found[0].object.type !== "TransformControlsPlane") {
+    transformControls.enabled = true;
+    draggable = found[0].object;
+    var userDetail = document.getElementById("userDetail");
+    addTransformControl(draggable);
+    userDetail.innerHTML = `
 	  <h5 class="fs-6 text-white">Name: ${found[0].object.userData.name}</h5>
 	  <h5 class="fs-6 text-white">Material: ${found[0].object.userData.material}</h5>
 `;
-    }
+  }
+  else{
+    transformControls.enabled = false;
   }
 });
 
-
-window.addEventListener("mousemove", (event) => {
-  moveMouse.x = (event.clientX / window.innerWidth) * 2 - 1;
-  moveMouse.y = -(event.clientY / window.innerHeight) * 2 + 1;
-});
+// window.addEventListener("mousemove", (event) => {
+//   moveMouse.x = (event.clientX / window.innerWidth) * 2 - 1;
+//   moveMouse.y = -(event.clientY / window.innerHeight) * 2 + 1;
+// });
 
 function dragObject() {
   if (draggable != null) {
@@ -249,7 +257,6 @@ function dragObject() {
         }
         const target = found[i].point;
         if (target) {
- 
         }
         draggable.position.x = target.x;
         draggable.position.z = target.z;
@@ -257,6 +264,3 @@ function dragObject() {
     }
   }
 }
-
-
-
