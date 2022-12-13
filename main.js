@@ -21,6 +21,7 @@ const controls = new OrbitControls(camera, renderer.domElement);
 const raycaster = new THREE.Raycaster();
 const clickMouse = new THREE.Vector2();
 const moveMouse = new THREE.Vector2();
+const groupBatMan = new THREE.Group();
 const transformControls = new TransformControls(camera, renderer.domElement);
 let draggable;
 
@@ -54,10 +55,10 @@ function addTransformControl(model) {
   // transformControls.setSpace('local');
   transformControls.mode = "translate";
   transformControls.addEventListener("mouseDown", function () {
-    orbitControls.enabled = false;
+    controls.enabled = false;
   });
   transformControls.addEventListener("mouseUp", function () {
-    orbitControls.enabled = true;
+    controls.enabled = true;
   });
   scene.add(transformControls);
   transformControls.attach(model);
@@ -102,14 +103,14 @@ function loadFloor() {
   const gltfLoader = new GLTFLoader();
   gltfLoader.load("/models/floorPlan.glb", function (gltf) {
     const floor = gltf.scene;
-    floor.position.set(0, 1, 0);
-    floor.scale.set(3, 3, 3);
-    floor.castShadow = true;
-    floor.receiveShadow = true;
-    floor.userData.name = "FloorPlan";
-    floor.userData.type = "Plane";
-
-    scene.add(floor);
+    groupBatMan.add(floor);
+    groupBatMan.position.set(0, 1, 0);
+    groupBatMan.scale.set(3, 3, 3);
+    groupBatMan.castShadow = true;
+    groupBatMan.receiveShadow = true;
+    groupBatMan.userData.name = "FloorPlan";
+    groupBatMan.userData.type = "Plane";
+    scene.add(groupBatMan);
     // batman.userData.draggable = true;
   });
 }
@@ -196,6 +197,7 @@ function batmanObj() {
 // 		batman.scale.set(10, 10, 10);
 // 		batman.castShadow = true;
 // 		batman.receiveShadow = true;
+//     groupBatMan.add(batman);
 // 		scene.add(batman);
 // 		batman.userData.draggable = true;
 // 		batman.userData.name = 'BATMANGLTF';
@@ -227,7 +229,8 @@ window.addEventListener("click", (event) => {
   transformControls.enabled = false;
   debugger
   transformControls.detach();
-  if (found.length > 0 && found[0].object.type !== "TransformControlsPlane") {
+  if (found.length > 0 && found[0].object.type !== "TransformControlsPlane"
+   && found[0].object.userData.name && found[0].object.userData.name !== 'Plane') {
     transformControls.enabled = true;
     draggable = found[0].object;
     var userDetail = document.getElementById("userDetail");
