@@ -5,8 +5,7 @@
 
 import * as THREE from "three";
 import { OrbitControls } from "three/examples/jsm/controls/OrbitControls";
-import { OrbitControlsGizmo } from "three/examples/jsm/controls/OrbitControlsGizmo";
-
+import { TransformControls } from 'three/examples/jsm/controls/TransformControls'
 import { OBJLoader } from "three/examples/jsm/loaders/OBJLoader";
 import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader.js";
 
@@ -23,6 +22,7 @@ const raycaster = new THREE.Raycaster();
 const clickMouse = new THREE.Vector2();
 const moveMouse = new THREE.Vector2();
 let draggable;
+
 
 init();
 animate();
@@ -44,6 +44,16 @@ function init() {
   renderer.shadowMap.enabled = true;
   document.body.appendChild(renderer.domElement);
   window.addEventListener("resize", onWindowResize);
+  const transformControls1 = new TransformControls(
+	camera,
+	renderer.domElement,
+  );
+transformControls1.addEventListener('change', () => renderer.render(scene, camera));
+// transformControls1.setSpace('local');
+transformControls1.mode = 'translate';
+
+scene.add(transformControls1);
+transformControls1.attach(box());
 }
 
 function onWindowResize() {
@@ -119,10 +129,12 @@ function box() {
   box.castShadow = true;
   box.receiveShadow = true;
   scene.add(box);
-  box.userData.draggable = true;
+//   box.userData.draggable = true;
  
   box.userData.name = "BOX";
   box.userData.material = "Wood";
+
+  return box;
 
 }
 
@@ -244,7 +256,7 @@ function dragObject() {
       }
     }
   }
-
-  const controlsGizmo = new  OrbitControlsGizmo(controls, { size:  100, padding:  8 });
-  document.body.appendChild(controlsGizmo.domElement);  
 }
+
+
+
