@@ -155,7 +155,6 @@ function sphere() {
   sphere.castShadow = true;
   sphere.receiveShadow = true;
   scene.add(sphere);
-  sphere.userData.draggable = true;
   sphere.userData.name = "SPHERE";
   sphere.userData.material = "Vibranium";
 }
@@ -206,7 +205,7 @@ function batmanObj() {
 
 function intersect(pos) {
   raycaster.setFromCamera(pos, camera);
-  return raycaster.intersectObjects(scene.children);
+  return raycaster.intersectObjects(scene.children, false);
 }
 
 var box1 = document.getElementById("modelList");
@@ -245,10 +244,10 @@ window.addEventListener("click", (event) => {
   }
 });
 
-// window.addEventListener("mousemove", (event) => {
-//   moveMouse.x = (event.clientX / window.innerWidth) * 2 - 1;
-//   moveMouse.y = -(event.clientY / window.innerHeight) * 2 + 1;
-// });
+window.addEventListener("mousemove", (event) => {
+  moveMouse.x = (event.clientX / window.innerWidth) * 2 - 1;
+  moveMouse.y = -(event.clientY / window.innerHeight) * 2 + 1;
+});
 
 function dragObject() {
   if (draggable != null) {
