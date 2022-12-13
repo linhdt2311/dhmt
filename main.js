@@ -21,6 +21,7 @@ const controls = new OrbitControls(camera, renderer.domElement);
 const raycaster = new THREE.Raycaster();
 const clickMouse = new THREE.Vector2();
 const moveMouse = new THREE.Vector2();
+const groupBatman = new THREE.Group();
 let draggable;
 
 
@@ -34,6 +35,8 @@ sphere();
 cylinder();
 batmanObj();
 loadFloor();
+batmanGltf();
+transform();
 
 function init() {
   camera.position.set(-35, 100, 300);
@@ -44,16 +47,19 @@ function init() {
   renderer.shadowMap.enabled = true;
   document.body.appendChild(renderer.domElement);
   window.addEventListener("resize", onWindowResize);
-  const transformControls1 = new TransformControls(
-	camera,
-	renderer.domElement,
-  );
-transformControls1.addEventListener('change', () => renderer.render(scene, camera));
-// transformControls1.setSpace('local');
-transformControls1.mode = 'translate';
+}
 
-scene.add(transformControls1);
-transformControls1.attach(box());
+function transform() {
+  const transformControls1 = new TransformControls(
+    camera,
+    renderer.domElement,
+  );
+  transformControls1.addEventListener('change', () => renderer.render(scene, camera));
+  // transformControls1.setSpace('local');
+  transformControls1.mode = 'translate';
+
+  scene.add(transformControls1);
+  transformControls1.attach(groupBatman);
 }
 
 function onWindowResize() {
@@ -124,13 +130,13 @@ function box() {
     new THREE.BoxBufferGeometry(),
     new THREE.MeshPhongMaterial({ color: 0xdc143c })
   );
-  box.position.set(15, 3, 15);
+  box.position.set(0, 0, 0);
   box.scale.set(6, 6, 6);
   box.castShadow = true;
   box.receiveShadow = true;
   scene.add(box);
-//   box.userData.draggable = true;
- 
+  //   box.userData.draggable = true;
+
   box.userData.name = "BOX";
   box.userData.material = "Wood";
 
@@ -180,23 +186,24 @@ function batmanObj() {
     batman.userData.draggable = true;
     batman.userData.name = "BATMANOBJ";
     batman.userData.material = "Platinum";
-
   });
 }
 
-// function batmanGltf() {
-// 	const gltfLoader = new GLTFLoader();
-// 	gltfLoader.load('/models/batman.glb', function (gltf) {
-// 		const batman = gltf.scene;
-// 		batman.position.set(0, 0, 0);
-// 		batman.scale.set(10, 10, 10);
-// 		batman.castShadow = true;
-// 		batman.receiveShadow = true;
-// 		scene.add(batman);
-// 		batman.userData.draggable = true;
-// 		batman.userData.name = 'BATMANGLTF';
-// 	});
-// }
+function batmanGltf() {
+  const gltfLoader = new GLTFLoader();
+  gltfLoader.load('/models/batman.glb', function (gltf) {
+    const batman = gltf.scene;
+    batman.position.set(0, 0, 0);
+    batman.scale.set(10, 10, 10);
+    batman.castShadow = true;
+    batman.receiveShadow = true;
+    //batman.userData.draggable = true;
+    batman.userData.name = 'BATMANGLTF';
+    batman.userData.material = "Silver";
+    groupBatman.add(batman);
+    scene.add(groupBatman)
+  });
+}
 
 function intersect(pos) {
   raycaster.setFromCamera(pos, camera);
@@ -207,7 +214,7 @@ var box1 = document.getElementById('modelList');
 console.log(box1)
 box1.addEventListener("click", (event) => {
   debugger
-  box();
+  //box();
 })
 
 window.addEventListener("click", (event) => {
@@ -215,7 +222,7 @@ window.addEventListener("click", (event) => {
     draggable = null;
     return;
   }
- 
+
 
   clickMouse.x = (event.clientX / window.innerWidth) * 2 - 1;
   clickMouse.y = -(event.clientY / window.innerHeight) * 2 + 1;
@@ -224,8 +231,8 @@ window.addEventListener("click", (event) => {
   if (found.length > 0) {
     if (found[0].object.userData.draggable) {
       draggable = found[0].object;
-	  var userDetail = document.getElementById("userDetail");
-	  userDetail.innerHTML = `
+      var userDetail = document.getElementById("userDetail");
+      userDetail.innerHTML = `
 	  <h5 class="fs-6 text-white">Name: ${found[0].object.userData.name}</h5>
 	  <h5 class="fs-6 text-white">Material: ${found[0].object.userData.material}</h5>
 `;
@@ -249,7 +256,7 @@ function dragObject() {
         }
         const target = found[i].point;
         if (target) {
- 
+
         }
         draggable.position.x = target.x;
         draggable.position.z = target.z;
