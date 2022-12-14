@@ -3,11 +3,15 @@ import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls'
 import { TransformControls } from "three/examples/jsm/controls/TransformControls";
 
 export default class SetUp {
-    camera = new THREE.PerspectiveCamera(30, window.innerWidth / window.innerHeight, 1, 1500);
+    camera = new THREE.PerspectiveCamera(50, window.innerWidth / window.innerHeight, 2, 1500);
     renderer = new THREE.WebGLRenderer({ antialias: true });
     scene = new THREE.Scene();
     transformControls = new TransformControls(this.camera, this.renderer.domElement);
     controls = new OrbitControls(this.camera, this.renderer.domElement);
+    raycaster = new THREE.Raycaster();
+    clickMouse = new THREE.Vector2();
+    moveMouse = new THREE.Vector2();
+    group = new THREE.Group();
     constructor() {
         this.init();
         this.setLight();
@@ -16,7 +20,7 @@ export default class SetUp {
     }
 
     init() {
-        this.camera.position.set(-35, 100, 300);
+        this.camera.position.set(-35, 100, 200);
         this.camera.lookAt(new THREE.Vector3(0, 0, 0));
         this.scene.background = new THREE.Color(0xbfd1e5);
         this.renderer.setPixelRatio(window.devicePixelRatio);

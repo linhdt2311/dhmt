@@ -3,7 +3,6 @@ import Object from "/src/Object.js";
 import SetUp from "/src/Setup.js";
 import Action from "/src/Action.js"
 new Action();
-
 // import * as THREE from "three";
 // import { OrbitControls } from "three/examples/jsm/controls/OrbitControls";
 // import { TransformControls } from "three/examples/jsm/controls/TransformControls";
@@ -158,7 +157,7 @@ new Action();
 // 	});
 // }
 
-// function intersect(pos) {
+// function intersect(pos ) {
 //   raycaster.setFromCamera(pos, camera);
 //   return raycaster.intersectObjects(scene.children, false);
 // }

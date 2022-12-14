@@ -8,9 +8,10 @@ export default class Experience {
     scene = this.object.setUp.scene;
     controls = this.object.setUp.controls;
     transformControls = this.object.setUp.transformControls;
-    raycaster = new THREE.Raycaster();
-    clickMouse = new THREE.Vector2();
-    moveMouse = new THREE.Vector2();
+    raycaster =  this.object.setUp.raycaster;
+    clickMouse =  this.object.setUp.clickMouse;
+    moveMouse =  this.object.setUp.moveMouse;
+    group = this.object.setUp.group;
     draggable;
     translateBtn = document.getElementById("translate-btn");
     rotateBtn = document.getElementById("rotate-btn");
@@ -80,10 +81,10 @@ export default class Experience {
 
     addTransformControl(model) {
         // transformControls.setSpace('local');
-        this.transformControls.addEventListener("mouseDown", function () {
+        this.transformControls.addEventListener("mouseDown", ()  => {
             this.controls.enabled = false;
         });
-        this.transformControls.addEventListener("mouseUp", function () {
+        this.transformControls.addEventListener("mouseUp",() => {
             this.controls.enabled = true;
         });
         this.transformControls.attach(model);
