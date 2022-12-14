@@ -144,3 +144,36 @@ button:focus-visible {
 .user-img{
   border-radius: 50%;
 }
+
+.toolbar{
+  position: absolute;
+  left: 10px;
+  top: 80px;
+  width: 32px;
+  background: #eee;
+  text-align: center;
+  color: #888;
+}
+.toolbar-button{
+    color: #555;
+    border: 0px;
+    margin: 0px;
+    font-size: 12px;
+    text-transform: uppercase;
+    cursor: pointer;
+    background-color: #fff;
+    outline: none;
+}
+
+.toolbar-button:hover{
+  background-color: #ddd;
+}
+
+
+.focus{
+  background-color: #ddd;
+}
+.toolbar-img{
+  width: 16px;
+  opacity: 0.5;
+}

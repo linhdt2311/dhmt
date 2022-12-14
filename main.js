@@ -46,21 +46,18 @@ function init() {
   document.body.appendChild(renderer.domElement);
   window.addEventListener("resize", onWindowResize);
   transformControls.enabled = false;
+  transformControls.mode = "translate";
+  scene.add(transformControls);
 }
 
 function addTransformControl(model) {
-  transformControls.addEventListener("objectChange", () =>
-    renderer.render(scene, camera)
-  );
   // transformControls.setSpace('local');
-  transformControls.mode = "translate";
   transformControls.addEventListener("mouseDown", function () {
     controls.enabled = false;
   });
   transformControls.addEventListener("mouseUp", function () {
     controls.enabled = true;
   });
-  scene.add(transformControls);
   transformControls.attach(model);
 }
 
@@ -115,18 +112,6 @@ function loadFloor() {
   });
 }
 
-function plane() {
-  const plane = new THREE.Mesh(
-    new THREE.BoxBufferGeometry(),
-    new THREE.MeshPhongMaterial({ color: 0xffffff })
-  );
-  plane.position.set(0, 0, 0);
-  plane.scale.set(180, 1, 198);
-  plane.castShadow = true;
-  plane.receiveShadow = true;
-  scene.add(plane);
-  plane.userData.ground = true;
-}
 
 function box() {
   const box = new THREE.Mesh(
@@ -208,12 +193,6 @@ function intersect(pos) {
   return raycaster.intersectObjects(scene.children, false);
 }
 
-var box1 = document.getElementById("modelList");
-console.log(box1);
-box1.addEventListener("click", (event) => {
-  debugger;
-  box();
-});
 
 window.addEventListener("click", (event) => {
   // if (draggable != null) {
@@ -225,19 +204,18 @@ window.addEventListener("click", (event) => {
   clickMouse.y = -(event.clientY / window.innerHeight) * 2 + 1;
 
   const found = intersect(clickMouse);
-  transformControls.enabled = false;
-  debugger
+  // transformControls.enabled = false;
   transformControls.detach();
   if (found.length > 0 && found[0].object.type !== "TransformControlsPlane"
    && found[0].object.userData.name && found[0].object.userData.name !== 'Plane') {
     transformControls.enabled = true;
     draggable = found[0].object;
-    var userDetail = document.getElementById("userDetail");
+    // var userDetail = document.getElementById("userDetail");
     addTransformControl(draggable);
-    userDetail.innerHTML = `
-	  <h5 class="fs-6 text-white">Name: ${found[0].object.userData.name}</h5>
-	  <h5 class="fs-6 text-white">Material: ${found[0].object.userData.material}</h5>
-`;
+//     userDetail.innerHTML = `
+// 	  <h5 class="fs-6 text-white">Name: ${found[0].object.userData.name}</h5>
+// 	  <h5 class="fs-6 text-white">Material: ${found[0].object.userData.material}</h5>
+// `;
   }
   else{
     transformControls.enabled = false;
@@ -249,20 +227,49 @@ window.addEventListener("mousemove", (event) => {
   moveMouse.y = -(event.clientY / window.innerHeight) * 2 + 1;
 });
 
-function dragObject() {
-  if (draggable != null) {
-    const found = intersect(moveMouse);
-    if (found.length > 0) {
-      for (let i = 0; i < found.length; i++) {
-        if (!found[i].object.userData.ground) {
-          continue;
-        }
-        const target = found[i].point;
-        if (target) {
-        }
-        draggable.position.x = target.x;
-        draggable.position.z = target.z;
-      }
-    }
-  }
+// function dragObject() {
+//   if (draggable != null) {
+//     const found = intersect(moveMouse);
+//     if (found.length > 0) {
+//       for (let i = 0; i < found.length; i++) {
+//         if (!found[i].object.userData.ground) {
+//           continue;
+//         }
+//         const target = found[i].point;
+//         if (target) {
+//         }
+//         draggable.position.x = target.x;
+//         draggable.position.z = target.z;
+//       }
+//     }
+//   }
+// }
+
+var translateBtn = document.getElementById("translate-btn");
+var rotateBtn = document.getElementById("rotate-btn");
+var scaleBtn = document.getElementById("scale-btn");
+
+translateBtn.addEventListener('click', () => {
+  resetTransformState();
+  translateBtn.classList.add('focus');
+  transformControls.mode = "translate";
+})
+
+
+rotateBtn.addEventListener('click', () => {
+  resetTransformState();
+  rotateBtn.classList.add('focus');
+  transformControls.mode = "rotate";
+})
+
+scaleBtn.addEventListener('click', () => {
+  resetTransformState();
+  scaleBtn.classList.add('focus');
+  transformControls.mode = "scale";
+})
+
+function resetTransformState(){
+  translateBtn.classList.remove('focus');
+  rotateBtn.classList.remove('focus');
+  scaleBtn.classList.remove('focus');
 }
