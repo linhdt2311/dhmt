@@ -1,11 +1,22 @@
-// var userInfo = JSON.parse(localStorage.getItem('user'));
-// var userDetail = document.getElementById('userDetail');
-// userDetail.style.position = 'absolute';
-// userDetail.style.zIndex = 1;
-// userDetail.classList.add('pe-0');
-// userDetail.innerHTML = `
-// <h4 class="text-white fs-6">
-// <img src="${userInfo.photoURL}" width="40px" height="40px"  class="user-img"></img>
-// ${userInfo.displayName}</h4>`
+var userInfo = JSON.parse(localStorage.getItem('user'));
+var userDetail = document.getElementById('information');
+userDetail.style.position = 'absolute';
+userDetail.style.zIndex = 1;
+userDetail.classList.add('pe-0');
+userDetail.classList.add('text-center');
+userDetail.style.top = 0;
+userDetail.innerHTML = `
+<h4 class="text-white fs-6 mt-0 mb-2">
+<img src="${userInfo.photoURL}" width="40px" height="40px"  class="user-img"></img>
+${userInfo.displayName}</h4>`
+var object = document.getElementById('object');
+object.innerHTML = `
+    <div class="row">
+    <div class="col col-4">
+    </div>
+    <div class="col col-8">
 
+    </div>
 
+    </div>
+`

@@ -33,8 +33,10 @@ setCamera();
 // box();
 sphere();
 cylinder();
-batmanObj();
+batmanGltf();
 loadFloor();
+
+
 
 function init() {
   camera.position.set(-35, 100, 300);
@@ -112,25 +114,6 @@ function loadFloor() {
   });
 }
 
-
-function box() {
-  const box = new THREE.Mesh(
-    new THREE.BoxBufferGeometry(),
-    new THREE.MeshPhongMaterial({ color: 0xdc143c })
-  );
-  box.position.set(15, 3, 18);
-  box.scale.set(6, 6, 6);
-  box.castShadow = true;
-  box.receiveShadow = true;
-  scene.add(box);
-  //   box.userData.draggable = true;
-
-  box.userData.name = "BOX";
-  box.userData.material = "Wood";
-
-  return box;
-}
-
 function sphere() {
   const sphere = new THREE.Mesh(
     new THREE.SphereBufferGeometry(4, 32, 32),
@@ -158,40 +141,28 @@ function cylinder() {
   cylinder.userData.material = "Vibranium";
 }
 
-function batmanObj() {
-  const objLoader = new OBJLoader();
-  objLoader.load("/models/batman.obj", function (obj) {
-    const batman = obj.children[0];
-    batman.position.set(-15, 0, -15);
-    batman.scale.set(5, 5, 5);
-    batman.castShadow = true;
-    batman.receiveShadow = true;
-    scene.add(batman);
-    batman.userData.draggable = true;
-    batman.userData.name = "BATMANOBJ";
-    batman.userData.material = "Platinum";
-  });
-}
 
-// function batmanGltf() {
-// 	const gltfLoader = new GLTFLoader();
-// 	gltfLoader.load('/models/batman.glb', function (gltf) {
-// 		const batman = gltf.scene;
-// 		batman.position.set(0, 0, 0);
-// 		batman.scale.set(10, 10, 10);
-// 		batman.castShadow = true;
-// 		batman.receiveShadow = true;
-//     groupBatMan.add(batman);
-// 		scene.add(batman);
-// 		batman.userData.draggable = true;
-// 		batman.userData.name = 'BATMANGLTF';
-// 	});
-// }
+
+function batmanGltf() {
+	const gltfLoader = new GLTFLoader();
+	gltfLoader.load('/models/batman.glb', function (gltf) {
+		const batman = gltf.scene;
+		batman.position.set(0, 0, 0);
+		batman.scale.set(10, 10, 10);
+		batman.castShadow = true;
+		batman.receiveShadow = true;
+    groupBatMan.add(batman);
+		scene.add(batman);
+		batman.userData.draggable = true;
+		batman.userData.name = 'BATMANGLTF';
+	});
+}
 
 function intersect(pos) {
   raycaster.setFromCamera(pos, camera);
   return raycaster.intersectObjects(scene.children, false);
 }
+
 
 
 window.addEventListener("click", (event) => {

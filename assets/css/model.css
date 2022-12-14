@@ -177,3 +177,13 @@ button:focus-visible {
   width: 16px;
   opacity: 0.5;
 }
+
+.tab-item{
+  color: #888;
+  background-color: #eee;
+}
+
+.tabs{
+  background-color: #ddd;
+    border-top: 1px solid #ccc;
+}
