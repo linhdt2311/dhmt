@@ -1,56 +1,97 @@
-// export default class Experience {
-// 	raycaster = new THREE.Raycaster();
-// 	clickMouse = new THREE.Vector2();
-// 	moveMouse = new THREE.Vector2();
-// 	draggable;
+import * as THREE from 'three'
+import { TransformControls } from "three/examples/jsm/controls/TransformControls";
+import Object from "./Object.js";
+export default class Experience {
+    object = new Object();
+    camera = this.object.setUp.camera;
+    renderer = this.object.setUp.renderer;
+    scene = this.object.setUp.scene;
+    controls = this.object.setUp.controls;
+    transformControls = this.object.setUp.transformControls;
+    raycaster = new THREE.Raycaster();
+    clickMouse = new THREE.Vector2();
+    moveMouse = new THREE.Vector2();
+    draggable;
+    translateBtn = document.getElementById("translate-btn");
+    rotateBtn = document.getElementById("rotate-btn");
+    scaleBtn = document.getElementById("scale-btn");
 
-//     constructor(){
+    constructor() {
+        this.foundObject();
+        this.mouseMove();
+        this.translate();
+        this.rotate();
+        this.scale();
+    }
 
-//     }
-	
-// 	intersect(pos) {
-// 		raycaster.setFromCamera(pos, camera);
-// 		return raycaster.intersectObjects(scene.children);
-// 	}
-	
-// 	window.addEventListener('click', event => {
-// 		if (draggable != null) {
-// 			console.log(`dropping draggable ${draggable.userData.name}`)
-// 			draggable = null;
-// 			return;
-// 		}
-	
-// 		clickMouse.x = (event.clientX / window.innerWidth) * 2 - 1;
-// 		clickMouse.y = -(event.clientY / window.innerHeight) * 2 + 1;
-	
-// 		const found = intersect(clickMouse);
-// 		console.log(found)
-// 		if (found.length > 0) {
-// 			if (found[0].object.userData.draggable) {
-// 				draggable = found[0].object
-// 				console.log(`found draggable ${draggable.userData.name}`)
-// 			}
-// 		}
-// 	})
-	
-// 	window.addEventListener('mousemove', event => {
-// 		moveMouse.x = (event.clientX / window.innerWidth) * 2 - 1;
-// 		moveMouse.y = -(event.clientY / window.innerHeight) * 2 + 1;
-// 	});
-	
-// 	dragObject() {
-// 		if (draggable != null) {
-// 			const found = intersect(moveMouse);
-// 			if (found.length > 0) {
-// 				for (let i = 0; i < found.length; i++) {
-// 					if (!found[i].object.userData.ground)
-// 						continue
-	
-// 					let target = found[i].point;
-// 					draggable.position.x = target.x
-// 					draggable.position.z = target.z
-// 				}
-// 			}
-// 		}
-// 	}
-// }
+    foundObject() {
+        window.addEventListener("click", (event) => {
+            this.clickMouse.x = (event.clientX / window.innerWidth) * 2 - 1;
+            this.clickMouse.y = -(event.clientY / window.innerHeight) * 2 + 1;
+            const found = this.intersect(this.clickMouse);
+            this.transformControls.detach();
+            if (found.length > 0 && found[0].object.type !== "TransformControlsPlane"
+                && found[0].object.userData.name && found[0].object.userData.name !== 'Plane') {
+                this.transformControls.enabled = true;
+                this.draggable = found[0].object;
+                this.addTransformControl(this.draggable);
+            }
+            else {
+                this.transformControls.enabled = false;
+            }
+        });
+    }
+
+    mouseMove() {
+        window.addEventListener("mousemove", (event) => {
+            this.moveMouse.x = (event.clientX / window.innerWidth) * 2 - 1;
+            this.moveMouse.y = -(event.clientY / window.innerHeight) * 2 + 1;
+        });
+    }
+
+    translate() {
+        this.translateBtn.addEventListener('click', () => {
+            this.resetTransformState();
+            this.translateBtn.classList.add('focus');
+            this.transformControls.mode = "translate";
+        });
+    }
+
+    rotate() {
+        this.rotateBtn.addEventListener('click', () => {
+            this.resetTransformState();
+            this.rotateBtn.classList.add('focus');
+            this.transformControls.mode = "rotate";
+        });
+    }
+
+    scale() {
+        this.scaleBtn.addEventListener('click', () => {
+            this.resetTransformState();
+            this.scaleBtn.classList.add('focus');
+            this.transformControls.mode = "scale";
+        });
+    }
+
+    intersect(pos) {
+        this.raycaster.setFromCamera(pos, this.camera);
+        return this.raycaster.intersectObjects(this.scene.children, false);
+    }
+
+    addTransformControl(model) {
+        // transformControls.setSpace('local');
+        this.transformControls.addEventListener("mouseDown", function () {
+            this.controls.enabled = false;
+        });
+        this.transformControls.addEventListener("mouseUp", function () {
+            this.controls.enabled = true;
+        });
+        this.transformControls.attach(model);
+    }
+
+    resetTransformState() {
+        this.translateBtn.classList.remove('focus');
+        this.rotateBtn.classList.remove('focus');
+        this.scaleBtn.classList.remove('focus');
+    }
+}
