@@ -13,6 +13,7 @@ export default class SetUp {
     clickMouse = new THREE.Vector2();
     moveMouse = new THREE.Vector2();
     group = new THREE.Group();
+    groupModel = new THREE.Group();
     axesHelper = new THREE.AxesHelper( 1 );
     constructor() {
         this.init();
