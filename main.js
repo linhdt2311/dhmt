@@ -1,6 +1,4 @@
 import "./style.css";
-import Object from "/src/Object.js";
-import SetUp from "/src/Setup.js";
 import Action from "/src/Action.js"
 new Action();
 // import * as THREE from "three";

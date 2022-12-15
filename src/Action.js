@@ -1,5 +1,3 @@
-import * as THREE from 'three'
-import { TransformControls } from "three/examples/jsm/controls/TransformControls";
 import Object from "./Object.js";
 export default class Experience {
     object = new Object();
@@ -32,7 +30,7 @@ export default class Experience {
             const found = this.intersect(this.clickMouse);
             this.transformControls.detach();
             if (found.length > 0 && found[0].object.type !== "TransformControlsPlane"
-                && found[0].object.userData.name && found[0].object.userData.name !== 'Plane') {
+                && found[0].object.userData.name && found[0].object.userData.type !== 'Plane') {
                 this.transformControls.enabled = true;
                 this.draggable = found[0].object;
                 this.addTransformControl(this.draggable);
@@ -76,7 +74,7 @@ export default class Experience {
 
     intersect(pos) {
         this.raycaster.setFromCamera(pos, this.camera);
-        return this.raycaster.intersectObjects(this.scene.children, false);
+        return this.raycaster.intersectObjects(this.scene.children);
     }
 
     addTransformControl(model) {

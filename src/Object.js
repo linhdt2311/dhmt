@@ -5,11 +5,11 @@ import SetUp from "./Setup";
 export default class Object {
   setUp = new SetUp();
   group = this.setUp.group;
+  groupModel = this.setUp.groupModel;
   scene = this.setUp.scene;
   constructor() {
     this.sphere();
     this.cylinder();
-    //this.batmanGltf();
     this.loadFloor();
   }
   loadFloor() {
@@ -17,12 +17,16 @@ export default class Object {
     let floor;
     gltfLoader.loadAsync("/models/floorPlan.glb").then((gltf) => {
       floor = gltf.scene;
+      for(let i = 0; i < floor.children.length; i++){
+        floor.children[i].userData.name = "Plane";
+        floor.children[i].userData.type = "Plane";
+      };
       this.group.add(floor);
       this.group.position.set(0, 1, 0);
       this.group.scale.set(3, 3, 3);
       this.group.castShadow = true;
       this.group.receiveShadow = true;
-      this.group.userData.name = "FloorPlan";
+      this.group.userData.name = "Plane";
       this.group.userData.type = "Plane";
       this.scene.add(this.group);
     });
@@ -56,17 +60,25 @@ export default class Object {
     cylinder.userData.material = "Vibranium";
   }
 
-  batmanGltf() {
+  loadModel(model) {
     const gltfLoader = new GLTFLoader();
-    gltfLoader.load("/models/batman.glb", function (gltf) {
-      const batman = gltf.scene;
-      batman.position.set(0, 0, 0);
-      batman.scale.set(10, 10, 10);
-      batman.castShadow = true;
-      batman.receiveShadow = true;
-      this.scene.add(batman);
-      batman.userData.draggable = true;
-      batman.userData.name = "BATMANGLTF";
+    gltfLoader.loadAsync(model).then((gltf) => {
+      this.groupModel.add(gltf.scene)
+      this.groupModel.position.set(0, 0, 0);
+      this.groupModel.scale.set(10, 10, 10);
+      this.groupModel.castShadow = true;
+      this.groupModel.receiveShadow = true;
+      this.groupModel.userData.draggable = true;
+      this.scene.add(this.groupModel);
+      this.groupModel.userData.name = "BATMANGLTF";
+      this.groupModel.userData.material = "Vibranium";
     });
+  }
+
+  addModel(model){
+    const modelList = document.getElementById('modelList');
+    modelList.addEventListener("click", () => {
+      this.loadModel(model);
+    })
   }
 }
