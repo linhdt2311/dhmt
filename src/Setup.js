@@ -4,7 +4,8 @@ import { TransformControls } from "three/examples/jsm/controls/TransformControls
 
 export default class SetUp {
     camera = new THREE.PerspectiveCamera(50, window.innerWidth / window.innerHeight, 2, 1500);
-    renderer = new THREE.WebGLRenderer({ antialias: true });
+    canvas = document.getElementById('myCanvas');
+    renderer = new THREE.WebGLRenderer({ canvas: this.canvas });
     scene = new THREE.Scene();
     transformControls = new TransformControls(this.camera, this.renderer.domElement);
     controls = new OrbitControls(this.camera, this.renderer.domElement);
@@ -12,6 +13,7 @@ export default class SetUp {
     clickMouse = new THREE.Vector2();
     moveMouse = new THREE.Vector2();
     group = new THREE.Group();
+    axesHelper = new THREE.AxesHelper( 1 );
     constructor() {
         this.init();
         this.setLight();
@@ -23,14 +25,20 @@ export default class SetUp {
         this.camera.position.set(-35, 100, 200);
         this.camera.lookAt(new THREE.Vector3(0, 0, 0));
         this.scene.background = new THREE.Color(0xbfd1e5);
+        var myCanvas = document.getElementById('myCanvas');
+
+        myCanvas.height = window.innerHeight;
+        this.renderer.domElement = myCanvas;
         this.renderer.setPixelRatio(window.devicePixelRatio);
-        this.renderer.setSize(window.innerWidth, window.innerHeight);
+        this.renderer.setSize(myCanvas.innerWidth, myCanvas.innerHeight);
+        this.camera.aspect =  myCanvas.innerWidth / myCanvas.innerHeight;
         this.renderer.shadowMap.enabled = true;
-        document.body.appendChild(this.renderer.domElement);
+        // document.body.appendChild(this.renderer.domElement);
         window.addEventListener("resize", this.onWindowResize());
         this.transformControls.enabled = false;
         this.transformControls.mode = "translate";
         this.scene.add(this.transformControls);
+        this.scene.add( this.axesHelper );
     }
 
     onWindowResize() {

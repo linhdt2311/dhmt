@@ -40,37 +40,45 @@
         </button>
         <!-- <button id="signOut" class="button">Log Out</button> -->
       </div>
-      <div class="side-nav model-nav">
-        <div id="modelList">
-          <div class="side-nav info-nav">
-            <h4 class="fs-5 text-center text-white mb-0">Information</h4>
-            <ul class="nav nav-tabs tabs mt-5">
-              <li class="nav-item tab-item text-center w-50">
-                <a class="nav-link active" data-bs-toggle="tab" href="#object">OBJECT</a>
-              </li>
-              <li class="nav-item tab-item text-center w-50">
-                <a class="nav-link" data-bs-toggle="tab" href="#material">MATERIAL</a>
-              </li>
-            </ul>
-            <div class="tab-content">
-              <div class="tab-pane fade show active" id="object">
-                  <div id="object">
-                   
-                  </div>
-              </div>
-              <div class="tab-pane fade" id="material">
-                  <p>Profile tab content ...</p>
-              </div>
-           
-          </div>
-          </div>
-          <!-- <div class="side-nav model-nav p-2">
-            <h4 class="fs-5 text-center text-white">Models</h4>
-            <div id="modelList"></div>
-          </div> -->
+      <div class="row no-gutters">
+        <div class="col col-10">
+          <canvas id="myCanvas"></canvas>
         </div>
-        <button id="signOut" class="button">Log Out</button>
+        <div class="col col-2">
+          <div class="side-nav model-nav">
+            <div id="modelList">
+              <div class="side-nav info-nav">
+                <h4 class="fs-5 text-center text-white mb-0">Information</h4>
+                <ul class="nav nav-tabs tabs mt-5">
+                  <li class="nav-item tab-item text-center w-50">
+                    <a class="nav-link active" data-bs-toggle="tab" href="#object">OBJECT</a>
+                  </li>
+                  <li class="nav-item tab-item text-center w-50">
+                    <a class="nav-link" data-bs-toggle="tab" href="#material">MATERIAL</a>
+                  </li>
+                </ul>
+                <div class="tab-content">
+                  <div class="tab-pane fade show active" id="object">
+                      <div id="object">
+                       
+                      </div>
+                  </div>
+                  <div class="tab-pane fade" id="material">
+                      <p>Profile tab content ...</p>
+                  </div>
+               
+              </div>
+              </div>
+              <!-- <div class="side-nav model-nav p-2">
+                <h4 class="fs-5 text-center text-white">Models</h4>
+                <div id="modelList"></div>
+              </div> -->
+            </div>
+            <button id="signOut" class="button">Log Out</button>
+          </div>
+        </div>
       </div>
+   
         <div id="app"></div>
         <script type="module" src="/main.js"></script>
     
