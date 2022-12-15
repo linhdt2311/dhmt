@@ -11,6 +11,7 @@ export default class Object {
     this.sphere();
     this.cylinder();
     this.loadFloor();
+    this.addModel('/models/batman.glb') 
   }
   loadFloor() {
     const gltfLoader = new GLTFLoader();
