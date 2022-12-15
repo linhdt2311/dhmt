@@ -3,7 +3,7 @@ import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls'
 import { TransformControls } from "three/examples/jsm/controls/TransformControls";
 
 export default class SetUp {
-    camera = new THREE.PerspectiveCamera(50, window.innerWidth / window.innerHeight, 2, 1500);
+    camera = new THREE.PerspectiveCamera(70, window.innerWidth / window.innerHeight, 2, 1500);
     canvas = document.getElementById('myCanvas');
     renderer = new THREE.WebGLRenderer({ canvas: this.canvas });
     scene = new THREE.Scene();
@@ -23,7 +23,7 @@ export default class SetUp {
 
     init() {
         this.camera.position.set(-35, 100, 200);
-        this.camera.lookAt(new THREE.Vector3(0, 0, 0));
+        this.camera.lookAt(new THREE.Vector3(0, 0, 20));
         this.scene.background = new THREE.Color(0xbfd1e5);
         var myCanvas = document.getElementById('myCanvas');
 

@@ -26,9 +26,10 @@ export default class Experience {
     }
 
     foundObject() {
+        var myCanvas = document.getElementById('myCanvas');
         window.addEventListener("click", (event) => {
-            this.clickMouse.x = (event.clientX / window.innerWidth) * 2 - 1;
-            this.clickMouse.y = -(event.clientY / window.innerHeight) * 2 + 1;
+            this.clickMouse.x = (event.clientX / myCanvas.clientWidth) * 2 - 1;
+            this.clickMouse.y = -(event.clientY / myCanvas.clientHeight) * 2 + 1;
             const found = this.intersect(this.clickMouse);
             this.transformControls.detach();
             if (found.length > 0 && found[0].object.type !== "TransformControlsPlane"
@@ -44,9 +45,10 @@ export default class Experience {
     }
 
     mouseMove() {
-        window.addEventListener("mousemove", (event) => {
-            this.moveMouse.x = (event.clientX / window.innerWidth) * 2 - 1;
-            this.moveMouse.y = -(event.clientY / window.innerHeight) * 2 + 1;
+        var myCanvas = document.getElementById('myCanvas');
+        myCanvas.addEventListener("mousemove", (event) => {
+            this.moveMouse.x = (event.clientX / myCanvas.clientWidth) * 2 - 1;
+            this.moveMouse.y = -(event.clientY / myCanvas.clientHeight) * 2 + 1;
         });
     }
 
