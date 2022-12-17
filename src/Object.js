@@ -11,8 +11,9 @@ export default class Object {
     this.sphere();
     this.cylinder();
     this.loadFloor();
-    this.addModel('/models/batman.glb') 
+    this.addModel('/models/bed.glb') 
   }
+
   loadFloor() {
     const gltfLoader = new GLTFLoader();
     let floor;
@@ -69,8 +70,8 @@ export default class Object {
       this.groupModel.scale.set(10, 10, 10);
       this.groupModel.castShadow = true;
       this.groupModel.receiveShadow = true;
-      this.groupModel.userData.draggable = true;
       this.scene.add(this.groupModel);
+      this.groupModel.userData.draggable = true;
       this.groupModel.userData.name = "BATMANGLTF";
       this.groupModel.userData.material = "Vibranium";
     });
