@@ -33,13 +33,11 @@ export default class Experience {
             this.clickMouse.x = (event.clientX / myCanvas.clientWidth) * 2 - 1;
             this.clickMouse.y = -(event.clientY / myCanvas.clientHeight) * 2 + 1;
             const found = this.intersect(this.clickMouse);
-            console.log(found)
             if (found.length > 0) {
                 while (found[0].object.parent.parent !== null) {
                     found[0].object = found[0].object.parent;
                 }
             }
-            console.log(found)
             this.transformControls.detach();
             if (found.length > 0 && found[0].object.type != "TransformControlsPlane" &&
                 found[0].object.userData.name && found[0].object.userData.type !== 'Plane') {
