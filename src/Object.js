@@ -7,11 +7,13 @@ export default class Object {
   group = this.setUp.group;
   groupModel = this.setUp.groupModel;
   scene = this.setUp.scene;
+  listModel = [];
   constructor() {
+    this.fetchData();
+    this.addModel();
     this.sphere();
     this.cylinder();
     this.loadFloor();
-    this.addModel('/models/bed.glb') 
   }
 
   loadFloor() {
@@ -62,25 +64,44 @@ export default class Object {
     cylinder.userData.material = "Vibranium";
   }
 
-  loadModel(model) {
-    const gltfLoader = new GLTFLoader();
-    gltfLoader.loadAsync(model).then((gltf) => {
-      this.groupModel.add(gltf.scene)
-      this.groupModel.position.set(0, 0, 0);
-      this.groupModel.scale.set(10, 10, 10);
-      this.groupModel.castShadow = true;
-      this.groupModel.receiveShadow = true;
-      this.scene.add(this.groupModel);
-      this.groupModel.userData.draggable = true;
-      this.groupModel.userData.name = "BATMANGLTF";
-      this.groupModel.userData.material = "Vibranium";
-    });
+ async fetchData(){
+    debugger
+    var modelList = document.getElementById('object');
+     await fetch('./data/data.json')
+      .then((response) => response.json())
+      .then((json) => {
+        this.listModel = [...json];
+        let stringHtml = '';
+        this.listModel.forEach(item => {
+          stringHtml+= `
+            <div>Name: ${item.name}</div>
+            <div>Material: ${item.material}</div>
+          `
+        })
+        modelList.innerHTML = stringHtml;
+      });
+}
+
+  loadModel(id) {
+      const model = this.listModel.find(item => item.id === id);
+      const gltfLoader = new GLTFLoader();
+      gltfLoader.loadAsync(model.url).then((gltf) => {
+        this.groupModel.add(gltf.scene)
+        this.groupModel.position.set(0, 0, 0);
+        this.groupModel.scale.set(10, 10, 10);
+        this.groupModel.castShadow = true;
+        this.groupModel.receiveShadow = true;
+        this.scene.add(this.groupModel);
+        this.groupModel.userData.draggable = true;
+        this.groupModel.userData.name = "BATMANGLTF";
+        this.groupModel.userData.material = "Vibranium";
+      });
   }
 
-  addModel(model){
+  addModel(){
     const modelList = document.getElementById('modelList');
     modelList.addEventListener("click", () => {
-      this.loadModel(model);
+      this.loadModel('ebeec382-8259-4e37-9014-b2e5c8181682');
     })
   }
 }

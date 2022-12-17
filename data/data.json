@@ -1,0 +1,14 @@
+[
+    {
+        "id": "ebeec382-8259-4e37-9014-b2e5c8181687",
+        "url": "/models/batman.glb",
+        "name": "batman",
+        "material": "vibranium"
+    },
+    {
+        "id": "ebeec382-8259-4e37-9014-b2e5c8181682",
+        "url": "/models/pink_glossy_chest.glb",
+        "name": "pink_glossy_chest",
+        "material": "wood"
+    }
+]

@@ -9,14 +9,3 @@ userDetail.innerHTML = `
 <h4 class="text-white fs-6 mt-0 mb-2">
 <img src="${userInfo.photoURL}" width="40px" height="40px"  class="user-img"></img>
 ${userInfo.displayName}</h4>`
-var object = document.getElementById('object');
-object.innerHTML = `
-    <div class="row">
-    <div class="col col-4">
-    </div>
-    <div class="col col-8">
-
-    </div>
-
-    </div>
-`
