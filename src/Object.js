@@ -11,8 +11,10 @@ export default class Object {
   listModel = [];
   constructor() {
     this.fetchData();
-    this.addModel();
     this.loadFloor();
+    setTimeout(() => {
+    this.addModel();
+    }, 1500)
   }
 
   loadFloor() {
@@ -36,7 +38,7 @@ export default class Object {
   }
 
   async fetchData() {
-    var modelList = document.getElementById('object');
+    var modelList = document.getElementById('model');
     await fetch('./data/data.json')
       .then((response) => response.json())
       .then((json) => {
@@ -57,14 +59,13 @@ export default class Object {
           </a>
           </h5>
           </div>
-            <div id="${item.type}" class="collapse" data-parent="#accordion" aria-labelledby="heading-${item.type}">
+            <div id="${item.type}" class="collapse" style="transition: 0.8s ease-in-out;" data-parent="#accordion" aria-labelledby="heading-${item.type}">
               ${this.loadDetailObject(item)}
             </div>
           </div>
           </div>
           </div>
           </div>
-         
             `
           })
           modelList.innerHTML = stringHtml;
@@ -117,20 +118,23 @@ export default class Object {
          <span >${item.price}</span>
        </div>
      </div>
-      </div>
-      `
+     <button id=but-${item.url}>Load</button>
+     </div>
+     `
       })
       return stringHtml
     }
 
-  loadModel(id) {
+
+  loadModel(url) {
+    debugger
     const dracoLoader = new DRACOLoader();
     dracoLoader.setDecoderPath('../node_modules/three/examples/js/libs/draco/gltf/');
     dracoLoader.setDecoderConfig({ type: 'js' });
     const gltfLoader = new GLTFLoader();
     gltfLoader.setDRACOLoader(dracoLoader);
-    const model = this.listModel.find(item => item.id === id);
-    gltfLoader.loadAsync(model.url).then((gltf) => {
+    // const model = this.listModel.find(item => item.id === id);
+    gltfLoader.loadAsync(url).then((gltf) => {
       this.groupModel.add(gltf.scene)
       this.groupModel.position.set(0, 0, 0);
       this.groupModel.scale.set(10, 10, 10);
@@ -143,15 +147,14 @@ export default class Object {
     });
   }
 
-  addModel() {
-    const modelList = document.getElementById('modelList');
-    modelList.addEventListener("click", (e) => {
-      debugger
-      e.stopPropagation();
-      e = e || window.event;
-      var target = e.target || e.srcElement,
-          text = target.textContent || target.innerText;   
-      this.loadModel('ebeec382-8259-4e37-9014-b2e5c8181682');
-    })
-  }
+    addModel(){
+      const btns = document.querySelectorAll('button[id^=but]')
+      btns.forEach(btn => {
+        btn.addEventListener('click', event => {
+          const url = event.target.id.slice(4)
+          this.loadModel(url)
+        });
+     });
 }
+}
+
