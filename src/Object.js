@@ -127,23 +127,21 @@ export default class Object {
 
 
   loadModel(url) {
-    debugger
     const dracoLoader = new DRACOLoader();
     dracoLoader.setDecoderPath('../node_modules/three/examples/js/libs/draco/gltf/');
     dracoLoader.setDecoderConfig({ type: 'js' });
     const gltfLoader = new GLTFLoader();
     gltfLoader.setDRACOLoader(dracoLoader);
-    // const model = this.listModel.find(item => item.id === id);
     gltfLoader.loadAsync(url).then((gltf) => {
-      this.groupModel.add(gltf.scene)
-      this.groupModel.position.set(0, 0, 0);
-      this.groupModel.scale.set(10, 10, 10);
-      this.groupModel.castShadow = true;
-      this.groupModel.receiveShadow = true;
-      this.scene.add(this.groupModel);
-      this.groupModel.userData.draggable = true;
-      this.groupModel.userData.name = "BATMANGLTF";
-      this.groupModel.userData.material = "Vibranium";
+      const model = gltf.scene;
+      model.position.set(0, 0, 0);
+      model.scale.set(10, 10, 10);
+      model.castShadow = true;
+      model.receiveShadow = true;
+      this.scene.add(model);
+      model.userData.draggable = true;
+      model.userData.name = "BATMANGLTF";
+      model.userData.material = "Vibranium";
     });
   }
 
