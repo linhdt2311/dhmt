@@ -44,13 +44,84 @@ export default class Object {
         let stringHtml = '';
         this.listModel.forEach(item => {
           stringHtml += `
-            <div>Name: ${item.name}</div>
-            <div>Material: ${item.material}</div>
-          `
+          <div class="flex flex-column list-model">
+          <div class="row">
+          <div class="col col-12">
+          <div class="card p-0 border-0" style="border-radius: unset !important">
+          <div class="card-header border-0 rounded" id="heading-${item.type}">
+          <h5 class="mb-0">
+          <a role="button" data-bs-toggle="collapse" href="#${item.type}"
+          aria-expanded="false" aria-controls="${item.type}"
+          class="text-uppercase">
+           ${item.type}
+          </a>
+          </h5>
+          </div>
+            <div id="${item.type}" class="collapse" data-parent="#accordion" aria-labelledby="heading-${item.type}">
+              ${this.loadDetailObject(item)}
+            </div>
+          </div>
+          </div>
+          </div>
+          </div>
+         
+            `
+          })
+          modelList.innerHTML = stringHtml;
         })
-        modelList.innerHTML = stringHtml;
-      });
+ 
   }
+
+    loadDetailObject(data){
+      let stringHtml = ''
+      data.list.forEach(item => {
+        stringHtml += `
+      <div class="card-body">
+          <div class="d-flex row">
+            <div class="col col-5">
+              <img width="100%" height="100%" src="${item.photoUrl}">
+            </div>
+            <div class="col col-7">
+            <span >${item.name}</span>
+          </div>
+          </div>
+          <div class="d-flex row">
+           <div class="col col-5">
+            <span >Material:</span>
+          </div>
+          <div class="col col-7">
+            <span >${item.material}</span>
+          </div>
+        </div>
+        <div class="d-flex row">
+        <div class="col col-5">
+         <span >Size:</span>
+       </div>
+       <div class="col col-7">
+         <span >${item.size}</span>
+       </div>
+     </div>
+           <div class="d-flex row">
+           <div class="col col-5">
+            <span >Origin:</span>
+          </div>
+          <div class="col col-7">
+            <span >${item.origin}</span>
+          </div>
+        </div>
+        <div class="d-flex row">
+        <div class="col col-5">
+         <span >Price:</span>
+       </div>
+       <div class="col col-7">
+         <span >${item.price}</span>
+       </div>
+     </div>
+      </div>
+      `
+      })
+      return stringHtml
+    }
 
   loadModel(id) {
     const dracoLoader = new DRACOLoader();
@@ -74,7 +145,12 @@ export default class Object {
 
   addModel() {
     const modelList = document.getElementById('modelList');
-    modelList.addEventListener("click", () => {
+    modelList.addEventListener("click", (e) => {
+      debugger
+      e.stopPropagation();
+      e = e || window.event;
+      var target = e.target || e.srcElement,
+          text = target.textContent || target.innerText;   
       this.loadModel('ebeec382-8259-4e37-9014-b2e5c8181682');
     })
   }
