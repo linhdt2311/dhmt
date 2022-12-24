@@ -1,6 +1,6 @@
 import * as THREE from "three";
 import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader.js";
-import { DRACOLoader } from 'three/examples/jsm/loaders/DRACOLoader'
+import { DRACOLoader } from "three/examples/jsm/loaders/DRACOLoader";
 import SetUp from "./Setup";
 
 export default class Object {
@@ -13,8 +13,8 @@ export default class Object {
     this.fetchData();
     this.loadFloor();
     setTimeout(() => {
-    this.addModel();
-    }, 1500)
+      this.addModel();
+    }, 1500);
   }
 
   loadFloor() {
@@ -25,7 +25,7 @@ export default class Object {
       for (let i = 0; i < floor.children.length; i++) {
         floor.children[i].userData.name = "Plane";
         floor.children[i].userData.type = "Plane";
-      };
+      }
       this.group.add(floor);
       this.group.position.set(0, 1, 0);
       this.group.scale.set(3, 3, 3);
@@ -38,13 +38,13 @@ export default class Object {
   }
 
   async fetchData() {
-    var modelList = document.getElementById('model');
-    await fetch('./data/data.json')
+    var modelList = document.getElementById("model");
+    await fetch("./data/data.json")
       .then((response) => response.json())
       .then((json) => {
         this.listModel = [...json];
-        let stringHtml = '';
-        this.listModel.forEach(item => {
+        let stringHtml = "";
+        this.listModel.forEach((item) => {
           stringHtml += `
           <div class="flex flex-column list-model">
           <div class="row">
@@ -59,24 +59,27 @@ export default class Object {
           </a>
           </h5>
           </div>
-            <div id="${item.type}" class="collapse" style="transition: 0.8s ease-in-out;" data-parent="#accordion" aria-labelledby="heading-${item.type}">
+            <div id="${
+              item.type
+            }" class="collapse" style="transition: 0.8s ease-in-out;" data-parent="#accordion" aria-labelledby="heading-${
+            item.type
+          }">
               ${this.loadDetailObject(item)}
             </div>
           </div>
           </div>
           </div>
           </div>
-            `
-          })
-          modelList.innerHTML = stringHtml;
-        })
- 
+            `;
+        });
+        modelList.innerHTML = stringHtml;
+      });
   }
 
-    loadDetailObject(data){
-      let stringHtml = ''
-      data.list.forEach(item => {
-        stringHtml += `
+  loadDetailObject(data) {
+    let stringHtml = "";
+    data.list.forEach((item) => {
+      stringHtml += `
       <div class="card-body">
           <div class="d-flex row">
             <div class="col col-5">
@@ -118,22 +121,28 @@ export default class Object {
          <span >${item.price}</span>
        </div>
      </div>
-     <button id=but-${item.url}>Load</button>
+     <button  id=but-${item.url} class="d-flex" >
+     <div style="display:none">
+     <span class="spinner-border spinner-border-sm me-2" role="status" aria-hidden="true"></span>
      </div>
-     `
-      })
-      return stringHtml
-    }
+     Load</button>
+     </div>
+     `;
+    });
+    return stringHtml;
+  }
 
-
-  loadModel(url) {
+  async loadModel(url) {
     const dracoLoader = new DRACOLoader();
-    dracoLoader.setDecoderPath('../node_modules/three/examples/js/libs/draco/gltf/');
-    dracoLoader.setDecoderConfig({ type: 'js' });
+    dracoLoader.setDecoderPath(
+      "../node_modules/three/examples/js/libs/draco/gltf/"
+    );
+    dracoLoader.setDecoderConfig({ type: "js" });
     const gltfLoader = new GLTFLoader();
     gltfLoader.setDRACOLoader(dracoLoader);
-    gltfLoader.loadAsync(url).then((gltf) => {
+    await gltfLoader.loadAsync(url).then((gltf) => {
       const model = gltf.scene;
+      debugger;
       model.position.set(0, 0, 0);
       model.scale.set(10, 10, 10);
       model.castShadow = true;
@@ -145,14 +154,22 @@ export default class Object {
     });
   }
 
-    addModel(){
-      const btns = document.querySelectorAll('button[id^=but]')
-      btns.forEach(btn => {
-        btn.addEventListener('click', event => {
-          const url = event.target.id.slice(4)
-          this.loadModel(url)
-        });
-     });
-}
-}
+  addModel() {
+    const btns = document.querySelectorAll("button[id^=but]");
+    btns.forEach((btn) => {
+      btn.addEventListener("click", (event) => this.handleLoad(event));
+    });
+  }
 
+  async handleLoad(event) {
+    debugger
+    const loadBtn = document.getElementById(event.target.id);
+    const loadingState = loadBtn.firstElementChild;
+    loadingState.style.display = 'block';
+    loadBtn.setAttribute("disabled", true);
+    const url = event.target.id.slice(4);
+    await this.loadModel(url);
+    loadingState.style.display = 'none';
+    loadBtn.removeAttribute("disabled");
+  }
+}

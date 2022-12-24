@@ -14,6 +14,7 @@ export default class Experience {
     translateBtn = document.getElementById("translate-btn");
     rotateBtn = document.getElementById("rotate-btn");
     scaleBtn = document.getElementById("scale-btn");
+    deleteBtn = document.getElementById("delete-btn");
 
     constructor() {
         this.foundObject();
@@ -21,6 +22,7 @@ export default class Experience {
         this.translate();
         this.rotate();
         this.scale();
+        this.deleteObject();
     }
 
     foundObject() {
@@ -28,8 +30,10 @@ export default class Experience {
             this.draggable = null;
             return;
         }
+        this.deleteBtn.style.display = 'none';
         var myCanvas = document.getElementById('myCanvas');
         window.addEventListener("click", (event) => {
+            this.deleteBtn.style.display = 'none';
             this.clickMouse.x = (event.clientX / myCanvas.clientWidth) * 2 - 1;
             this.clickMouse.y = -(event.clientY / myCanvas.clientHeight) * 2 + 1;
             const found = this.intersect(this.clickMouse);
@@ -43,12 +47,23 @@ export default class Experience {
                 found[0].object.userData.name && found[0].object.userData.type !== 'Plane') {
                 this.transformControls.enabled = true;
                 this.draggable = found[0].object;
+                this.deleteBtn.style.display = 'block';
                 this.addTransformControl(this.draggable);
             }
             else {
                 this.transformControls.enabled = false;
             }
         });
+    }
+
+    deleteObject(){
+        this.deleteBtn.addEventListener("click", (event) => {
+        if(this.draggable && this.transformControls.enabled){
+            this.transformControls.detach();
+            this.scene.remove(this.draggable);
+            this.deleteBtn.style.display = 'none';
+        }
+    })
     }
 
     mouseMove() {
