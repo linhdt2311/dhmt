@@ -107,7 +107,7 @@ button:focus-visible {
 .side-nav{
   position: absolute;
   height: 100vh;
-  background-color: #333333;
+  background-color: #eeee;
   min-width: 275px;
   max-width: 400px;
   overflow: hidden scroll;

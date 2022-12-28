@@ -9,6 +9,7 @@ export default class Object {
   groupModel = this.setUp.groupModel;
   scene = this.setUp.scene;
   listModel = [];
+  model;
   constructor() {
     this.fetchData();
     this.loadFloor();
@@ -52,7 +53,9 @@ export default class Object {
           <div class="card p-0 border-0" style="border-radius: unset !important">
           <div class="card-header border-0 rounded" id="heading-${item.type}">
           <h5 class="mb-0">
-          <a role="button" data-bs-toggle="collapse" href="#${item.type}"
+          <a style="color: #888" role="button" data-bs-toggle="collapse" href="#${
+            item.type
+          }"
           aria-expanded="false" aria-controls="${item.type}"
           class="text-uppercase">
            ${item.type}
@@ -61,9 +64,9 @@ export default class Object {
           </div>
             <div id="${
               item.type
-            }" class="collapse" style="transition: 0.8s ease-in-out;" data-parent="#accordion" aria-labelledby="heading-${
-            item.type
-          }">
+            }" class="collapse" style="transition: 0.8s ease-in-out;
+            border-radius: 0 !important;
+            " data-parent="#accordion" aria-labelledby="heading-${item.type}">
               ${this.loadDetailObject(item)}
             </div>
           </div>
@@ -86,42 +89,12 @@ export default class Object {
               <img width="100%" height="100%" src="${item.photoUrl}">
             </div>
             <div class="col col-7">
-            <span >${item.name}</span>
+            <span class="fw-bold">${item.name}</span>
+            <p class="fst-italic">${item.description}</p>
           </div>
           </div>
-          <div class="d-flex row">
-           <div class="col col-5">
-            <span >Material:</span>
-          </div>
-          <div class="col col-7">
-            <span >${item.material}</span>
-          </div>
-        </div>
-        <div class="d-flex row">
-        <div class="col col-5">
-         <span >Size:</span>
-       </div>
-       <div class="col col-7">
-         <span >${item.size}</span>
-       </div>
-     </div>
-           <div class="d-flex row">
-           <div class="col col-5">
-            <span >Origin:</span>
-          </div>
-          <div class="col col-7">
-            <span >${item.origin}</span>
-          </div>
-        </div>
-        <div class="d-flex row">
-        <div class="col col-5">
-         <span >Price:</span>
-       </div>
-       <div class="col col-7">
-         <span >${item.price}</span>
-       </div>
-     </div>
-     <button  id=but-${item.url} class="d-flex" >
+        
+     <button  id=but-${item.id} class="d-flex" >
      <div style="display:none">
      <span class="spinner-border spinner-border-sm me-2" role="status" aria-hidden="true"></span>
      </div>
@@ -132,7 +105,7 @@ export default class Object {
     return stringHtml;
   }
 
-  async loadModel(url) {
+  async loadModel(id) {
     const dracoLoader = new DRACOLoader();
     dracoLoader.setDecoderPath(
       "../node_modules/three/examples/js/libs/draco/gltf/"
@@ -140,17 +113,26 @@ export default class Object {
     dracoLoader.setDecoderConfig({ type: "js" });
     const gltfLoader = new GLTFLoader();
     gltfLoader.setDRACOLoader(dracoLoader);
-    await gltfLoader.loadAsync(url).then((gltf) => {
+    this.listModel.forEach((item) => {
+      this.model = item.list.find((x) => x.id == id);
+    });
+    await gltfLoader.loadAsync(this.model.url).then((gltf) => {
       const model = gltf.scene;
-      debugger;
       model.position.set(0, 0, 0);
       model.scale.set(10, 10, 10);
       model.castShadow = true;
       model.receiveShadow = true;
       this.scene.add(model);
       model.userData.draggable = true;
-      model.userData.name = "BATMANGLTF";
-      model.userData.material = "Vibranium";
+      model.userData.name = this.model.name;
+      model.userData.description = this.model.description;
+      model.userData.size = this.model.size;
+      model.userData.material = this.model.material;
+      model.userData.origin = this.model.origin;
+      model.userData.price = this.model.price;
+      model.userData.photoUrl = this.model.photoUrl;
+      model.userData.type = this.model.type;
+      model.userData.insurance = this.model.insurance;
     });
   }
 
@@ -162,14 +144,13 @@ export default class Object {
   }
 
   async handleLoad(event) {
-    debugger
     const loadBtn = document.getElementById(event.target.id);
     const loadingState = loadBtn.firstElementChild;
-    loadingState.style.display = 'block';
+    loadingState.style.display = "block";
     loadBtn.setAttribute("disabled", true);
-    const url = event.target.id.slice(4);
-    await this.loadModel(url);
-    loadingState.style.display = 'none';
+    const id = event.target.id.slice(4);
+    await this.loadModel(id);
+    loadingState.style.display = "none";
     loadBtn.removeAttribute("disabled");
   }
 }
