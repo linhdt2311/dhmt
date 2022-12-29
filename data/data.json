@@ -3,7 +3,7 @@
         "type": "bed",
         "list": [
             {
-                "id": "ebeec382-8259-4e37-9014-b2e5c8181687",
+                "id": "04813e74-2d67-400c-80b5-682e43d4a5b4",
                 "url": "/models/bed_type_1.glb",
                 "photoUrl": "/assets/images/bed_type_1.png",
                 "name": "Giường đôi",
@@ -16,74 +16,81 @@
                 "type": "bed"
             },
             {
-                "id": "ebeec382-8259-4e37-9014-b2e5c8181687",
+                "id": "1fc5631d-4169-4350-9586-c2164100dd71",
                 "url": "/models/bed_type_2.glb",
                 "photoUrl": "/assets/images/bed_type_2.png",
                 "name": "Combo giường tủ gỗ công nghiệp",
                 "material": "Wood",
                 "size": "180x210 cm",
                 "origin": "Germany",
-                "price": "17.000.000 VND"
+                "price": "17.000.000 VND",
+                "type": "bed"
             },
             {
-                "id": "ebeec382-8259-4e37-9014-b2e5c8181687",
+                "id": "2d71eb21-2689-4e47-b8ee-07f2e0f7ae42",
                 "url": "/models/bed_type_3.glb",
                 "photoUrl": "/assets/images/bed_type_3.png",
                 "name": "Giường đôi bệt 2m",
                 "material": "Silver",
                 "size": "200x220 cm",
                 "origin": "France",
-                "price": "16.000.000 VND"
+                "price": "16.000.000 VND",
+                "type": "bed"
             },
             {
-                "id": "ebeec382-8259-4e37-9014-b2e5c8181687",
+                "id": "c35af059-5806-4963-998a-ef8c3c6166d8",
                 "url": "/models/bed_type_4.glb",
                 "photoUrl": "/assets/images/bed_type_4.png",
                 "name": "Giường đôi không có đầu giường",
                 "material": "Master",
                 "size": "170x200 cm",
                 "origin": "Germany",
-                "price": "14.500.000 VND"
+                "price": "14.500.000 VND",
+                "type": "bed"
             },
             {
-                "id": "ebeec382-8259-4e37-9014-b2e5c8181687",
+                "id": "b5136791-e4e1-440b-8e95-8f7e26eed6b2",
                 "url": "/models/bed_type_5.glb",
                 "photoUrl": "/assets/images/bed_type_5.png",
                 "name": "Giường đơn cho trẻ em",
                 "material": "Golden",
                 "size": "110x200 cm",
                 "origin": "Vietnam",
-                "price": "8.000.000 VND"
+                "price": "8.000.000 VND",
+                "type": "bed"
             },
             {
-                "id": "ebeec382-8259-4e37-9014-b2e5c8181687",
+                "id": "049e3d95-997f-4a27-8e30-04a68092c05f",
                 "url": "/models/bed_type_6.glb",
                 "photoUrl": "/assets/images/bed_type_6.png",
                 "name": "Giường đôi như giường đơn",
                 "material": "Wood",
                 "size": "150x210 cm",
                 "origin": "Germany",
-                "price": "12.360.000 VND"
+                "price": "12.360.000 VND",
+                "type": "bed"
             },
             {
-                "id": "ebeec382-8259-4e37-9014-b2e5c8181687",
+                "id": "444ca806-b9e6-44c7-b2a1-2609a7a9f7b4",
                 "url": "/models/bed_type_7.glb",
                 "photoUrl": "/assets/images/bed_type_7.png",
                 "name": "Giường đơn cho phong cách yeah",
                 "material": "Vibranium",
                 "size": "130x200 cm",
                 "origin": "France",
-                "price": "10.000.000 VND"
+                "price": "10.000.000 VND",
+                "type": "bed"
             },
             {
-                "id": "ebeec382-8259-4e37-9014-b2e5c8181687",
+                "id": "636b485d-74ce-4ccc-bee9-4b03bbb992e4",
                 "url": "/models/bed_type_8.glb",
                 "photoUrl": "/assets/images/bed_type_8.png",
                 "name": "Giường rẻ rách cho thằng Bình",
                 "material": "Iron",
                 "size": "190x210 cm",
                 "origin": "Vietnam",
-                "price": "1.000 VND"
+                "price": "1.000 VND",
+                "type": "bed"
             }
         ]
     }
