@@ -113,9 +113,10 @@ export default class Object {
     dracoLoader.setDecoderConfig({ type: "js" });
     const gltfLoader = new GLTFLoader();
     gltfLoader.setDRACOLoader(dracoLoader);
-    this.listModel.forEach((item) => {
+    for(const item of this.listModel) {
       this.model = item.list.find((x) => x.id == id);
-    });
+      if(this.model != undefined) { break; }
+    }
     await gltfLoader.loadAsync(this.model.url).then((gltf) => {
       const model = gltf.scene;
       model.position.set(0, 0, 0);
