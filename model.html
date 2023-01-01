@@ -10,6 +10,7 @@
       href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;600;700&display=swap"
       rel="stylesheet"
     />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="./assets/css/style.css" />
     <link rel="stylesheet" href="./assets/css/model.css" />
     <link
@@ -34,6 +35,7 @@
     <title>Vite App</title>
   </head>
   <body>
+    <img id="loading"  style="display: none;" class="loading-image" width="80px" height="80px" src="./assets/images/loading.gif" alt="Loading..." />
     <!-- <button id="login">Login</button> -->
     <div id="information" class="p-2"></div>
     <div class="toolbar">
@@ -68,6 +70,7 @@
       </button>
       <!-- <button id="signOut" class="button">Log Out</button> -->
     </div>
+    <button id="saveBtn" class="saveBtn"><i class="far fa-save me-2"></i><span>Save</span></button>
     <div class="row no-gutters">
       <div class="col col-10 p-0">
         <canvas id="myCanvas"></canvas>
@@ -76,15 +79,15 @@
         <div class="side-nav model-nav">
           <div class="h-100">
             <div class="side-nav info-nav" id="modelList">
-              <h4 class="fs-5 text-center mb-0 mt-3 fw-bolder" style="color: #888">Information</h4>
+              <h4 class="fs-5 text-center mb-0 mt-3 fw-bolder label-text" >Information</h4>
               <ul class="nav nav-tabs tabs mt-2 border-0">
                 <li class="nav-item tab-item text-center w-50 bg-white border-0 " style="border-radius: 0">
-                  <a class="nav-link active fw-bold" style="color: #888" data-bs-toggle="tab" href="#object"
+                  <a class="nav-link active fw-bold label-text" data-bs-toggle="tab" href="#object"
                     >Object</a
                   >
                 </li>
                 <li class="nav-item tab-item text-center w-50 bg-white border-0  " style="border-radius: 0">
-                  <a class="nav-link fw-bold" style="color: #888" data-bs-toggle="tab" href="#model"
+                  <a class="nav-link fw-bold label-text"  data-bs-toggle="tab" href="#model"
                     >Models</a
                   >
                 </li>
@@ -99,16 +102,14 @@
         </div>
       </div>
     </div>
-
     <script type="module" src="/main.js"></script>
-
     <div>
       <div class="d-flex row mt-4 mb-4">
         <div class="col col-12 text-center">
           <img  width="80px" height="80px" src="${this.draggable.userData.photoUrl}">
         </div>
       </div>
-      
+    
   </body>
 </html>
 <script type="module" src="./model.js"></script>

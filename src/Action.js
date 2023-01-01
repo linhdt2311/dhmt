@@ -61,7 +61,6 @@ export default class Experience {
   }
 
   viewDetailObject() {
-    console.log(this.draggable);
     const objectInfo = document.getElementById("object");
     let stringHtml = "";
     stringHtml += `
@@ -183,7 +182,6 @@ export default class Experience {
     </div>
     </div>
   </div>
-
         `;
     objectInfo.innerHTML = stringHtml;
   }

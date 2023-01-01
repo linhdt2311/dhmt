@@ -13,7 +13,22 @@
                 "origin": "Vietnam",
                 "price": "15.000.000 VND",
                 "insurance": "12 months",
-                "type": "bed"
+                "type": "bed",
+                "position":{
+                    "x":0,
+                    "y":0,
+                    "z":0
+                },
+                "scale":{
+                    "x":10,
+                    "y":10,
+                    "z":10
+                },
+                "rotation":{
+                    "_x":0,
+                    "_y":0,
+                    "_z":0
+                }
             },
             {
                 "id": "ebeec382-8259-4e37-9014-b2e5c8181687",

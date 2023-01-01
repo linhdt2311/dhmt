@@ -1,12 +1,13 @@
 // Import the functions you need from the SDKs you need
-import { initializeApp } from "https://www.gstatic.com/firebasejs/9.15.0/firebase-app.js";
-import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.15.0/firebase-analytics.js";
+import { initializeApp } from "firebase/app";
+import { getAnalytics } from "firebase/analytics";
+import { getDatabase, ref, child, get, set } from "firebase/database";
 import {
   GoogleAuthProvider,
   getAuth,
   signInWithPopup,
-  signOut
-} from "https://www.gstatic.com/firebasejs/9.15.0/firebase-auth.js";
+  signOut,
+} from "firebase/auth";
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 
@@ -22,38 +23,49 @@ export class Auth {
       messagingSenderId: "441808228326",
       appId: "1:441808228326:web:4682e9ec98879291df9027",
       measurementId: "G-QYPMEXC8L2",
+      databaseURL: "https://da-dhmt-default-rtdb.firebaseio.com/",
     };
     this.app = initializeApp(this.firebaseConfig);
     this.analytics = getAnalytics(this.app);
     this.auth = getAuth(this.app);
     this.provider = new GoogleAuthProvider();
+    this.database = getDatabase();
   }
 
-  signIn() {
+ signIn() {
     signInWithPopup(this.auth, this.provider)
-      .then((result) => {
+      .then( async(result) => {
         // This gives you a Google Access Token. You can use it to access the Google API.
         const credential = GoogleAuthProvider.credentialFromResult(result);
         const token = credential.accessToken;
         // The signed-in user info.
-        const user =
-        {
+        const user = {
+          uid: result.user.uid,
           displayName: result.user.displayName,
           email: result.user.email,
           photoURL: result.user.photoURL,
-          lastSignInTime: result.user.metadata.lastSignInTime
-        }
-        localStorage.setItem('user', JSON.stringify(user));
-        window.location.assign("/model.html");
+          lastSignInTime: result.user.metadata.lastSignInTime,
+        };
+        localStorage.setItem("user", JSON.stringify(user));
+        const dbRef = ref(getDatabase());
+        await get(child(dbRef, 'users/' + user.uid + '/models')).then((snapshot) => {
+            if (snapshot.exists()) {
+              localStorage.setItem("models", JSON.stringify(snapshot.val()));
+              window.location.assign("/model.html");
+            } else {
+              console.log("No data available");
+            }
+          }).catch((error) => {
+            console.error(error);
+          });
 
-        // ...
       })
       .catch((error) => {
         // Handle Errors here.
         const errorCode = error.code;
         const errorMessage = error.message;
         // The email of the user's account used.
-        const email = error.customData.email;
+        // const email = error.customData.email;
         // The AuthCredential type that was used.
         const credential = GoogleAuthProvider.credentialFromError(error);
         // ...
@@ -69,6 +81,6 @@ export class Auth {
         // An error happened.
       });
   }
+
 }
 
-// Initialize Firebase
