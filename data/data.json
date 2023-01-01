@@ -3,7 +3,7 @@
         "type": "bed",
         "list": [
             {
-                "id": "ebeec382-8259-4e37-9014-b2e5c8181687",
+                "id": "04813e74-2d67-400c-80b5-682e43d4a5b4",
                 "url": "/models/bed_type_1.glb",
                 "photoUrl": "/assets/images/bed_type_1.png",
                 "name": "Giường đôi",
@@ -31,76 +31,410 @@
                 }
             },
             {
-                "id": "ebeec382-8259-4e37-9014-b2e5c8181687",
+                "id": "1fc5631d-4169-4350-9586-c2164100dd71",
                 "url": "/models/bed_type_2.glb",
                 "photoUrl": "/assets/images/bed_type_2.png",
-                "name": "Combo giường tủ gỗ công nghiệp",
+                "name": "Giường đôi",
+                "description": "Combo giường tủ gỗ công nghiệp",
                 "material": "Wood",
                 "size": "180x210 cm",
                 "origin": "Germany",
-                "price": "17.000.000 VND"
+                "price": "17.000.000 VND",
+                "insurance": "12 months",
+                "type": "bed"
             },
             {
-                "id": "ebeec382-8259-4e37-9014-b2e5c8181687",
+                "id": "2d71eb21-2689-4e47-b8ee-07f2e0f7ae42",
                 "url": "/models/bed_type_3.glb",
                 "photoUrl": "/assets/images/bed_type_3.png",
-                "name": "Giường đôi bệt 2m",
+                "name": "Giường đôi",
+                "description": "Giường đôi bệt 2m",
                 "material": "Silver",
                 "size": "200x220 cm",
                 "origin": "France",
-                "price": "16.000.000 VND"
+                "price": "16.000.000 VND",
+                "insurance": "12 months",
+                "type": "bed"
             },
             {
-                "id": "ebeec382-8259-4e37-9014-b2e5c8181687",
+                "id": "c35af059-5806-4963-998a-ef8c3c6166d8",
                 "url": "/models/bed_type_4.glb",
                 "photoUrl": "/assets/images/bed_type_4.png",
-                "name": "Giường đôi không có đầu giường",
+                "name": "Giường đôi",
+                "description": "Giường đôi không có đầu giường",
                 "material": "Master",
                 "size": "170x200 cm",
                 "origin": "Germany",
-                "price": "14.500.000 VND"
+                "price": "14.500.000 VND",
+                "insurance": "12 months",
+                "type": "bed"
             },
             {
-                "id": "ebeec382-8259-4e37-9014-b2e5c8181687",
+                "id": "b5136791-e4e1-440b-8e95-8f7e26eed6b2",
                 "url": "/models/bed_type_5.glb",
                 "photoUrl": "/assets/images/bed_type_5.png",
-                "name": "Giường đơn cho trẻ em",
+                "name": "Giường đơn",
+                "description": "Giường đơn cho trẻ em",
                 "material": "Golden",
                 "size": "110x200 cm",
                 "origin": "Vietnam",
-                "price": "8.000.000 VND"
+                "price": "8.000.000 VND",
+                "insurance": "12 months",
+                "type": "bed"
             },
             {
-                "id": "ebeec382-8259-4e37-9014-b2e5c8181687",
+                "id": "049e3d95-997f-4a27-8e30-04a68092c05f",
                 "url": "/models/bed_type_6.glb",
                 "photoUrl": "/assets/images/bed_type_6.png",
-                "name": "Giường đôi như giường đơn",
+                "name": "Giường đơn",
+                "description": "Giường đôi như giường đơn",
                 "material": "Wood",
                 "size": "150x210 cm",
                 "origin": "Germany",
-                "price": "12.360.000 VND"
+                "price": "12.360.000 VND",
+                "insurance": "12 months",
+                "type": "bed"
             },
             {
-                "id": "ebeec382-8259-4e37-9014-b2e5c8181687",
+                "id": "444ca806-b9e6-44c7-b2a1-2609a7a9f7b4",
                 "url": "/models/bed_type_7.glb",
                 "photoUrl": "/assets/images/bed_type_7.png",
-                "name": "Giường đơn cho phong cách yeah",
+                "name": "Giường đơn",
+                "description": "Giường đơn cho phong cách yeah",
                 "material": "Vibranium",
                 "size": "130x200 cm",
                 "origin": "France",
-                "price": "10.000.000 VND"
+                "price": "10.000.000 VND",
+                "insurance": "12 months",
+                "type": "bed"
             },
             {
-                "id": "ebeec382-8259-4e37-9014-b2e5c8181687",
+                "id": "636b485d-74ce-4ccc-bee9-4b03bbb992e4",
                 "url": "/models/bed_type_8.glb",
                 "photoUrl": "/assets/images/bed_type_8.png",
-                "name": "Giường rẻ rách cho thằng Bình",
+                "name": "Giường đôi",
+                "description": "Giường rẻ rách cho thằng Bình",
                 "material": "Iron",
                 "size": "190x210 cm",
                 "origin": "Vietnam",
-                "price": "1.000 VND"
+                "price": "1.000 VND",
+                "insurance": "12 months",
+                "type": "bed"
+            }
+        ]
+    },
+    {
+        "type": "cabinet",
+        "list": [
+            {
+                "id": "ae55c400-1c35-4203-92d6-3ecb2d8f49a5",
+                "url": "/models/cabinet_type_1.glb",
+                "photoUrl": "/assets/images/cabinet_type_1.png",
+                "name": "Tủ cạnh giường",
+                "description": "Tủ tròn",
+                "material": "Wood",
+                "size": "120x200 cm",
+                "origin": "France",
+                "price": "4.000.000 VND",
+                "insurance": "12 months",
+                "type": "cabinet"
+            },
+            {
+                "id": "e1e49fdf-2cac-4404-afb2-c41fbd60a314",
+                "url": "/models/cabinet_type_2.glb",
+                "photoUrl": "/assets/images/cabinet_type_2.png",
+                "name": "Tủ TV",
+                "description": "Tủ dài để TV",
+                "material": "Wood",
+                "size": "120x200 cm",
+                "origin": "Vietnam",
+                "price": "8.000.000 VND",
+                "insurance": "12 months",
+                "type": "cabinet"
+            },
+            {
+                "id": "6c9313de-9d23-4439-a843-a5d2732aed6c",
+                "url": "/models/cabinet_type_3.glb",
+                "photoUrl": "/assets/images/cabinet_type_3.png",
+                "name": "Kệ để sách",
+                "description": "Tủ,kệ để đầu giường vuông ngăn màu gỗ 40 x 26 x 32.5cm",
+                "material": "Wood",
+                "size": "40x25x32.5 cm",
+                "origin": "Vietnam",
+                "price": "100.000 VND",
+                "insurance": "12 months",
+                "type": "cabinet"
+            },
+            {
+                "id": "ee1a637c-fcef-4a63-b3f5-1fd26f50f135",
+                "url": "/models/cabinet_type_4.glb",
+                "photoUrl": "/assets/images/cabinet_type_4.png",
+                "name": "Kệ để sách",
+                "description": "Kệ gỗ tủ sách nhiều màu",
+                "material": "Iron",
+                "size": "120x200 cm",
+                "origin": "Germany",
+                "price": "150.000 VND",
+                "insurance": "12 months",
+                "type": "cabinet"
+            },
+            {
+                "id": "e2529b52-b99a-46ab-8d93-f331f47342a5",
+                "url": "/models/cabinet_type_5.glb",
+                "photoUrl": "/assets/images/cabinet_type_5.png",
+                "name": "Tủ",
+                "description": "Tủ gỗ để đồ",
+                "material": "Wood",
+                "size": "120x200 cm",
+                "origin": "Vietnam",
+                "price": "150.000 VND",
+                "insurance": "12 months",
+                "type": "cabinet"
+            },
+            {
+                "id": "45aebfe8-95ed-468b-a5c8-230ecb732038",
+                "url": "/models/cabinet_type_6.glb",
+                "photoUrl": "/assets/images/cabinet_type_6.png",
+                "name": "Tủ để giày",
+                "description": "Tủ giày gỗ nhiều tầng",
+                "material": "Wood",
+                "size": "120x200 cm",
+                "origin": "France",
+                "price": "195.000 VND",
+                "insurance": "12 months",
+                "type": "cabinet"
+            },
+            {
+                "id": "7c22aa5a-f2fc-4a09-b292-cefc7b190872",
+                "url": "/models/cabinet_type_7.glb",
+                "photoUrl": "/assets/images/cabinet_type_7.png",
+                "name": "Kệ để sách",
+                "description": "Kệ để sách 3 tầng",
+                "material": "Iron",
+                "size": "120x200 cm",
+                "origin": "France",
+                "price": "150.000 VND",
+                "insurance": "12 months",
+                "type": "cabinet"
+            },
+            {
+                "id": "a2d45057-cfae-4fae-929e-8655f763bbb7",
+                "url": "/models/cabinet_type_8.glb",
+                "photoUrl": "/assets/images/cabinet_type_8.png",
+                "name": "Tủ TV",
+                "description": "Tủ tv cỡ nhỏ",
+                "material": "Wood",
+                "size": "120x200 cm",
+                "origin": "France",
+                "price": "500.000 VND",
+                "insurance": "12 months",
+                "type": "cabinet"
+            },
+            {
+                "id": "523c9da4-cbba-4cc2-9d18-524d1edca361",
+                "url": "/models/cabinet_type_9.glb",
+                "photoUrl": "/assets/images/cabinet_type_9.png",
+                "name": "Tủ TV",
+                "description": "Tủ rẻ rách cho thằng Bình",
+                "material": "Aluminum",
+                "size": "120x200 cm",
+                "origin": "Vietnam",
+                "price": "1.000 VND",
+                "insurance": "12 months",
+                "type": "cabinet"
+            }
+        ]
+    },
+    {
+        "type": "lamp",
+        "list": [
+            {
+                "id": "dd5ca73b-d8c8-44cb-9d6e-d0a7815377a3",
+                "url": "/models/lamp_type_1.glb",
+                "photoUrl": "/assets/images/lamp_type_1.png",
+                "name": "Đèn ngủ",
+                "description": "Đèn ngủ kiểu Nhật",
+                "material": "Wood",
+                "size": "120x200 cm",
+                "origin": "Germany",
+                "price": "150.000 VND",
+                "insurance": "12 months",
+                "type": "lamp"
+            },
+            {
+                "id": "6eaaafb4-4d7c-4567-9bee-27827c804b44",
+                "url": "/models/lamp_type_2.glb",
+                "photoUrl": "/assets/images/lamp_type_2.png",
+                "name": "Đèn ngủ",
+                "description": "Đèn ngủ Vintage",
+                "material": "Vibranium",
+                "size": "120x200 cm",
+                "origin": "Germany",
+                "price": "300.000 VND",
+                "insurance": "12 months",
+                "type": "lamp"
+            },
+            {
+                "id": "867b03cc-7b69-4eb7-92e3-7b369059731c",
+                "url": "/models/lamp_type_3.glb",
+                "photoUrl": "/assets/images/lamp_type_3.png",
+                "name": "Đèn ngủ",
+                "description": "Đèn thờ man",
+                "material": "Wood",
+                "size": "120x200 cm",
+                "origin": "Vietnam",
+                "price": "165.000 VND",
+                "insurance": "12 months",
+                "type": "lamp"
+            },
+            {
+                "id": "68248e16-590f-4ff7-a8a9-9bf04aa6af11",
+                "url": "/models/lamp_type_4.glb",
+                "photoUrl": "/assets/images/lamp_type_4.png",
+                "name": "Đèn ngủ",
+                "description": "Đèn ngủ hình cây cảnh yêu thiên nhiên",
+                "material": "Tree",
+                "size": "120x200 cm",
+                "origin": "France",
+                "price": "130.000 VND",
+                "insurance": "12 months",
+                "type": "lamp"
+            },
+            {
+                "id": "76df5d4c-2a11-4cb8-9a81-893a3352d036",
+                "url": "/models/lamp_type_5.glb",
+                "photoUrl": "/assets/images/lamp_type_5.png",
+                "name": "Đèn ngủ",
+                "description": "Đèn trang trí phòng khách",
+                "material": "Wood",
+                "size": "120x200 cm",
+                "origin": "Vietnam",
+                "price": "800.000 VND",
+                "insurance": "12 months",
+                "type": "lamp"
+            },
+            {
+                "id": "0a45915f-b932-4074-97d6-6890c1202574",
+                "url": "/models/lamp_type_6.glb",
+                "photoUrl": "/assets/images/lamp_type_6.png",
+                "name": "Đèn ngủ",
+                "description": "Đèn ngủ sang trọng hiện đại",
+                "material": "Iron",
+                "size": "120x200 cm",
+                "origin": "France",
+                "price": "200.000 VND",
+                "insurance": "12 months",
+                "type": "lamp"
+            },
+            {
+                "id": "9d9ebc3a-74ae-44d0-998b-2b31ddca5d51",
+                "url": "/models/lamp_type_7.glb",
+                "photoUrl": "/assets/images/lamp_type_7.png",
+                "name": "Đèn ngủ",
+                "description": "Đèn tròn trang trí cực đẹp",
+                "material": "Iron",
+                "size": "120x200 cm",
+                "origin": "Germany",
+                "price": "170.000 VND",
+                "insurance": "12 months",
+                "type": "lamp"
+            },
+            {
+                "id": "fef8f806-4b96-4f2d-a431-29fc97afe4bb",
+                "url": "/models/lamp_type_8.glb",
+                "photoUrl": "/assets/images/lamp_type_8.png",
+                "name": "Đèn ngủ",
+                "description": "Đèn chùm 5 tia",
+                "material": "Iron",
+                "size": "120x200 cm",
+                "origin": "Vietnam",
+                "price": "630.000 VND",
+                "insurance": "12 months",
+                "type": "lamp"
+            },
+            {
+                "id": "6ead7636-2805-47a4-b07e-3d396dab3be6",
+                "url": "/models/lamp_type_9.glb",
+                "photoUrl": "/assets/images/lamp_type_9.png",
+                "name": "Đèn ngủ",
+                "description": "Đèn hình thùng rác cho thằng Bình",
+                "material": "Master",
+                "size": "120x200 cm",
+                "origin": "Vietnam",
+                "price": "1.000 VND",
+                "insurance": "12 months",
+                "type": "lamp"
+            },
+            {
+                "id": "8c97bd0e-a92a-4d43-b7c7-2fec13243c02",
+                "url": "/models/lamp_type_10.glb",
+                "photoUrl": "/assets/images/lamp_type_10.png",
+                "name": "Đèn ngủ",
+                "description": "Đèn treo tường",
+                "material": "Iron",
+                "size": "120x200 cm",
+                "origin": "Germany",
+                "price": "300.000 VND",
+                "insurance": "12 months",
+                "type": "lamp"
+            }
+        ]
+    },
+    {
+        "type": "carpet",
+        "list": [
+            {
+                "id": "70f028fc-56b7-44c6-943c-16d1f1195b8f",
+                "url": "/models/carpet_type_1.glb",
+                "photoUrl": "/assets/images/carpet_type_1.png",
+                "name": "Thảm",
+                "description": "Thảm để chân họa tiết",
+                "material": "Fabric",
+                "size": "120x200 cm",
+                "origin": "vietnam",
+                "price": "100.000 VND",
+                "insurance": "12 months",
+                "type": "carpet"
+            },
+            {
+                "id": "080147f5-939b-482e-9e7e-f3884ece6341",
+                "url": "/models/carpet_type_2.glb",
+                "photoUrl": "/assets/images/carpet_type_2.png",
+                "name": "Thảm",
+                "description": "Thảm để chân họa tiết bò sữa",
+                "material": "Fabric",
+                "size": "120x200 cm",
+                "origin": "France",
+                "price": "85.000 VND",
+                "insurance": "12 months",
+                "type": "carpet"
+            },
+            {
+                "id": "1a3b4209-595e-4d11-a540-9db3ab08450c",
+                "url": "/models/carpet_type_3.glb",
+                "photoUrl": "/assets/images/carpet_type_3.png",
+                "name": "Thảm",
+                "description": "Thảm thiết",
+                "material": "Fabric",
+                "size": "120x200 cm",
+                "origin": "Germany",
+                "price": "135.000 VND",
+                "insurance": "12 months",
+                "type": "carpet"
+            },
+            {
+                "id": "a6680c3f-5c78-424e-ba80-dd356983dc4c",
+                "url": "/models/carpet_type_4.glb",
+                "photoUrl": "/assets/images/carpet_type_4.png",
+                "name": "Thảm",
+                "description": "Rẻ rách",
+                "material": "Cheap",
+                "size": "120x200 cm",
+                "origin": "Vietnam",
+                "price": "1.000 VND",
+                "insurance": "12 months",
+                "type": "carpet"
             }
         ]
     }
- 
 ]
