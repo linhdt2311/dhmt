@@ -54,8 +54,8 @@ export default class SetUp {
     // document.body.appendChild(this.renderer.domElement);
     window.addEventListener("resize", this.onWindowResize());
     this.transformControls.enabled = false;
-    this.transformControls.showY = false;
     this.transformControls.mode = "translate";
+    this.transformControls.showY = false;
     this.scene.add(this.transformControls);
     this.scene.add(this.axesHelper);
   }
