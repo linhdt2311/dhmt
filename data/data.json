@@ -13,22 +13,8 @@
                 "origin": "Vietnam",
                 "price": "15.000.000 VND",
                 "insurance": "12 months",
-                "type": "bed",
-                "position":{
-                    "x":0,
-                    "y":0,
-                    "z":0
-                },
-                "scale":{
-                    "x":10,
-                    "y":10,
-                    "z":10
-                },
-                "rotation":{
-                    "_x":0,
-                    "_y":0,
-                    "_z":0
-                }
+                "type": "bed"
+               
             },
             {
                 "id": "1fc5631d-4169-4350-9586-c2164100dd71",
@@ -259,22 +245,8 @@
                 "origin": "Germany",
                 "price": "150.000 VND",
                 "insurance": "12 months",
-                "type": "lamp",
-                "position":{
-                    "x":0,
-                    "y":0,
-                    "z":0
-                },
-                "scale":{
-                    "x":10,
-                    "y":10,
-                    "z":10
-                },
-                "rotation":{
-                    "_x":0,
-                    "_y":0,
-                    "_z":0
-                }
+                "type": "lamp"
+               
             },
             {
                 "id": "6eaaafb4-4d7c-4567-9bee-27827c804b44",

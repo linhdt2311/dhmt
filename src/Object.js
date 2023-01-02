@@ -14,14 +14,15 @@ export default class Object {
   groupModel = this.setUp.groupModel;
   scene = this.setUp.scene;
   listModel = [];
+  storeModel = [];
   model;
   constructor() {
     this.initLoader();
-    this.fetchData();
     this.loadFloor();
+    this.fetchData();
     setTimeout(() => {
-      this.addModel();
       this.fetchModel();
+      this.addModel();
     }, 1500);
     this.saveModel();
   }
@@ -122,25 +123,37 @@ export default class Object {
 
   fetchModel() {
     const data = JSON.parse(localStorage.getItem("models"));
-    data.forEach(async (item) => {
-      await this.loadModel(item.id);
-    });
+    if(data){
+      this.storeModel = [...data];
+      data.forEach(async (item) => {
+        await this.loadModelFromStore(item.id);
+      });
+    }
   }
 
-  async loadModel(id) {
+  async loadModelFromList(id) {
     this.listModel.every((item) => {
       this.model = item.list.find((x) => x.id == id);
-      if(this.model) return false;
+      if (this.model) return false;
       else return true;
     });
-    await this.gltfLoader.loadAsync(this.model.url).then((gltf) => {
+    this.loadModelByUrl(this.model.url);
+  }
+
+  async loadModelFromStore(id) {
+    this.model = this.storeModel.find((item) => item.id == id);
+    this.loadModelByUrl(this.model.url);
+  }
+
+  async loadModelByUrl(url) {
+    await this.gltfLoader.loadAsync(url).then((gltf) => {
       const model = gltf.scene;
-      model.position.set(0, 0, 0);
-      model.scale.set(10, 10, 10);
       model.castShadow = true;
       model.receiveShadow = true;
       this.scene.add(model);
-      console.log(model);
+      model.position.set(this.model.position.x, this.model.position.y, this.model.position.z);
+      model.scale.set(this.model.scale.x, this.model.scale.y, this.model.scale.z);
+      model.rotation.set(this.model.rotation.x, this.model.rotation.y, this.model.rotation.z);
       model.userData.draggable = true;
       model.userData.id = this.model.id;
       model.userData.name = this.model.name;
@@ -153,9 +166,6 @@ export default class Object {
       model.userData.type = this.model.type;
       model.userData.insurance = this.model.insurance;
       model.userData.url = this.model.url;
-      model.userData.position = this.model.position;
-      model.userData.rotation = this.model.rotation;
-      model.userData.scale = this.model.scale;
     });
   }
 
@@ -172,7 +182,7 @@ export default class Object {
     loadingState.style.display = "block";
     loadBtn.setAttribute("disabled", true);
     const id = event.target.id.slice(4);
-    await this.loadModel(id);
+    await this.loadModelFromList(id);
     loadingState.style.display = "none";
     loadBtn.removeAttribute("disabled");
   }
@@ -181,9 +191,17 @@ export default class Object {
     const saveBtn = document.getElementById("saveBtn");
     saveBtn.addEventListener("click", (event) => {
       let data = [];
+      this.setUp.animate();
       this.scene.children.forEach((item) => {
         if (item.type === "Group" && item.userData.type !== "Plane") {
-          data.push(item.userData);
+          data.push({...item.userData,
+            position: item.position, 
+            rotation: {
+              x: item.rotation._x,
+              y: item.rotation._y,
+              z: item.rotation._z
+            } ,
+            scale: item.scale});
         }
       });
       this.onSaveData(data);
