@@ -51,13 +51,13 @@ export class Auth {
         await get(child(dbRef, 'users/' + user.uid + '/models')).then((snapshot) => {
             if (snapshot.exists()) {
               localStorage.setItem("models", JSON.stringify(snapshot.val()));
-              window.location.assign("/model.html");
             } else {
               console.log("No data available");
             }
           }).catch((error) => {
             console.error(error);
           });
+          window.location.assign("/model.html");
 
       })
       .catch((error) => {
@@ -75,6 +75,7 @@ export class Auth {
     signOut(this.auth)
       .then(() => {
         // Sign-out successful.
+        localStorage.clear();
         window.location.assign("/index.html");
       })
       .catch((error) => {

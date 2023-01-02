@@ -15,13 +15,14 @@ export default class Object {
   scene = this.setUp.scene;
   listModel = [];
   storeModel = [];
+  loading = document.getElementById("loading");
   model;
   constructor() {
     this.initLoader();
     this.loadFloor();
     this.fetchData();
+    this.fetchModel();
     setTimeout(() => {
-      this.fetchModel();
       this.addModel();
     }, 1500);
     this.saveModel();
@@ -121,13 +122,14 @@ export default class Object {
     return stringHtml;
   }
 
-  fetchModel() {
+ async fetchModel() {
     const data = JSON.parse(localStorage.getItem("models"));
-    if(data){
+    if (data) {
       this.storeModel = [...data];
-      data.forEach(async (item) => {
+      for (const item of data) {
+        // Cannot async/ await forEach, map func
         await this.loadModelFromStore(item.id);
-      });
+      }
     }
   }
 
@@ -137,12 +139,15 @@ export default class Object {
       if (this.model) return false;
       else return true;
     });
-    this.loadModelByUrl(this.model.url);
+    await this.loadModelByUrl(this.model.url);
   }
 
   async loadModelFromStore(id) {
+    this.loading.style.display = "block";
     this.model = this.storeModel.find((item) => item.id == id);
-    this.loadModelByUrl(this.model.url);
+    await this.loadModelByUrl(this.model.url);
+    this.loading.style.display = "none";
+
   }
 
   async loadModelByUrl(url) {
@@ -150,10 +155,27 @@ export default class Object {
       const model = gltf.scene;
       model.castShadow = true;
       model.receiveShadow = true;
-      this.scene.add(model);
-      model.position.set(this.model.position.x, this.model.position.y, this.model.position.z);
-      model.scale.set(this.model.scale.x, this.model.scale.y, this.model.scale.z);
-      model.rotation.set(this.model.rotation.x, this.model.rotation.y, this.model.rotation.z);
+      if (this.model.position) {
+        model.position.set(
+          this.model.position.x,
+          this.model.position.y,
+          this.model.position.z
+        );
+        model.scale.set(
+          this.model.scale.x,
+          this.model.scale.y,
+          this.model.scale.z
+        );
+        model.rotation.set(
+          this.model.rotation.x,
+          this.model.rotation.y,
+          this.model.rotation.z
+        );
+      } else {
+        model.position.set(0, 0, 0);
+        model.scale.set(10, 10, 10);
+        model.rotation.set(0, 0, 0);
+      }
       model.userData.draggable = true;
       model.userData.id = this.model.id;
       model.userData.name = this.model.name;
@@ -166,6 +188,7 @@ export default class Object {
       model.userData.type = this.model.type;
       model.userData.insurance = this.model.insurance;
       model.userData.url = this.model.url;
+      this.scene.add(model);
     });
   }
 
@@ -194,14 +217,16 @@ export default class Object {
       this.setUp.animate();
       this.scene.children.forEach((item) => {
         if (item.type === "Group" && item.userData.type !== "Plane") {
-          data.push({...item.userData,
-            position: item.position, 
+          data.push({
+            ...item.userData,
+            position: item.position,
             rotation: {
               x: item.rotation._x,
               y: item.rotation._y,
-              z: item.rotation._z
-            } ,
-            scale: item.scale});
+              z: item.rotation._z,
+            },
+            scale: item.scale,
+          });
         }
       });
       this.onSaveData(data);
@@ -210,12 +235,11 @@ export default class Object {
 
   onSaveData(data) {
     const user = JSON.parse(localStorage.getItem("user"));
-    const loading = document.getElementById("loading");
-    loading.style.display = "block";
+    this.loading.style.display = "block";
     set(ref(this.database, "users/" + user.uid), {
       models: data,
     }).then(() => {
-      loading.style.display = "none";
+      this.loading.style.display = "none";
     });
   }
 }
