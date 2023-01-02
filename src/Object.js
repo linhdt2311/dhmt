@@ -128,8 +128,10 @@ export default class Object {
   }
 
   async loadModel(id) {
-    this.listModel.forEach((item) => {
+    this.listModel.every((item) => {
       this.model = item.list.find((x) => x.id == id);
+      if(this.model) return false;
+      else return true;
     });
     await this.gltfLoader.loadAsync(this.model.url).then((gltf) => {
       const model = gltf.scene;
