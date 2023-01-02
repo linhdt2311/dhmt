@@ -55,6 +55,7 @@ export default class SetUp {
     window.addEventListener("resize", this.onWindowResize());
     this.transformControls.enabled = false;
     this.transformControls.mode = "translate";
+    this.transformControls.showY = false;
     this.scene.add(this.transformControls);
     this.scene.add(this.axesHelper);
   }

@@ -2,26 +2,43 @@ import * as THREE from "three";
 import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader.js";
 import { DRACOLoader } from "three/examples/jsm/loaders/DRACOLoader";
 import SetUp from "./Setup";
-
+import { getDatabase, ref, child, get, set } from "firebase/database";
+import { Auth } from "/auth.js";
 export default class Object {
   setUp = new SetUp();
+  auth = new Auth();
+  dracoLoader = new DRACOLoader();
+  gltfLoader = new GLTFLoader();
+  database = this.auth.database;
   group = this.setUp.group;
   groupModel = this.setUp.groupModel;
   scene = this.setUp.scene;
   listModel = [];
+  storeModel = [];
+  loading = document.getElementById("loading");
   model;
   constructor() {
-    this.fetchData();
+    this.initLoader();
     this.loadFloor();
+    this.fetchData();
+    this.fetchModel();
     setTimeout(() => {
       this.addModel();
     }, 1500);
+    this.saveModel();
+  }
+
+  initLoader() {
+    this.dracoLoader.setDecoderPath(
+      "../node_modules/three/examples/js/libs/draco/gltf/"
+    );
+    this.dracoLoader.setDecoderConfig({ type: "js" });
+    this.gltfLoader.setDRACOLoader(this.dracoLoader);
   }
 
   loadFloor() {
-    const gltfLoader = new GLTFLoader();
     let floor;
-    gltfLoader.loadAsync("/models/floorPlan.glb").then((gltf) => {
+    this.gltfLoader.loadAsync("/models/floorPlan.glb").then((gltf) => {
       floor = gltf.scene;
       for (let i = 0; i < floor.children.length; i++) {
         floor.children[i].userData.name = "Plane";
@@ -105,26 +122,62 @@ export default class Object {
     return stringHtml;
   }
 
-  async loadModel(id) {
-    const dracoLoader = new DRACOLoader();
-    dracoLoader.setDecoderPath(
-      "../node_modules/three/examples/js/libs/draco/gltf/"
-    );
-    dracoLoader.setDecoderConfig({ type: "js" });
-    const gltfLoader = new GLTFLoader();
-    gltfLoader.setDRACOLoader(dracoLoader);
-    for(const item of this.listModel) {
-      this.model = item.list.find((x) => x.id == id);
-      if(this.model != undefined) { break; }
+ async fetchModel() {
+    const data = JSON.parse(localStorage.getItem("models"));
+    if (data) {
+      this.storeModel = [...data];
+      for (const item of data) {
+        // Cannot async/ await forEach, map func
+        await this.loadModelFromStore(item.id);
+      }
     }
-    await gltfLoader.loadAsync(this.model.url).then((gltf) => {
+  }
+
+  async loadModelFromList(id) {
+    this.listModel.every((item) => {
+      this.model = item.list.find((x) => x.id == id);
+      if (this.model) return false;
+      else return true;
+    });
+    await this.loadModelByUrl(this.model.url);
+  }
+
+  async loadModelFromStore(id) {
+    this.loading.style.display = "block";
+    this.model = this.storeModel.find((item) => item.id == id);
+    await this.loadModelByUrl(this.model.url);
+    this.loading.style.display = "none";
+
+  }
+
+  async loadModelByUrl(url) {
+    await this.gltfLoader.loadAsync(url).then((gltf) => {
       const model = gltf.scene;
-      model.position.set(0, 0, 0);
-      model.scale.set(10, 10, 10);
       model.castShadow = true;
       model.receiveShadow = true;
-      this.scene.add(model);
+      if (this.model.position) {
+        model.position.set(
+          this.model.position.x,
+          this.model.position.y,
+          this.model.position.z
+        );
+        model.scale.set(
+          this.model.scale.x,
+          this.model.scale.y,
+          this.model.scale.z
+        );
+        model.rotation.set(
+          this.model.rotation.x,
+          this.model.rotation.y,
+          this.model.rotation.z
+        );
+      } else {
+        model.position.set(0, 0, 0);
+        model.scale.set(10, 10, 10);
+        model.rotation.set(0, 0, 0);
+      }
       model.userData.draggable = true;
+      model.userData.id = this.model.id;
       model.userData.name = this.model.name;
       model.userData.description = this.model.description;
       model.userData.size = this.model.size;
@@ -134,6 +187,8 @@ export default class Object {
       model.userData.photoUrl = this.model.photoUrl;
       model.userData.type = this.model.type;
       model.userData.insurance = this.model.insurance;
+      model.userData.url = this.model.url;
+      this.scene.add(model);
     });
   }
 
@@ -150,8 +205,41 @@ export default class Object {
     loadingState.style.display = "block";
     loadBtn.setAttribute("disabled", true);
     const id = event.target.id.slice(4);
-    await this.loadModel(id);
+    await this.loadModelFromList(id);
     loadingState.style.display = "none";
     loadBtn.removeAttribute("disabled");
+  }
+
+  saveModel() {
+    const saveBtn = document.getElementById("saveBtn");
+    saveBtn.addEventListener("click", (event) => {
+      let data = [];
+      this.setUp.animate();
+      this.scene.children.forEach((item) => {
+        if (item.type === "Group" && item.userData.type !== "Plane") {
+          data.push({
+            ...item.userData,
+            position: item.position,
+            rotation: {
+              x: item.rotation._x,
+              y: item.rotation._y,
+              z: item.rotation._z,
+            },
+            scale: item.scale,
+          });
+        }
+      });
+      this.onSaveData(data);
+    });
+  }
+
+  onSaveData(data) {
+    const user = JSON.parse(localStorage.getItem("user"));
+    this.loading.style.display = "block";
+    set(ref(this.database, "users/" + user.uid), {
+      models: data,
+    }).then(() => {
+      this.loading.style.display = "none";
+    });
   }
 }

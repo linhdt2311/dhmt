@@ -14,6 +14,12 @@
   -moz-osx-font-smoothing: grayscale;
   -webkit-text-size-adjust: 100%;
 }
+a {
+  color: inherit;
+}
+a:hover{
+  color: inherit;
+}
 
 a {
   font-weight: 500;
@@ -92,4 +98,23 @@ button:focus-visible {
 	text-align: center;
 	z-index: 100;
 	display:block;
+}
+
+.label-text{
+  color: #888
+  }
+
+.loading{
+  z-index: 9999;
+  background-color: white;
+  opacity: 0.7;
+  position:relative;
+    height: 100%;
+    width:100%;
+}
+.loading-image{
+  position: fixed;
+  top: 50%;
+  left: 40%;
+  transform: translate(-50%, -40%);
 }
