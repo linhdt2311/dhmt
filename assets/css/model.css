@@ -125,6 +125,16 @@ h1 {
   overflow: hidden scroll;
   max-height: 100vh;
 }
+
+.side-nav::-webkit-scrollbar {
+  width: 0.25em;
+}
+
+.side-nav::-webkit-scrollbar-thumb {
+  background-color: darkgrey;
+  outline: 1px solid slategrey;
+}
+
 .model-nav{
   right: 0;
 }
