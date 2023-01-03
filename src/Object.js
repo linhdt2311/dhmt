@@ -68,7 +68,7 @@ export default class Object {
           <div class="row">
           <div class="col col-12">
           <div class="card p-0 border-0" style="border-radius: unset !important">
-          <div class="card-header border-0 rounded" id="heading-${item.type}">
+          <div class="card-header border-0 " id="heading-${item.type}">
           <h5 class="mb-0">
           <a style="color: #888" role="button" data-bs-toggle="collapse" href="#${
             item.type
@@ -102,8 +102,16 @@ export default class Object {
       stringHtml += `
       <div class="card-body">
           <div class="d-flex row">
-            <div class="col col-5">
-              <img width="100%" height="100%" src="${item.photoUrl}">
+            <div class="col col-5 ">
+            <div class="img-wrap" style="cursor: pointer"  id=but-${item.id}>
+              <img class="img-content" width="80px" height="80px" src="${item.photoUrl}">
+              <p class="img-des m-0 text-center" >
+              <span class="fw-bold" style="line-height: 80px;">Load</span>
+              <div class="spinner" style="display:none">
+              <span class="spinner-border spinner-border-sm me-2" role="status" aria-hidden="true"></span>
+              </p>
+              </div>
+            </div>
             </div>
             <div class="col col-7">
             <span class="fw-bold">${item.name}</span>
@@ -111,12 +119,8 @@ export default class Object {
           </div>
           </div>
         
-     <button  id=but-${item.id} class="d-flex" >
-     <div style="display:none">
-     <span class="spinner-border spinner-border-sm me-2" role="status" aria-hidden="true"></span>
-     </div>
-     Load</button>
-     </div>
+         
+          </div>
      `;
     });
     return stringHtml;
@@ -193,21 +197,24 @@ export default class Object {
   }
 
   addModel() {
-    const btns = document.querySelectorAll("button[id^=but]");
+    const btns = document.querySelectorAll("div[id^=but]");
     btns.forEach((btn) => {
       btn.addEventListener("click", (event) => this.handleLoad(event));
     });
   }
 
   async handleLoad(event) {
-    const loadBtn = document.getElementById(event.target.id);
-    const loadingState = loadBtn.firstElementChild;
-    loadingState.style.display = "block";
+    const loadBtn = document.getElementById(event.currentTarget.id);
+    const loadingState = document.getElementsByClassName("spinner");
+    for(let item of loadingState){
+      item.style.display = "block";
+    }
     loadBtn.setAttribute("disabled", true);
-    const id = event.target.id.slice(4);
+    const id = event.currentTarget.id.slice(4);
     await this.loadModelFromList(id);
-    loadingState.style.display = "none";
-    loadBtn.removeAttribute("disabled");
+    for(let item of loadingState){
+      item.style.display = "none";
+    }
   }
 
   saveModel() {

@@ -103,6 +103,13 @@ button:focus-visible {
 .label-text{
   color: #888
   }
+.nav-link:hover{
+  color: #888;
+}
+.nav-link{
+  border-radius: 0 !important;
+}
+
 
 .loading{
   z-index: 9999;

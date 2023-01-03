@@ -64,7 +64,7 @@ h1 {
   color: #888;
 }
 
-button {
+.logOutBtn {
   border: 1px solid transparent;
   padding: 0.6em 1.2em;
   font-size: 1em;
@@ -74,12 +74,24 @@ button {
   cursor: pointer;
   transition: border-color 0.25s;
 }
-button:hover {
+.logOutBtn:hover {
   border-color: #646cff;
 }
-button:focus,
-button:focus-visible {
+.logOutBtn:focus,
+.logOutBtn:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
+}
+
+.spinner{
+  display: block;
+    position: absolute;
+    top: 0;
+    color: #eee;
+    left: 0;
+    line-height: 80px;
+    text-align: center;
+    right: 0;
+    bottom: 0;
 }
 
 @media (prefers-color-scheme: light) {
@@ -90,7 +102,7 @@ button:focus-visible {
   a:hover {
     color: #747bff;
   }
-  button {
+  .logOutBtn {
     background-color: #f9f9f9;
   }
 }
@@ -261,4 +273,28 @@ button:focus-visible {
 .saveBtn:active {
   box-shadow: none;
   transform: translateY(0);
+}
+
+.img-wrap{
+  position: relative;
+}
+
+.img-des {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: rgba(0,0,0,0.5);
+  color: #fff;
+  visibility: hidden;
+  opacity: 0;
+
+  /* transition effect. not necessary */
+  transition: opacity .2s, visibility .2s;
+}
+
+.img-wrap:hover .img-des {
+  visibility: visible;
+  opacity: 1;
 }
