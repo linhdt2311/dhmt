@@ -19,12 +19,12 @@ export default class Object {
   model;
   constructor() {
     this.initLoader();
-    this.loadFloor();
     this.fetchData();
-    this.fetchModel();
     setTimeout(() => {
+      this.loadFloor();
+      this.fetchModel();
       this.addModel();
-    }, 1500);
+    }, 2000);
     this.saveModel();
   }
 
@@ -104,7 +104,7 @@ export default class Object {
           <div class="d-flex row">
             <div class="col col-5 ">
             <div class="img-wrap" style="cursor: pointer"  id=but-${item.id}>
-              <img class="img-content" width="80px" height="80px" src="${item.photoUrl}">
+              <img class="img-content w-100" height="80px"  src="${item.photoUrl}">
               <p class="img-des m-0 text-center" >
               <span class="fw-bold" style="line-height: 80px;">Load</span>
               <div class="spinner" style="display:none">
@@ -247,6 +247,7 @@ export default class Object {
       models: data,
     }).then(() => {
       this.loading.style.display = "none";
+      localStorage.setItem('models', JSON.stringify(data));
     });
   }
 }

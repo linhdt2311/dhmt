@@ -208,6 +208,8 @@ export default class Experience {
     this.translateBtn.addEventListener("click", () => {
       this.resetTransformState();
       this.transformControls.showY = false;
+      this.transformControls.showX = true;
+      this.transformControls.showZ = true;
       this.translateBtn.classList.add("focus");
       this.transformControls.mode = "translate";
     });
@@ -218,6 +220,8 @@ export default class Experience {
       this.resetTransformState();
       this.rotateBtn.classList.add("focus");
       this.transformControls.showY = true;
+      this.transformControls.showX = false;
+      this.transformControls.showZ = false;
       this.transformControls.mode = "rotate";
     });
   }
@@ -227,6 +231,8 @@ export default class Experience {
       this.resetTransformState();
       this.scaleBtn.classList.add("focus");
       this.transformControls.showY = true;
+      this.transformControls.showX = true;
+      this.transformControls.showZ = true;
       this.transformControls.mode = "scale";
     });
   }

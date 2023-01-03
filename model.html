@@ -34,7 +34,7 @@
     ></script>
     <title>Vite App</title>
   </head>
-  <body>
+  <body >
     <img id="loading"  style="display: none;" class="loading-image" width="80px" height="80px" src="./assets/images/loading.gif" alt="Loading..." />
     <!-- <button id="login">Login</button> -->
     <div id="information" class="p-2"></div>
@@ -94,11 +94,13 @@
               </ul>
               <div class="tab-content">
                 <div class="tab-pane fade show active" id="object"></div>
-                <div class="tab-pane fade" id="model"></div>
+                <div class="tab-pane fade" id="model">
+                </div>
+                <button id="signOut" style="position: absolute; bottom: 0" class="fw-bold w-100 ">Log Out</button>
               </div>
+
             </div>
           </div>
-          <!-- <button id="" class="fw-bold w-100 ">Log Out</button> -->
         </div>
       </div>
     </div>
@@ -120,4 +122,8 @@
     auth.signOut();
   });
   modelList.addEventListener("click", (e) => {});
+
+  window.onload = function() {
+    document.body.className += " loaded";
+}
 </script>

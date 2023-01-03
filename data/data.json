@@ -439,19 +439,6 @@
                 "price": "50.000.000 VND",
                 "insurance": "36 months",
                 "type": "kitchen"
-            },
-            {
-                "id": "2d149ec3-91a2-46b7-82f2-42ee5dcf42f5",
-                "url": "/models/kitchen_type_3.glb",
-                "photoUrl": "/assets/images/kitchen_type_3.png",
-                "name": "Tủ bếp",
-                "description": "Tủ bếp bằng gỗ",
-                "material": "Laminate",
-                "size": "400x400 cm",
-                "origin": "Vietnam",
-                "price": "47.000.000 VND",
-                "insurance": "36 months",
-                "type": "kitchen"
             }
         ]
     },
