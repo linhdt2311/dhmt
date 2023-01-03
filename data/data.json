@@ -500,6 +500,244 @@
         ]
     },
     {
+        "type": "sofa",
+        "list": [
+            {
+                "id": "aa50c1b5-3371-4877-96c5-c775a59d77f1",
+                "url": "/models/sofa_type_1.glb",
+                "photoUrl": "/assets/images/sofa_type_1.png",
+                "name": "Sofa",
+                "description": "Combo sofa màu trắng xanh hiện đại",
+                "material": "Acrylic",
+                "size": "400x400 cm",
+                "origin": "Vietnam",
+                "price": "20.000.000 VND",
+                "insurance": "24 months",
+                "type": "sofa"
+            },
+            {
+                "id": "141588ec-8f4c-4eb0-b017-395bae7495f7",
+                "url": "/models/sofa_type_2.glb",
+                "photoUrl": "/assets/images/sofa_type_2.png",
+                "name": "Sofa",
+                "description": "Sofa màu trắng tinh khiết",
+                "material": "Acrylic",
+                "size": "400x400 cm",
+                "origin": "Germany",
+                "price": "25.000.000 VND",
+                "insurance": "18 months",
+                "type": "sofa"
+            },
+            {
+                "id": "7a982d7e-310a-4f9a-933d-07009682f517",
+                "url": "/models/sofa_type_3.glb",
+                "photoUrl": "/assets/images/sofa_type_3.png",
+                "name": "Sofa",
+                "description": "Sofa kiểu dáng chữ S độc lạ Bình Dương",
+                "material": "Acrylic",
+                "size": "400x400 cm",
+                "origin": "Vietnam",
+                "price": "19.000.000 VND",
+                "insurance": "20 months",
+                "type": "sofa"
+            }
+        ]
+    },
+    {
+        "type": "table",
+        "list": [
+            {
+                "id": "ff76092f-cb2b-4b2a-b2c7-72d86bbe156c",
+                "url": "/models/table_type_1.glb",
+                "photoUrl": "/assets/images/table_type_1.png",
+                "name": "Bàn học",
+                "description": "Bàn học kết hợp tủ sách cực tiện lợi",
+                "material": "Wood",
+                "size": "400x400 cm",
+                "origin": "Germany",
+                "price": "9.000.000 VND",
+                "insurance": "6 months",
+                "type": "table"
+            },
+            {
+                "id": "1f2b47dc-cb7d-4f92-8302-9d870f15f760",
+                "url": "/models/table_type_2.glb",
+                "photoUrl": "/assets/images/table_type_2.png",
+                "name": "Bàn bếp",
+                "description": "Combo bàn ghế phòng ăn hiện đại",
+                "material": "Acrylic",
+                "size": "400x400 cm",
+                "origin": "France",
+                "price": "15.000.000 VND",
+                "insurance": "12 months",
+                "type": "table"
+            },
+            {
+                "id": "af99c0d8-36dd-41f9-9a11-dc3ff7f7c669",
+                "url": "/models/table_type_3.glb",
+                "photoUrl": "/assets/images/table_type_3.png",
+                "name": "Bàn coffee",
+                "description": "Bàn tròn để uống cà phê cực chill",
+                "material": "Acrylic",
+                "size": "400x400 cm",
+                "origin": "Vietnam",
+                "price": "10.000.000 VND",
+                "insurance": "9 months",
+                "type": "table"
+            }
+        ]
+    },
+    {
+        "type": "tree",
+        "list": [
+            {
+                "id": "b100a9be-4bb5-436c-9474-8f2bc8ac2aeb",
+                "url": "/models/tree_type_1.glb",
+                "photoUrl": "/assets/images/tree_type_1.png",
+                "name": "Cây cảnh",
+                "description": "Combo 3 kệ cây cảnh trang trí",
+                "material": "Acrylic",
+                "size": "400x400 cm",
+                "origin": "Germany",
+                "price": "20.000.000 VND",
+                "insurance": "12 months",
+                "type": "tree"
+            },
+            {
+                "id": "7f39da5e-be9c-4451-8918-6790a096c6ad",
+                "url": "/models/tree_type_2.glb",
+                "photoUrl": "/assets/images/tree_type_2.png",
+                "name": "Cây cảnh",
+                "description": "Cây cảnh mini",
+                "material": "Acrylic",
+                "size": "400x400 cm",
+                "origin": "France",
+                "price": "5.000.000 VND",
+                "insurance": "12 months",
+                "type": "tree"
+            },
+            {
+                "id": "0f00a518-25f4-4743-810d-5cfe88ecd07a",
+                "url": "/models/tree_type_3.glb",
+                "photoUrl": "/assets/images/tree_type_3.png",
+                "name": "Cây cảnh",
+                "description": "Cây cảnh xương rồng bảo vệ môi trường",
+                "material": "Acrylic",
+                "size": "400x400 cm",
+                "origin": "Vietnam",
+                "price": "8.000.000 VND",
+                "insurance": "12 months",
+                "type": "tree"
+            }
+        ]
+    },
+    {
+        "type": "decor",
+        "list": [
+            {
+                "id": "7a5105a1-e67d-41e3-9fd2-774401384221",
+                "url": "/models/decor_type_1.glb",
+                "photoUrl": "/assets/images/decor_type_1.png",
+                "name": "Bàn trang trí",
+                "description": "Bàn trang trí phòng khách cực đẹp",
+                "material": "Acrylic",
+                "size": "400x400 cm",
+                "origin": "Germany",
+                "price": "20.000.000 VND",
+                "insurance": "12 months",
+                "type": "decor"
+            },
+            {
+                "id": "8cfd496d-39dc-4935-98e9-e99a75c0ffee",
+                "url": "/models/decor_type_2.glb",
+                "photoUrl": "/assets/images/decor_type_2.png",
+                "name": "Rương kho báu",
+                "description": "Rương kho báu trang trí cho hải tặc",
+                "material": "Acrylic",
+                "size": "400x400 cm",
+                "origin": "France",
+                "price": "5.000.000 VND",
+                "insurance": "12 months",
+                "type": "decor"
+            },
+            {
+                "id": "c0da1023-efd3-481d-b5fd-a8e5822a6b26",
+                "url": "/models/decor_type_3.glb",
+                "photoUrl": "/assets/images/decor_type_3.png",
+                "name": "Địa cầu",
+                "description": "Mô hình địa cầu tỉ lệ 1000000000000000:2",
+                "material": "Acrylic",
+                "size": "400x400 cm",
+                "origin": "Vietnam",
+                "price": "8.000.000 VND",
+                "insurance": "12 months",
+                "type": "decor"
+            }
+        ]
+    },
+    {
+        "type": "pet",
+        "list": [
+            {
+                "id": "6ee89972-f854-4374-a4bc-b027a0b0e551",
+                "url": "/models/pet_type_1.glb",
+                "photoUrl": "/assets/images/pet_type_1.png",
+                "name": "Chó cảnh",
+                "description": "Chó Pitpull nhìn như Border Collie",
+                "material": "Acrylic",
+                "size": "400x400 cm",
+                "origin": "Germany",
+                "price": "20.000.000 VND",
+                "insurance": "12 months",
+                "type": "pet"
+            },
+            {
+                "id": "b402d8b9-63ed-4cdc-bf57-31b5b7498e8b",
+                "url": "/models/pet_type_2.glb",
+                "photoUrl": "/assets/images/pet_type_2.png",
+                "name": "Nhím ngu",
+                "description": "Thú cưng nhím cực ngu",
+                "material": "Acrylic",
+                "size": "400x400 cm",
+                "origin": "France",
+                "price": "5.000.000 VND",
+                "insurance": "12 months",
+                "type": "pet"
+            },
+            {
+                "id": "0ad94c35-a32f-4ace-856b-716617f2b62d",
+                "url": "/models/pet_type_3.glb",
+                "photoUrl": "/assets/images/pet_type_3.png",
+                "name": "Chó cảnh",
+                "description": "Chú chó trắng giữa trời đông cô đơn",
+                "material": "Acrylic",
+                "size": "400x400 cm",
+                "origin": "Vietnam",
+                "price": "8.000.000 VND",
+                "insurance": "12 months",
+                "type": "pet"
+            }
+        ]
+    },
+    {
+        "type": "vehicle",
+        "list": [
+            {
+                "id": "66362883-2d5d-406b-9e18-fd0cf217fec3",
+                "url": "/models/vehicle_type_1.glb",
+                "photoUrl": "/assets/images/vehicle_type_1.png",
+                "name": "Xe điện",
+                "description": "Xe máy điện hiện đại thân thiện môi trường",
+                "material": "Vibranium",
+                "size": "900x900 cm",
+                "origin": "Vietnam",
+                "price": "90.000.000 VND",
+                "insurance": "5 years",
+                "type": "vehicle"
+            }
+        ]
+    },
+    {
         "type": "woman",
         "list": [
             {
