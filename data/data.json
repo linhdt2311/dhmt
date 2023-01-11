@@ -798,6 +798,37 @@
         ]
     },
     {
+        "type": "refrigerator",
+        "list": [
+            {
+                "id": "66362883-2d5d-406b-9e18-fd0cf217fec3",
+                "url": "/models/refrigerator_type_1.glb",
+                "photoUrl": "/assets/images/refrigerator_type_1.PNG",
+                "name": "Tủ lạnh",
+                "description": "Tủ lạnh",
+                "material": "Acrylic",
+                "size": "700x800 cm",
+                "origin": "Germany",
+                "price": "30.000.000 VND",
+                "insurance": "24 months",
+                "type": "refrigerator"
+            },
+            {
+                "id": "66362883-2d5d-406b-9e18-fd0cf217fec3",
+                "url": "/models/refrigerator_type_2.glb",
+                "photoUrl": "/assets/images/refrigerator_type_2.PNG",
+                "name": "Tủ lạnh",
+                "description": "Tủ lạnh hiện đại",
+                "material": "Acrylic",
+                "size": "700x800 cm",
+                "origin": "Germany",
+                "price": "30.000.000 VND",
+                "insurance": "24 months",
+                "type": "refrigerator"
+            }
+        ]
+    },
+    {
         "type": "woman",
         "list": [
             {
