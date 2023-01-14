@@ -118,9 +118,8 @@ export default class Object {
             <p class="fst-italic">${item.description}</p>
           </div>
           </div>
-        
-         
           </div>
+        
      `;
     });
     return stringHtml;

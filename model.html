@@ -60,20 +60,42 @@
           alt=""
         />
       </button>
-      <button class="toolbar-button" id="delete-btn">
-        <img
-          class="toolbar-img"
-          width="40px"
-          src="./assets/images/times.png"
-          alt=""
-        />
-      </button>
+   
+        <button class="toolbar-button" id="delete-btn" 
+        data-bs-toggle="modal" data-bs-target="#confirm-delete" 
+        alt="Delete" title="Delete">
+          <img
+            class="toolbar-img"
+            width="40px"
+            src="./assets/images/times.png"
+            alt=""
+          />
+        </button>
       <!-- <button id="signOut" class="button">Log Out</button> -->
     </div>
     <button id="saveBtn" class="saveBtn"><i class="far fa-save me-2"></i><span>Save</span></button>
     <div class="row no-gutters">
       <div class="col col-10 p-0">
         <canvas id="myCanvas"></canvas>
+        <div class="position-adjust p-2">
+          <div class="row">
+            <div class="col col-4">
+              <div class="input-group ">
+                <input type="text" class="form-control" placeholder="X" >
+              </div>
+            </div>
+            <div class="col col-4">
+              <div class="input-group ">
+                <input type="text" class="form-control" placeholder="Y" >
+              </div>
+            </div>
+            <div class="col col-4">
+              <div class="input-group ">
+                <input type="text" class="form-control" placeholder="Z" >
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
       <div class="col col-2">
         <div class="side-nav model-nav">
@@ -85,6 +107,11 @@
                   <a class="nav-link active fw-bold label-text" data-bs-toggle="tab" href="#object"
                     >Object</a
                   >
+                  <button
+                  style="position: absolute; bottom: 0; left: 0;" 
+                  class="fw-bold w-100 "
+                  data-bs-toggle="modal" data-bs-target="#confirm-logout">
+                    <span>Log out</span></button>
                 </li>
                 <li class="nav-item tab-item text-center w-50 bg-white border-0  " style="border-radius: 0">
                   <a class="nav-link fw-bold label-text"  data-bs-toggle="tab" href="#model"
@@ -96,8 +123,8 @@
                 <div class="tab-pane fade show active" id="object"></div>
                 <div class="tab-pane fade" id="model">
                 </div>
-                <button id="signOut" style="position: absolute; bottom: 0" class="fw-bold w-100 ">Log Out</button>
               </div>
+        
 
             </div>
           </div>
@@ -107,16 +134,56 @@
     <script type="module" src="/main.js"></script>
     <div>
       <!-- <div class="d-flex row mt-4 mb-4">
+
         <div class="col col-12 text-center">
           <img  width="80px" height="80px" src="${this.draggable.userData.photoUrl}">
         </div>
       </div> -->
-    
+      <div class="modal" tabindex="-1" id="confirm-delete">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Delete confirm</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cancel"></button>
+                </div>
+                <div class="modal-body">
+                    <p>Do you want to delete this model?</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <a class="btn btn-danger btn-delete" data-bs-dismiss="modal" id="delete-confirm">Delete</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal" tabindex="-1" id="confirm-logout">
+      <div class="modal-dialog">
+          <div class="modal-content">
+              <div class="modal-header">
+                  <h5 class="modal-title">Logout confirm</h5>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cancel"></button>
+              </div>
+              <div class="modal-body">
+                  <p>You will lose any unsaved changes</p>
+              </div>
+              <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                  <a class="btn btn-danger btn-delete" data-bs-dismiss="modal"  id="signOut" >Log out</a>
+              </div>
+          </div>
+      </div>
+  </div>
   </body>
 </html>
 <script type="module" src="./model.js"></script>
 <script type="module">
   import { Auth } from "./auth.js";
+  $(function()
+            {
+                $('#confirm-delete').on('show.bs.modal', function(e){
+                    $(this).find('.btn-delete').attr('href', $(e.relatedTarget).data('href'));
+                });
+            });
   const auth = new Auth();
   signOut.addEventListener("click", (e) => {
     auth.signOut();

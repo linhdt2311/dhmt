@@ -15,7 +15,7 @@ export default class Experience {
   rotateBtn = document.getElementById("rotate-btn");
   scaleBtn = document.getElementById("scale-btn");
   deleteBtn = document.getElementById("delete-btn");
-
+  deleteConfirmBtn = document.getElementById("delete-confirm");
   constructor() {
     this.foundObject();
     this.mouseMove();
@@ -187,8 +187,8 @@ export default class Experience {
   }
 
   deleteObject() {
-    this.deleteBtn.addEventListener("click", (event) => {
-      if (this.draggable && this.transformControls.enabled) {
+    this.deleteConfirmBtn.addEventListener("click", (event) => {
+      if (this.draggable) {
         this.transformControls.detach();
         this.scene.remove(this.draggable);
         this.deleteBtn.style.display = "none";
