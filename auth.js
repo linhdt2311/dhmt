@@ -32,9 +32,9 @@ export class Auth {
     this.database = getDatabase();
   }
 
- signIn() {
+  signIn() {
     signInWithPopup(this.auth, this.provider)
-      .then( async(result) => {
+      .then(async (result) => {
         // This gives you a Google Access Token. You can use it to access the Google API.
         const credential = GoogleAuthProvider.credentialFromResult(result);
         const token = credential.accessToken;
@@ -49,15 +49,15 @@ export class Auth {
         localStorage.setItem("user", JSON.stringify(user));
         const dbRef = ref(getDatabase());
         await get(child(dbRef, 'users/' + user.uid + '/models')).then((snapshot) => {
-            if (snapshot.exists()) {
-              localStorage.setItem("models", JSON.stringify(snapshot.val()));
-            } else {
-              console.log("No data available");
-            }
-          }).catch((error) => {
-            console.error(error);
-          });
-          window.location.assign("/model.html");
+          if (snapshot.exists()) {
+            localStorage.setItem("models", JSON.stringify(snapshot.val()));
+          } else {
+            console.log("No data available");
+          }
+        }).catch((error) => {
+          console.error(error);
+        });
+        window.location.assign("/model.html");
 
       })
       .catch((error) => {
@@ -71,6 +71,7 @@ export class Auth {
         // ...
       });
   }
+
   signOut() {
     signOut(this.auth)
       .then(() => {
@@ -82,6 +83,5 @@ export class Auth {
         // An error happened.
       });
   }
-
 }
 

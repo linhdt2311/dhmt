@@ -37,7 +37,6 @@ export default class SetUp {
     loader.load("./assets/images/gradient.png", (texture) => {
       this.scene.background = texture;
     });
-    // this.scene.background = new THREE.Color(0xbfd1e5);
     this.controls.enableDamping = true; // an animation loop is required when either damping or auto-rotation are enabled
     this.controls.dampingFactor = 0.05;
     this.controls.rotateSpeed = 0.6;
@@ -51,7 +50,7 @@ export default class SetUp {
     this.renderer.setSize(myCanvas.innerWidth, myCanvas.innerHeight);
     this.camera.aspect = myCanvas.innerWidth / myCanvas.innerHeight;
     this.renderer.shadowMap.enabled = true;
-    // document.body.appendChild(this.renderer.domElement);
+
     window.addEventListener("resize", this.onWindowResize());
     this.transformControls.enabled = false;
     this.transformControls.mode = "translate";
@@ -74,9 +73,6 @@ export default class SetUp {
   }
 
   setLight() {
-    // let ambientLight = new THREE.AmbientLight(0xffffff, 0.2);
-    // this.scene.add(ambientLight);
-
     let hemiLight = new THREE.HemisphereLight(0x0000ff, 0x00ff00, 0.8);
     hemiLight.color.setHSL(0.6, 1, 0.6);
     hemiLight.groundColor.setHSL(0.095, 1, 0.75);

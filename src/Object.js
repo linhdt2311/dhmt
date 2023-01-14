@@ -150,7 +150,6 @@ export default class Object {
     this.model = this.storeModel.find((item) => item.id == id);
     await this.loadModelByUrl(this.model.url);
     this.loading.style.display = "none";
-
   }
 
   async loadModelByUrl(url) {

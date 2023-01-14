@@ -44,10 +44,10 @@ export default class Experience {
       }
       this.transformControls.detach();
       if (
-        found.length > 0 &&
-        found[0].object.type != "TransformControlsPlane" &&
-        found[0].object.userData.name &&
-        found[0].object.userData.type !== "Plane"
+        found.length > 0
+        && found[0].object.type != "TransformControlsPlane"
+        && found[0].object.userData.name
+        && found[0].object.userData.type !== "Plane"
       ) {
         this.transformControls.enabled = true;
         this.draggable = found[0].object;
@@ -65,11 +65,12 @@ export default class Experience {
     let stringHtml = "";
     stringHtml += `
     
-    <div class="d-flex row mt-4 mb-4">
+  <div class="d-flex row mt-4 mb-4">
     <div class="col col-12 text-center">
       <img  width="80px" height="80px" src="${this.draggable.userData.photoUrl}">
     </div>
   </div>
+  
   <div class="px-3" style="font-size: 15px">
   <div class="d-flex row mb-2">
     <div class="col col-5">
@@ -79,6 +80,7 @@ export default class Experience {
       <span>${this.draggable.userData.type}</span>
     </div>
   </div>
+
   <div class="d-flex row mb-2">
     <div class="col col-5">
       <span class="fw-bold">Is 3D:</span>
@@ -87,6 +89,7 @@ export default class Experience {
       <span>${this.draggable.isObject3D}</span>
     </div>
   </div>
+
   <div class="d-flex row mb-2">
     <div class="col col-5">
       <span class="fw-bold">Material:</span>
@@ -95,6 +98,7 @@ export default class Experience {
       <span>${this.draggable.userData.material}</span>
     </div>
   </div>
+
   <div class="d-flex row mb-2">
     <div class="col col-5">
       <span class="fw-bold">Size:</span>
@@ -103,6 +107,7 @@ export default class Experience {
       <span>${this.draggable.userData.size}</span>
     </div>
   </div>
+
   <div class="d-flex row mb-2">
     <div class="col col-5">
       <span class="fw-bold">Origin:</span>
@@ -243,7 +248,6 @@ export default class Experience {
   }
 
   addTransformControl(model) {
-    // transformControls.setSpace('local');
     this.transformControls.addEventListener("mouseDown", () => {
       this.controls.enabled = false;
     });

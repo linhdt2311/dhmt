@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@600&display=swap');
+
 :root {
   font-size: 16px;
   line-height: 24px;
@@ -20,6 +21,7 @@ a {
   color: #646cff;
   text-decoration: inherit;
 }
+
 a:hover {
   color: #535bf2;
 }
@@ -66,9 +68,11 @@ h1 {
   padding: 1.5em;
   will-change: filter;
 }
+
 .logo:hover {
   filter: drop-shadow(0 0 2em #646cffaa);
 }
+
 .logo.vanilla:hover {
   filter: drop-shadow(0 0 2em #f7df1eaa);
 }
@@ -91,24 +95,26 @@ h1 {
   cursor: pointer;
   transition: border-color 0.25s;
 }
+
 .logOutBtn:hover {
   border-color: #646cff;
 }
+
 .logOutBtn:focus,
 .logOutBtn:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
 }
 
-.spinner{
+.spinner {
   display: block;
-    position: absolute;
-    top: 0;
-    color: #eee;
-    left: 0;
-    line-height: 80px;
-    text-align: center;
-    right: 0;
-    bottom: 0;
+  position: absolute;
+  top: 0;
+  color: #eee;
+  left: 0;
+  line-height: 80px;
+  text-align: center;
+  right: 0;
+  bottom: 0;
 }
 
 @media (prefers-color-scheme: light) {
@@ -116,24 +122,26 @@ h1 {
     color: #213547;
     background-color: #ffffff;
   }
+
   a:hover {
     color: #747bff;
   }
+
   .logOutBtn {
     background-color: #f9f9f9;
   }
 }
 
 #app {
-	position: absolute;
-	top: 10px;
-	width: 100%;
-	text-align: center;
-	z-index: 100;
-	display:block;
+  position: absolute;
+  top: 10px;
+  width: 100%;
+  text-align: center;
+  z-index: 100;
+  display: block;
 }
 
-.side-nav{
+.side-nav {
   position: absolute;
   height: 100vh;
   background-color: #eeee;
@@ -152,17 +160,18 @@ h1 {
   outline: 1px solid slategrey;
 }
 
-.model-nav{
+.model-nav {
   right: 0;
 }
-.button{
-      right: 0;
-      left: 0;
-      bottom: 0;
-      position: absolute;
-      z-index: 1;
-    transition: background-color .3s, box-shadow .3s;
-    color: #757575;
+
+.button {
+  right: 0;
+  left: 0;
+  bottom: 0;
+  position: absolute;
+  z-index: 1;
+  transition: background-color .3s, box-shadow .3s;
+  color: #757575;
 }
 
 .button:hover {
@@ -175,17 +184,17 @@ h1 {
 
 .button:focus {
   outline: none;
-  box-shadow: 
+  box-shadow:
     0 -1px 0 rgba(0, 0, 0, .04),
     0 2px 4px rgba(0, 0, 0, .25),
     0 0 0 3px #c8dafc;
 }
 
-.user-img{
+.user-img {
   border-radius: 50%;
 }
 
-.toolbar{
+.toolbar {
   position: absolute;
   left: 10px;
   top: 80px;
@@ -194,52 +203,54 @@ h1 {
   text-align: center;
   color: #888;
 }
-.toolbar-button{
-    color: #555;
-    border: 0px;
-    margin: 0px;
-    font-size: 12px;
-    text-transform: uppercase;
-    cursor: pointer;
-    background-color: #fff;
-    outline: none;
+
+.toolbar-button {
+  color: #555;
+  border: 0px;
+  margin: 0px;
+  font-size: 12px;
+  text-transform: uppercase;
+  cursor: pointer;
+  background-color: #fff;
+  outline: none;
 }
 
-.toolbar-button:hover{
+.toolbar-button:hover {
   background-color: #ddd;
 }
 
 
-.focus{
+.focus {
   background-color: #ddd;
 }
-.toolbar-img{
+
+.toolbar-img {
   width: 16px;
   opacity: 0.5;
 }
 
-.tab-item{
+.tab-item {
   color: #888;
   background-color: #eee;
 }
 
-.tabs{
+.tabs {
   background-color: #ddd;
-    border-top: 1px solid #ccc;
+  border-top: 1px solid #ccc;
 }
 
-#myCanvas{
+#myCanvas {
   width: 100% !important;
 }
 
 
 
-.list-model .mb-0 > a {
+.list-model .mb-0>a {
   display: block;
   position: relative;
 }
 
-.list-model .mb-0 > a:after {
+.list-model .mb-0>a:after {
   content: "\f055";
   font-family: "Font Awesome 5 Free";
   position: absolute;
@@ -247,7 +258,7 @@ h1 {
   font-weight: 600;
 }
 
-.list-model .mb-0 > a[aria-expanded="true"]:after {
+.list-model .mb-0>a[aria-expanded="true"]:after {
   content: "\f056";
   font-family: "Font Awesome 5 Free";
   font-weight: 600;
@@ -302,7 +313,7 @@ h1 {
   transform: translateY(0);
 }
 
-.img-wrap{
+.img-wrap {
   position: relative;
 }
 
@@ -312,7 +323,7 @@ h1 {
   bottom: 0;
   left: 0;
   right: 0;
-  background: rgba(0,0,0,0.5);
+  background: rgba(0, 0, 0, 0.5);
   color: #fff;
   visibility: hidden;
   opacity: 0;
