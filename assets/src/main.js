@@ -1,5 +1,5 @@
-import "./style.css";
-import Action from "/src/Action.js"
+import "../css/style.css";
+import Action from "./action.js"
 new Action();
 // import * as THREE from "three";
 // import { OrbitControls } from "three/examples/jsm/controls/OrbitControls";
