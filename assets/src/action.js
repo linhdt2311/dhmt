@@ -16,6 +16,9 @@ export default class Experience {
   scaleBtn = document.getElementById("scale-btn");
   deleteBtn = document.getElementById("delete-btn");
   deleteConfirmBtn = document.getElementById("delete-confirm");
+  scaleForm = document.getElementById("scale-form");
+  scaleAdjust = document.getElementById("scale-adjust");
+
   constructor() {
     this.foundObject();
     this.mouseMove();
@@ -23,6 +26,8 @@ export default class Experience {
     this.rotate();
     this.scale();
     this.deleteObject();
+    this.onClickScaleAdjust();
+    this.onChangeScale();
   }
 
   foundObject() {
@@ -43,6 +48,7 @@ export default class Experience {
         }
       }
       this.transformControls.detach();
+      this.scaleAdjust.style.display = 'none';
       if (
         found.length > 0
         && found[0].object.type != "TransformControlsPlane"
@@ -52,12 +58,31 @@ export default class Experience {
         this.transformControls.enabled = true;
         this.draggable = found[0].object;
         this.deleteBtn.style.display = "block";
+        this.scaleForm.elements['xAsis'].value = Math.round(this.draggable.scale.x * 100) / 100;
+        this.scaleForm.elements['yAsis'].value = Math.round(this.draggable.scale.y * 100) / 100;
+        this.scaleForm.elements['zAsis'].value = Math.round(this.draggable.scale.z * 100) / 100;
+        this.scaleAdjust.style.display = 'block';
         this.addTransformControl(this.draggable);
         this.viewDetailObject();
       } else {
         this.transformControls.enabled = false;
       }
     });
+  }
+
+  onClickScaleAdjust(){
+    this.scaleAdjust.addEventListener('click', (e) => {
+      e.stopPropagation();
+  });
+  }
+
+  onChangeScale(){
+    this.scaleForm.addEventListener('change', (e) => {
+      this.draggable.scale.set(Math.round(this.scaleForm.elements['xAsis'].value * 100) / 100, 
+      Math.round(this.scaleForm.elements['yAsis'].value * 100) / 100,
+      Math.round(this.scaleForm.elements['zAsis'].value * 100) / 100)
+  });
+     
   }
 
   viewDetailObject() {
@@ -262,4 +287,6 @@ export default class Experience {
     this.rotateBtn.classList.remove("focus");
     this.scaleBtn.classList.remove("focus");
   }
+
+
 }

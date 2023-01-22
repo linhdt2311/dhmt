@@ -16,6 +16,8 @@ export default class Object {
   listModel = [];
   storeModel = [];
   loading = document.getElementById("loading");
+  toastLiveExample = document.getElementById("liveToast");
+
   model;
   constructor() {
     this.initLoader();
@@ -125,7 +127,7 @@ export default class Object {
     return stringHtml;
   }
 
- async fetchModel() {
+  async fetchModel() {
     const data = JSON.parse(localStorage.getItem("models"));
     if (data) {
       this.storeModel = [...data];
@@ -204,13 +206,13 @@ export default class Object {
   async handleLoad(event) {
     const loadBtn = document.getElementById(event.currentTarget.id);
     const loadingState = document.getElementsByClassName("spinner");
-    for(let item of loadingState){
+    for (let item of loadingState) {
       item.style.display = "block";
     }
     loadBtn.setAttribute("disabled", true);
     const id = event.currentTarget.id.slice(4);
     await this.loadModelFromList(id);
-    for(let item of loadingState){
+    for (let item of loadingState) {
       item.style.display = "none";
     }
   }
@@ -235,6 +237,7 @@ export default class Object {
         }
       });
       this.onSaveData(data);
+      
     });
   }
 
@@ -245,7 +248,9 @@ export default class Object {
       models: data,
     }).then(() => {
       this.loading.style.display = "none";
-      localStorage.setItem('models', JSON.stringify(data));
+      localStorage.setItem("models", JSON.stringify(data));
     });
+    const toast = new bootstrap.Toast(this.toastLiveExample);
+      toast.show();
   }
 }

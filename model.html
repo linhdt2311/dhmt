@@ -77,24 +77,27 @@
     <div class="row no-gutters">
       <div class="col col-10 p-0">
         <canvas id="myCanvas"></canvas>
-        <div class="position-adjust p-2">
-          <div class="row">
-            <div class="col col-4">
-              <div class="input-group ">
-                <input type="text" class="form-control" placeholder="X" >
+        <div class="scale-adjust p-2" style="display:none;" id="scale-adjust" (click)="onClickScaleAdjust()">
+            <form class="row" id="scale-form">
+            <div class="col col-4 ">
+                <div class="input-group d-flex align-items-center">
+                  <label class="me-2">Width: </label>
+                  <input (blur)="onChangeScale()" name="xAsis" min="0" max="3" type="number" class="form-control" placeholder="X" >
+                </div>
               </div>
-            </div>
-            <div class="col col-4">
-              <div class="input-group ">
-                <input type="text" class="form-control" placeholder="Y" >
+              <div class="col col-4">
+                <div class="input-group d-flex align-items-center">
+                  <label class="me-2">Height: </label>
+                  <input (blur)="onChangeScale()" name="yAsis"  min="0" max="3" type="number" class="form-control" placeholder="Y" >
+                </div>
               </div>
-            </div>
-            <div class="col col-4">
-              <div class="input-group ">
-                <input type="text" class="form-control" placeholder="Z" >
+              <div class="col col-4">
+                <div class="input-group d-flex align-items-center">
+                  <label class="me-2">Depth:</label>
+                  <input (blur)="onChangeScale()" name="zAsis"  min="0" max="3" type="number" class="form-control" placeholder="Z" >
+                </div>
               </div>
-            </div>
-          </div>
+            </form>
         </div>
       </div>
       <div class="col col-2">
@@ -172,6 +175,21 @@
               </div>
           </div>
       </div>
+  </div>
+
+
+  <!-- Toast -->
+  <div class="toast-container position-fixed bottom-0 start-0 p-3">
+    <div id="liveToast" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
+      <div class="toast-header">
+        <img src="./assets/images/success.png" width="40px" height="40px" class="rounded me-2" alt="...">
+        <strong class="me-auto">Successfully</strong>
+        <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+      </div>
+      <div class="toast-body">
+        All of your changes has been saved!
+      </div>
+    </div>
   </div>
   </body>
 </html>
