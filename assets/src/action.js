@@ -1,4 +1,6 @@
 import Object from "./object.js";
+import canvasToImage from "canvas-to-image";
+import { GLTFExporter } from "three/addons/exporters/GLTFExporter.js";
 export default class Experience {
   object = new Object();
   camera = this.object.setUp.camera;
@@ -18,6 +20,9 @@ export default class Experience {
   deleteConfirmBtn = document.getElementById("delete-confirm");
   scaleForm = document.getElementById("scale-form");
   scaleAdjust = document.getElementById("scale-adjust");
+  exportGlbBtn = document.getElementById("export-glb");
+  exporGltfBtn = document.getElementById("export-gltf");
+  exportImgBtn = document.getElementById("export-img");
 
   constructor() {
     this.foundObject();
@@ -28,6 +33,7 @@ export default class Experience {
     this.deleteObject();
     this.onClickScaleAdjust();
     this.onChangeScale();
+    this.export();
   }
 
   foundObject() {
@@ -48,20 +54,23 @@ export default class Experience {
         }
       }
       this.transformControls.detach();
-      this.scaleAdjust.style.display = 'none';
+      this.scaleAdjust.style.display = "none";
       if (
-        found.length > 0
-        && found[0].object.type != "TransformControlsPlane"
-        && found[0].object.userData.name
-        && found[0].object.userData.type !== "Plane"
+        found.length > 0 &&
+        found[0].object.type != "TransformControlsPlane" &&
+        found[0].object.userData.name &&
+        found[0].object.userData.type !== "Plane"
       ) {
         this.transformControls.enabled = true;
         this.draggable = found[0].object;
         this.deleteBtn.style.display = "block";
-        this.scaleForm.elements['xAsis'].value = Math.round(this.draggable.scale.x * 100) / 100;
-        this.scaleForm.elements['yAsis'].value = Math.round(this.draggable.scale.y * 100) / 100;
-        this.scaleForm.elements['zAsis'].value = Math.round(this.draggable.scale.z * 100) / 100;
-        this.scaleAdjust.style.display = 'block';
+        this.scaleForm.elements["xAsis"].value =
+          Math.round(this.draggable.scale.x * 100) / 100;
+        this.scaleForm.elements["yAsis"].value =
+          Math.round(this.draggable.scale.y * 100) / 100;
+        this.scaleForm.elements["zAsis"].value =
+          Math.round(this.draggable.scale.z * 100) / 100;
+        this.scaleAdjust.style.display = "block";
         this.addTransformControl(this.draggable);
         this.viewDetailObject();
       } else {
@@ -70,19 +79,20 @@ export default class Experience {
     });
   }
 
-  onClickScaleAdjust(){
-    this.scaleAdjust.addEventListener('click', (e) => {
+  onClickScaleAdjust() {
+    this.scaleAdjust.addEventListener("click", (e) => {
       e.stopPropagation();
-  });
+    });
   }
 
-  onChangeScale(){
-    this.scaleForm.addEventListener('change', (e) => {
-      this.draggable.scale.set(Math.round(this.scaleForm.elements['xAsis'].value * 100) / 100, 
-      Math.round(this.scaleForm.elements['yAsis'].value * 100) / 100,
-      Math.round(this.scaleForm.elements['zAsis'].value * 100) / 100)
-  });
-     
+  onChangeScale() {
+    this.scaleForm.addEventListener("change", (e) => {
+      this.draggable.scale.set(
+        Math.round(this.scaleForm.elements["xAsis"].value * 100) / 100,
+        Math.round(this.scaleForm.elements["yAsis"].value * 100) / 100,
+        Math.round(this.scaleForm.elements["zAsis"].value * 100) / 100
+      );
+    });
   }
 
   viewDetailObject() {
@@ -92,7 +102,9 @@ export default class Experience {
     
   <div class="d-flex row mt-4 mb-4">
     <div class="col col-12 text-center">
-      <img  width="80px" height="80px" src="${this.draggable.userData.photoUrl}">
+      <img  width="80px" height="80px" src="${
+        this.draggable.userData.photoUrl
+      }">
     </div>
   </div>
   
@@ -288,5 +300,72 @@ export default class Experience {
     this.scaleBtn.classList.remove("focus");
   }
 
+  export() {
+    this.exportGlbBtn.addEventListener("click", () => {
+      this.exportGlb();
+    });
+    this.exporGltfBtn.addEventListener("click", () => {
+      this.exportGltf();
+    });
+    this.exportImgBtn.addEventListener("click", () => {
+      this.exportImg();
+    });
+  }
 
+  exportGltf() {
+    const exporter = new GLTFExporter();
+    const options = {};
+    exporter.parse(
+      this.scene,
+      (result) => {
+        const output = JSON.stringify(result, null, 2);
+        console.log(output);
+        this.save(new Blob([output], { type: "text/plain" }), "scene.gltf");
+      },
+      function (error) {
+        console.log("An error happened during parsing", error);
+      },
+      options
+    );
+  }
+
+  exportGlb() {
+    const exporter = new GLTFExporter();
+    const options = {};
+    exporter.parse(
+      this.scene,
+      (result) => {
+        const output = JSON.stringify(result, null, 2);
+        console.log(output);
+        this.save(new Blob([output], { type: "text/plain" }), "scene.glb");
+
+      },
+      function (error) {
+        console.log("An error happened during parsing", error);
+      },
+      options
+    );
+  }
+
+  exportImg() {
+    const canvasEl = document.getElementById("myCanvas");
+    // This will prevent return black image.
+    this.object.setUp.animate();
+    canvasToImage(canvasEl, {
+      name: "myImage",
+      type: "png",
+      quality: 1,
+    });
+  }
+
+  save(blob, filename) {
+    const link = document.createElement("a");
+    link.style.display = "none";
+    document.body.appendChild(link);
+    link.href = URL.createObjectURL(blob);
+    link.download = filename;
+    link.click();
+    link.remove();
+    // URL.revokeObjectURL( url ); breaks Firefox...
+  }
 }

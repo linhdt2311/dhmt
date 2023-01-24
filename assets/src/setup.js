@@ -42,13 +42,14 @@ export default class SetUp {
     this.controls.rotateSpeed = 0.6;
 
     var myCanvas = document.getElementById("myCanvas");
-    var myCanvas = document.getElementById("myCanvas");
 
     myCanvas.height = window.innerHeight;
     this.renderer.domElement = myCanvas;
+  
     this.renderer.setPixelRatio(window.devicePixelRatio);
     this.renderer.setSize(myCanvas.innerWidth, myCanvas.innerHeight);
     this.camera.aspect = myCanvas.innerWidth / myCanvas.innerHeight;
+   
     this.renderer.shadowMap.enabled = true;
 
     window.addEventListener("resize", this.onWindowResize());
