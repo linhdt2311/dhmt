@@ -4,6 +4,8 @@ import { DRACOLoader } from "three/examples/jsm/loaders/DRACOLoader";
 import SetUp from "./setup";
 import { getDatabase, ref, child, get, set } from "firebase/database";
 import { Auth } from "./auth.js";
+import { OrbitControls } from "three/examples/jsm/controls/OrbitControls";
+
 export default class Object {
   setUp = new SetUp();
   auth = new Auth();
@@ -12,12 +14,15 @@ export default class Object {
   database = this.auth.database;
   group = this.setUp.group;
   groupModel = this.setUp.groupModel;
-  scene = this.setUp.scene;
   listModel = [];
   storeModel = [];
   loading = document.getElementById("loading");
   toastLiveExample = document.getElementById("liveToast");
-
+  previewCanvas = null;
+  previewModal = null;
+  scene = null;
+  camera = null;
+  controls = null;
   model;
   constructor() {
     this.initLoader();
@@ -26,6 +31,10 @@ export default class Object {
       this.loadFloor();
       this.fetchModel();
       this.addModel();
+      this.previewCanvas = document.getElementById("previewCanvas");
+      this.previewModal = document.getElementById("preview-modal");
+      // this.renderer = new THREE.WebGLRenderer({ canvas: previewCanvas });
+      this.onPreviewModel();
     }, 2000);
     this.saveModel();
   }
@@ -53,7 +62,7 @@ export default class Object {
       this.group.receiveShadow = true;
       this.group.userData.name = "Plane";
       this.group.userData.type = "Plane";
-      this.scene.add(this.group);
+      this.setUp.scene.add(this.group);
     });
   }
 
@@ -117,13 +126,32 @@ export default class Object {
             </div>
             <div class="col col-7">
             <span class="fw-bold">${item.name}</span>
+            <button  data-bs-toggle="modal" data-bs-target="#preview-modal" data-preview-id=pre-${item.id}>Preview</button>
             <p class="fst-italic">${item.description}</p>
           </div>
           </div>
           </div>
         
+         
      `;
     });
+    stringHtml += ` <div class="modal modal-lg" tabindex="-1" id="preview-modal">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Preview model</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cancel"></button>
+            </div>
+            <div class="modal-body">
+              <canvas width="100%" height="300px" id="previewCanvas"></canvas>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <a class="btn btn-danger btn-delete" data-bs-dismiss="modal"  id="load" >Load</a>
+            </div>
+        </div>
+    </div>
+  </div>`;
     return stringHtml;
   }
 
@@ -133,7 +161,7 @@ export default class Object {
       this.storeModel = [...data];
       for (const item of data) {
         // Cannot async/ await forEach, map func
-        await this.loadModelFromStore(item.id);
+        await this.loadModelFromStore(item.id, this.setUp.scene);
       }
     }
   }
@@ -144,17 +172,17 @@ export default class Object {
       if (this.model) return false;
       else return true;
     });
-    await this.loadModelByUrl(this.model.url);
+    await this.loadModelByUrl(this.model.url, this.setUp.scene);
   }
 
-  async loadModelFromStore(id) {
+  async loadModelFromStore(id, scene) {
     this.loading.style.display = "block";
     this.model = this.storeModel.find((item) => item.id == id);
-    await this.loadModelByUrl(this.model.url);
+    await this.loadModelByUrl(this.model.url, scene);
     this.loading.style.display = "none";
   }
 
-  async loadModelByUrl(url) {
+  async loadModelByUrl(url, scene) {
     await this.gltfLoader.loadAsync(url).then((gltf) => {
       const model = gltf.scene;
       model.castShadow = true;
@@ -192,7 +220,7 @@ export default class Object {
       model.userData.type = this.model.type;
       model.userData.insurance = this.model.insurance;
       model.userData.url = this.model.url;
-      this.scene.add(model);
+      scene.add(model);
     });
   }
 
@@ -237,8 +265,70 @@ export default class Object {
         }
       });
       this.onSaveData(data);
-      
     });
+  }
+
+  onPreviewModel() {
+    this.scene = new THREE.Scene();
+    this.renderer = new THREE.WebGLRenderer({ canvas: this.previewCanvas });
+    this.camera = new THREE.PerspectiveCamera(
+      75,
+      window.innerWidth / window.innerHeight,
+      0.1,
+      1000
+    );
+
+    this.controls = new OrbitControls(this.camera, this.renderer.domElement);
+    this.camera.position.set(20, 20, 25);
+    this.camera.lookAt(new THREE.Vector3(0, 0, 20));
+
+    this.renderer.domElement = this.previewCanvas;
+    this.renderer.setPixelRatio(window.devicePixelRatio);
+    this.previewCanvas.style.width = "100%";
+    this.previewCanvas.style.height = "300px";
+    this.renderer.setSize(
+      this.previewCanvas.innerWidth,
+      this.previewCanvas.innerHeight
+    );
+    this.camera.aspect =
+      this.previewCanvas.innerWidth / this.previewCanvas.innerHeight;
+    this.renderer.shadowMap.enabled = true;
+    this.setLight();
+    this.setCamera();
+    this.previewModal.addEventListener("shown.bs.modal", async (e) => {
+      var previewId = $(e.relatedTarget).data("preview-id").slice(4);
+      debugger
+      const geometry = new THREE.BoxGeometry( 1, 1, 1 );
+      const material = new THREE.MeshBasicMaterial( { color: 0x00ff00 } );
+			const cube = new THREE.Mesh( geometry, material );
+			this.scene.add( cube );
+      // await this.loadModelFromStore(previewId, this.scene);
+        this.renderer.render(this.scene, this.camera);
+      this.animate();
+
+    });
+    this.animate();
+  }
+
+  setLight() {
+    const light = new THREE.AmbientLight(0xffaaff);
+    light.position.set(10, 10, 10);
+    this.scene.add(light);
+  }
+
+  setCamera() {
+    this.controls.maxPolarAngle = Math.PI * 0.495;
+    this.controls.target.set(0, 0, 0);
+    this.controls.minDistance = 0;
+    this.controls.maxDistance = 200.0;
+    this.controls.update();
+  }
+
+  animate() {
+    //dragObject();
+    this.controls.update();
+    requestAnimationFrame(() => this.animate());
+    this.renderer.render(this.scene, this.camera);
   }
 
   onSaveData(data) {
@@ -251,6 +341,6 @@ export default class Object {
       localStorage.setItem("models", JSON.stringify(data));
     });
     const toast = new bootstrap.Toast(this.toastLiveExample);
-      toast.show();
+    toast.show();
   }
 }
