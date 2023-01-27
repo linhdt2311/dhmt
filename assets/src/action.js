@@ -19,7 +19,9 @@ export default class Experience {
   deleteBtn = document.getElementById("delete-btn");
   deleteConfirmBtn = document.getElementById("delete-confirm");
   scaleForm = document.getElementById("scale-form");
-  scaleAdjust = document.getElementById("scale-adjust");
+  positionForm = document.getElementById("position-form");
+  rotationForm = document.getElementById("rotation-form");
+  //scaleAdjust = document.getElementById("scale-adjust");
   exportGlbBtn = document.getElementById("export-glb");
   exporGltfBtn = document.getElementById("export-gltf");
   exportImgBtn = document.getElementById("export-img");
@@ -31,8 +33,7 @@ export default class Experience {
     this.rotate();
     this.scale();
     this.deleteObject();
-    this.onClickScaleAdjust();
-    this.onChangeScale();
+    //this.onClickScaleAdjust();
     this.export();
   }
 
@@ -54,7 +55,6 @@ export default class Experience {
         }
       }
       this.transformControls.detach();
-      this.scaleAdjust.style.display = "none";
       if (
         found.length > 0 &&
         found[0].object.type != "TransformControlsPlane" &&
@@ -64,33 +64,64 @@ export default class Experience {
         this.transformControls.enabled = true;
         this.draggable = found[0].object;
         this.deleteBtn.style.display = "block";
-        this.scaleForm.elements["xAsis"].value =
-          Math.round(this.draggable.scale.x * 100) / 100;
-        this.scaleForm.elements["yAsis"].value =
-          Math.round(this.draggable.scale.y * 100) / 100;
-        this.scaleForm.elements["zAsis"].value =
-          Math.round(this.draggable.scale.z * 100) / 100;
-        this.scaleAdjust.style.display = "block";
         this.addTransformControl(this.draggable);
         this.viewDetailObject();
+        const scaleForm = document.getElementById("scale-form");
+        const positionForm = document.getElementById("position-form");
+        const rotationForm = document.getElementById("rotation-form");
+        positionForm.elements["xAsis"].value = Math.round(this.draggable.position.x * 100) / 100;
+        positionForm.elements["yAsis"].value = Math.round(this.draggable.position.y * 100) / 100;
+        positionForm.elements["zAsis"].value = Math.round(this.draggable.position.z * 100) / 100;
+        scaleForm.elements["xAsis"].value = Math.round(this.draggable.scale.x * 100) / 100;
+        scaleForm.elements["yAsis"].value = Math.round(this.draggable.scale.y * 100) / 100;
+        scaleForm.elements["zAsis"].value = Math.round(this.draggable.scale.z * 100) / 100;
+        rotationForm.elements["xAsis"].value = Math.round(this.draggable.scale.x * 100) / 100;
+        rotationForm.elements["yAsis"].value = Math.round(this.draggable.scale.y * 100) / 100;
+        rotationForm.elements["zAsis"].value = Math.round(this.draggable.scale.z * 100) / 100;
+        this.onChangeScale();
+        this.onChangePosition();
+        this.onChangeRotation();
       } else {
         this.transformControls.enabled = false;
       }
     });
   }
 
-  onClickScaleAdjust() {
-    this.scaleAdjust.addEventListener("click", (e) => {
-      e.stopPropagation();
+  // onClickScaleAdjust() {
+  //   this.scaleAdjust.addEventListener("click", (e) => {
+  //     e.stopPropagation();
+  //   });
+  // }
+
+  onChangeScale() {
+    const scaleForm = document.getElementById("scale-form");
+    scaleForm.addEventListener("change", (e) => {
+      this.draggable.scale.set(
+        Math.round(scaleForm.elements["xAsis"].value * 100) / 100,
+        Math.round(scaleForm.elements["yAsis"].value * 100) / 100,
+        Math.round(scaleForm.elements["zAsis"].value * 100) / 100
+      );
     });
   }
 
-  onChangeScale() {
-    this.scaleForm.addEventListener("change", (e) => {
-      this.draggable.scale.set(
-        Math.round(this.scaleForm.elements["xAsis"].value * 100) / 100,
-        Math.round(this.scaleForm.elements["yAsis"].value * 100) / 100,
-        Math.round(this.scaleForm.elements["zAsis"].value * 100) / 100
+  onChangePosition() {
+    const positionForm = document.getElementById("position-form");
+    positionForm.addEventListener("change", (e) => {
+      this.draggable.position.set(
+        Math.round(positionForm.elements["xAsis"].value * 100) / 100,
+        Math.round(positionForm.elements["yAsis"].value * 100) / 100,
+        Math.round(positionForm.elements["zAsis"].value * 100) / 100
+      );
+    });
+  }
+
+  onChangeRotation() {
+    const rotationForm = document.getElementById("rotation-form");
+    rotationForm.addEventListener("change", (e) => {
+      this.draggable.rotation.set(
+        Math.round(rotationForm.elements["xAsis"].value * 100) / 100,
+        Math.round(rotationForm.elements["yAsis"].value * 100) / 100,
+        Math.round(rotationForm.elements["zAsis"].value * 100) / 100
       );
     });
   }
@@ -99,132 +130,130 @@ export default class Experience {
     const objectInfo = document.getElementById("object");
     let stringHtml = "";
     stringHtml += `
-    
   <div class="d-flex row mt-4 mb-4">
     <div class="col col-12 text-center">
-      <img  width="80px" height="80px" src="${
-        this.draggable.userData.photoUrl
+      <img  width="80px" height="80px" src="${this.draggable.userData.photoUrl
       }">
     </div>
   </div>
   
   <div class="px-3" style="font-size: 15px">
-  <div class="d-flex row mb-2">
-    <div class="col col-5">
-      <span class="fw-bold">Type:</span>
-    </div>
-    <div class="col col-7">
-      <span>${this.draggable.userData.type}</span>
-    </div>
-  </div>
-
-  <div class="d-flex row mb-2">
-    <div class="col col-5">
-      <span class="fw-bold">Is 3D:</span>
-    </div>
-    <div class="col col-7">
-      <span>${this.draggable.isObject3D}</span>
-    </div>
-  </div>
-
-  <div class="d-flex row mb-2">
-    <div class="col col-5">
-      <span class="fw-bold">Material:</span>
-    </div>
-    <div class="col col-7">
-      <span>${this.draggable.userData.material}</span>
-    </div>
-  </div>
-
-  <div class="d-flex row mb-2">
-    <div class="col col-5">
-      <span class="fw-bold">Size:</span>
-    </div>
-    <div class="col col-7">
-      <span>${this.draggable.userData.size}</span>
-    </div>
-  </div>
-
-  <div class="d-flex row mb-2">
-    <div class="col col-5">
-      <span class="fw-bold">Origin:</span>
-    </div>
-    <div class="col col-7">
-      <span>${this.draggable.userData.origin}</span>
-    </div>
-  </div>
-  <div class="d-flex row mb-2">
-  <div class="col col-5">
-    <span class="fw-bold">Price:</span>
-  </div>
-  <div class="col col-7">
-    <span>${this.draggable.userData.price}</span>
-  </div>
-</div>
-<div class="d-flex row mb-2">
-<div class="col col-5">
-  <span class="fw-bold">Insurance:</span>
-</div>
-<div class="col col-7">
-  <span>${this.draggable.userData.insurance}</span>
-</div>
-</div>
-<div class="d-flex row mb-2">
-<div class="col col-5">
-  <span class="fw-bold">Position:</span>
-</div>
-<div class="col col-7">
-<div class="d-flex row">
-<div class="col col-4">
-<span>${Math.round(this.draggable.position.x * 100) / 100}</span>
-</div>
-<div class="col col-4">
-<span>${Math.round(this.draggable.position.y * 100) / 100}</span>
-</div>
-<div class="col col-4">
-<span>${Math.round(this.draggable.position.z * 100) / 100}</span>
-</div>
-  </div>
-</div>
-</div>
-<div class="d-flex row mb-2">
-  <div class="col col-5">
-    <span class="fw-bold">Scale:</span>
-  </div>
-  <div class="col col-7">
-  <div class="d-flex row">
-  <div class="col col-4">
-  <span>${Math.round(this.draggable.scale.x * 100) / 100}</span>
-  </div>
-  <div class="col col-4">
-  <span>${Math.round(this.draggable.scale.y * 100) / 100}</span>
-  </div>
-  <div class="col col-4">
-  <span>${Math.round(this.draggable.scale.z * 100) / 100}</span>
-  </div>
-    </div>
-  </div>
-  </div>
-  <div class="d-flex row mb-2">
-    <div class="col col-5">
-      <span class="fw-bold">Rotation:</span>
-    </div>
-    <div class="col col-7">
-    <div class="d-flex row">
-    <div class="col col-4">
-    <span>${Math.round(this.draggable.rotation._x * 100) / 100}</span>
-    </div>
-    <div class="col col-4">
-    <span>${Math.round(this.draggable.rotation._y * 100) / 100}</span>
-    </div>
-    <div class="col col-4">
-    <span>${Math.round(this.draggable.rotation._z * 100) / 100}</span>
-    </div>
+    <div class="d-flex row mb-2">
+      <div class="col col-5">
+        <span class="fw-bold">Type:</span>
+      </div>
+      <div class="col col-7">
+        <span>${this.draggable.userData.type}</span>
       </div>
     </div>
+
+    <div class="d-flex row mb-2">
+      <div class="col col-5">
+        <span class="fw-bold">Is 3D:</span>
+      </div>
+      <div class="col col-7">
+        <span>${this.draggable.isObject3D}</span>
+      </div>
+    </div>
+
+    <div class="d-flex row mb-2">
+      <div class="col col-5">
+        <span class="fw-bold">Material:</span>
+      </div>
+      <div class="col col-7">
+        <span>${this.draggable.userData.material}</span>
+      </div>
+    </div>
+
+    <div class="d-flex row mb-2">
+      <div class="col col-5">
+        <span class="fw-bold">Size:</span>
+      </div>
+      <div class="col col-7">
+        <span>${this.draggable.userData.size}</span>
+      </div>
+    </div>
+
+    <div class="d-flex row mb-2">
+      <div class="col col-5">
+        <span class="fw-bold">Origin:</span>
+      </div>
+      <div class="col col-7">
+        <span>${this.draggable.userData.origin}</span>
+      </div>
+    </div>
+    <div class="d-flex row mb-2">
+      <div class="col col-5">
+        <span class="fw-bold">Price:</span>
+      </div>
+      <div class="col col-7">
+        <span>${this.draggable.userData.price}</span>
+      </div>
+    </div>
+    <div class="d-flex row mb-2">
+      <div class="col col-5">
+        <span class="fw-bold">Insurance:</span>
+      </div>
+      <div class="col col-7">
+        <span>${this.draggable.userData.insurance}</span>
+      </div>
+    </div>
+    <div class="d-flex row mb-2">
+      <div class="col col-5">
+        <span class="fw-bold">Position:</span>
+      </div>
+      <div class="col col-7">
+        <form class="d-flex row" id="position-form">
+          <div class="col col-4">
+            <input (blur)="onChangePosition()" name="xAsis" min="0" max="3" type="number" placeholder="X" >
+          </div>
+          <div class="col col-4">
+            <input (blur)="onChangePosition()" name="yAsis"  min="0" max="3" type="number" placeholder="Y" >
+          </div>
+          <div class="col col-4">
+            <input (blur)="onChangePosition()" name="zAsis"  min="0" max="3" type="number" placeholder="Z" >
+          </div>
+        </form>
+      </div>
+    </div>
+    <div class="d-flex row mb-2">
+      <div class="col col-5">
+        <span class="fw-bold">Scale:</span>
+      </div>
+      <div class="col col-7">
+        <form class="d-flex row" id="scale-form">
+          <div class="col col-4">
+            <input (blur)="onChangeScale()" name="xAsis" min="0" max="3" type="number" placeholder="X" >
+          </div>
+          <div class="col col-4">
+            <input (blur)="onChangeScale()" name="yAsis"  min="0" max="3" type="number" placeholder="Y" >
+          </div>
+          <div class="col col-4">
+            <input (blur)="onChangeScale()" name="zAsis"  min="0" max="3" type="number" placeholder="Z" >
+          </div>
+        </form>
+      </div>
+    </div>
+    <div class="d-flex row mb-2">
+      <div class="col col-5">
+        <span class="fw-bold">Rotation:</span>
+      </div>
+      <div class="col col-7">
+        <form class="d-flex row" id="rotation-form">
+          <div class="col col-4">
+            <input (blur)="onChangeScale()" name="xAsis" min="0" max="3" type="number" placeholder="X" >
+          </div>
+          <div class="col col-4">
+            <input (blur)="onChangeScale()" name="yAsis"  min="0" max="3" type="number" placeholder="Y" >
+          </div>
+          <div class="col col-4">
+            <input (blur)="onChangeScale()" name="zAsis"  min="0" max="3" type="number" placeholder="Z" >
+          </div>
+        </form>
+      </div>
     </div>
   </div>
-        `;
+  `;
     objectInfo.innerHTML = stringHtml;
   }
 

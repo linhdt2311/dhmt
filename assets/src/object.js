@@ -112,27 +112,25 @@ export default class Object {
     data.list.forEach((item) => {
       stringHtml += `
       <div class="card-body">
-          <div class="d-flex row">
-            <div class="col col-5 ">
+        <div class="d-flex row">
+          <div class="col col-5 ">
             <div class="img-wrap" style="cursor: pointer"  id=but-${item.id}>
               <img class="img-content w-100" height="80px"  src="${item.photoUrl}">
               <p class="img-des m-0 text-center" >
-              <span class="fw-bold" style="line-height: 80px;">Load</span>
-              <div class="spinner" style="display:none">
-              <span class="spinner-border spinner-border-sm me-2" role="status" aria-hidden="true"></span>
+                <span class="fw-bold" style="line-height: 80px;">Load</span>
+                <div class="spinner" style="display:none">
+                  <span class="spinner-border spinner-border-sm me-2" role="status" aria-hidden="true"></span>
+                </div>
               </p>
-              </div>
             </div>
-            </div>
-            <div class="col col-7">
+          </div>
+          <div class="col col-7">
             <span class="fw-bold">${item.name}</span>
             <button  data-bs-toggle="modal" data-bs-target="#preview-modal" data-preview-id=pre-${item.id}>Preview</button>
             <p class="fst-italic">${item.description}</p>
           </div>
-          </div>
-          </div>
-        
-         
+        </div>
+      </div>
      `;
     });
     stringHtml += ` <div class="modal modal-lg" tabindex="-1" id="preview-modal">
