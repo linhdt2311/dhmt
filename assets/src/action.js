@@ -32,6 +32,7 @@ export default class Experience {
     this.deleteObject();
     //this.onClickScaleAdjust();
     this.export();
+
   }
 
   foundObject() {
@@ -66,15 +67,24 @@ export default class Experience {
         const scaleForm = document.getElementById("scale-form");
         const positionForm = document.getElementById("position-form");
         const rotationForm = document.getElementById("rotation-form");
-        positionForm.elements["xAsis"].value = Math.round(this.draggable.position.x * 100) / 100;
-        positionForm.elements["yAsis"].value = Math.round(this.draggable.position.y * 100) / 100;
-        positionForm.elements["zAsis"].value = Math.round(this.draggable.position.z * 100) / 100;
-        scaleForm.elements["xAsis"].value = Math.round(this.draggable.scale.x * 100) / 100;
-        scaleForm.elements["yAsis"].value = Math.round(this.draggable.scale.y * 100) / 100;
-        scaleForm.elements["zAsis"].value = Math.round(this.draggable.scale.z * 100) / 100;
-        rotationForm.elements["xAsis"].value = Math.round(this.draggable.rotation.x * 100) / 100;
-        rotationForm.elements["yAsis"].value = Math.round(this.draggable.rotation.y * 100) / 100;
-        rotationForm.elements["zAsis"].value = Math.round(this.draggable.rotation.z * 100) / 100;
+        positionForm.elements["xAsis"].value =
+          Math.round(this.draggable.position.x * 100) / 100;
+        positionForm.elements["yAsis"].value =
+          Math.round(this.draggable.position.y * 100) / 100;
+        positionForm.elements["zAsis"].value =
+          Math.round(this.draggable.position.z * 100) / 100;
+        scaleForm.elements["xAsis"].value =
+          Math.round(this.draggable.scale.x * 100) / 100;
+        scaleForm.elements["yAsis"].value =
+          Math.round(this.draggable.scale.y * 100) / 100;
+        scaleForm.elements["zAsis"].value =
+          Math.round(this.draggable.scale.z * 100) / 100;
+        rotationForm.elements["xAsis"].value =
+          Math.round(this.draggable.rotation.x * 100) / 100;
+        rotationForm.elements["yAsis"].value =
+          Math.round(this.draggable.rotation.y * 100) / 100;
+        rotationForm.elements["zAsis"].value =
+          Math.round(this.draggable.rotation.z * 100) / 100;
         this.onChangeScale();
         this.onChangePosition();
         this.onChangeRotation();
@@ -129,8 +139,7 @@ export default class Experience {
     stringHtml += `
   <div class="d-flex row mt-4 mb-4">
     <div class="col col-12 text-center">
-      <img  width="80px" height="80px" src="${this.draggable.userData.photoUrl
-      }">
+      <img  width="80px" height="80px" src="${this.draggable.userData.photoUrl}">
     </div>
   </div>
   
@@ -202,13 +211,13 @@ export default class Experience {
       <div class="col col-7">
         <form class="d-flex row" id="position-form">
           <div class="col col-4">
-            <input (blur)="onChangePosition()" name="xAsis" min="0" max="3" type="number" placeholder="X" >
+            <input class='number' (blur)="onChangePosition()" name="xAsis" min="0" max="3" type="number" placeholder="X" >
           </div>
           <div class="col col-4">
-            <input (blur)="onChangePosition()" name="yAsis"  min="0" max="3" type="number" placeholder="Y" >
+            <input class='number' (blur)="onChangePosition()" name="yAsis"  min="0" max="3" type="number" placeholder="Y" >
           </div>
           <div class="col col-4">
-            <input (blur)="onChangePosition()" name="zAsis"  min="0" max="3" type="number" placeholder="Z" >
+            <input class='number' (blur)="onChangePosition()" name="zAsis"  min="0" max="3" type="number" placeholder="Z" >
           </div>
         </form>
       </div>
@@ -220,13 +229,13 @@ export default class Experience {
       <div class="col col-7">
         <form class="d-flex row" id="scale-form">
           <div class="col col-4">
-            <input (blur)="onChangeScale()" name="xAsis" min="0" max="3" type="number" placeholder="X" >
+            <input class='number' (blur)="onChangeScale()" name="xAsis" min="0" max="3" type="number" placeholder="X" >
           </div>
           <div class="col col-4">
-            <input (blur)="onChangeScale()" name="yAsis"  min="0" max="3" type="number" placeholder="Y" >
+            <input class='number' (blur)="onChangeScale()" name="yAsis"  min="0" max="3" type="number" placeholder="Y" >
           </div>
           <div class="col col-4">
-            <input (blur)="onChangeScale()" name="zAsis"  min="0" max="3" type="number" placeholder="Z" >
+            <input class='number' (blur)="onChangeScale()" name="zAsis"  min="0" max="3" type="number" placeholder="Z" >
           </div>
         </form>
       </div>
@@ -238,18 +247,24 @@ export default class Experience {
       <div class="col col-7">
         <form class="d-flex row" id="rotation-form">
           <div class="col col-4">
-            <input (blur)="onChangeScale()" name="xAsis" min="0" max="3" type="number" placeholder="X" >
+                              
+      
+
+            <input class='number' (blur)="onChangeScale()" name="xAsis" min="0" max="3" type="number" placeholder="X" >
           </div>
           <div class="col col-4">
-            <input (blur)="onChangeScale()" name="yAsis"  min="0" max="3" type="number" placeholder="Y" >
+            <input class='number' (blur)="onChangeScale()" name="yAsis"  min="0" max="3" type="number" placeholder="Y" >
           </div>
           <div class="col col-4">
-            <input (blur)="onChangeScale()" name="zAsis"  min="0" max="3" type="number" placeholder="Z" >
+            <input class='number' (blur)="onChangeScale()" name="zAsis"  min="0" max="3" type="number" placeholder="Z" >
           </div>
         </form>
       </div>
     </div>
   </div>
+
+
+
   `;
     objectInfo.innerHTML = stringHtml;
   }
@@ -364,7 +379,6 @@ export default class Experience {
         const output = JSON.stringify(result, null, 2);
         console.log(output);
         this.save(new Blob([output], { type: "text/plain" }), "scene.glb");
-
       },
       function (error) {
         console.log("An error happened during parsing", error);

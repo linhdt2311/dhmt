@@ -364,3 +364,12 @@ h1 {
   margin-left: auto;
   margin-right: auto;
 }
+
+input.number{
+  color: #08f!important;
+  font-size: 12px;
+  border: 0px;
+  padding: 2px;
+  cursor: ns-resize;
+  background-color: transparent;
+}
