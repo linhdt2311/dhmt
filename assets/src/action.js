@@ -18,9 +18,6 @@ export default class Experience {
   scaleBtn = document.getElementById("scale-btn");
   deleteBtn = document.getElementById("delete-btn");
   deleteConfirmBtn = document.getElementById("delete-confirm");
-  scaleForm = document.getElementById("scale-form");
-  positionForm = document.getElementById("position-form");
-  rotationForm = document.getElementById("rotation-form");
   //scaleAdjust = document.getElementById("scale-adjust");
   exportGlbBtn = document.getElementById("export-glb");
   exporGltfBtn = document.getElementById("export-gltf");
@@ -75,9 +72,9 @@ export default class Experience {
         scaleForm.elements["xAsis"].value = Math.round(this.draggable.scale.x * 100) / 100;
         scaleForm.elements["yAsis"].value = Math.round(this.draggable.scale.y * 100) / 100;
         scaleForm.elements["zAsis"].value = Math.round(this.draggable.scale.z * 100) / 100;
-        rotationForm.elements["xAsis"].value = Math.round(this.draggable.scale.x * 100) / 100;
-        rotationForm.elements["yAsis"].value = Math.round(this.draggable.scale.y * 100) / 100;
-        rotationForm.elements["zAsis"].value = Math.round(this.draggable.scale.z * 100) / 100;
+        rotationForm.elements["xAsis"].value = Math.round(this.draggable.rotation.x * 100) / 100;
+        rotationForm.elements["yAsis"].value = Math.round(this.draggable.rotation.y * 100) / 100;
+        rotationForm.elements["zAsis"].value = Math.round(this.draggable.rotation.z * 100) / 100;
         this.onChangeScale();
         this.onChangePosition();
         this.onChangeRotation();
