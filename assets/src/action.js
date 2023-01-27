@@ -356,12 +356,14 @@ export default class Experience {
   exportGltf() {
     const exporter = new GLTFExporter();
     const options = {};
+    this.object.loading.style.display = "block";
     exporter.parse(
       this.scene,
       (result) => {
         const output = JSON.stringify(result, null, 2);
         console.log(output);
         this.save(new Blob([output], { type: "text/plain" }), "scene.gltf");
+        this.object.loading.style.display = "none";
       },
       function (error) {
         console.log("An error happened during parsing", error);
@@ -373,12 +375,14 @@ export default class Experience {
   exportGlb() {
     const exporter = new GLTFExporter();
     const options = {};
+    this.object.loading.style.display = "block";
     exporter.parse(
       this.scene,
       (result) => {
         const output = JSON.stringify(result, null, 2);
         console.log(output);
         this.save(new Blob([output], { type: "text/plain" }), "scene.glb");
+        this.object.loading.style.display = "none";
       },
       function (error) {
         console.log("An error happened during parsing", error);
