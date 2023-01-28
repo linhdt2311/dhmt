@@ -50,13 +50,23 @@ export class Auth {
         const dbRef = ref(getDatabase());
         await get(child(dbRef, 'users/' + user.uid + '/models')).then((snapshot) => {
           if (snapshot.exists()) {
-            localStorage.setItem("models", JSON.stringify(snapshot.val()));
+            localStorage.setItem("userModels", JSON.stringify(snapshot.val()));
           } else {
             console.log("No data available");
           }
         }).catch((error) => {
           console.error(error);
         });
+        await get(child(dbRef, 'data')).then((snapshot) => {
+          if (snapshot.exists()) {
+            localStorage.setItem("data", JSON.stringify(snapshot.val()));
+          } else {
+            console.log("No data available");
+          }
+        }).catch((error) => {
+          console.error(error);
+        });
+        
         window.location.assign("/model.html");
 
       })
