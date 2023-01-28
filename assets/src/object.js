@@ -3,6 +3,7 @@ import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader.js";
 import { DRACOLoader } from "three/examples/jsm/loaders/DRACOLoader";
 import SetUp from "./setup";
 import { getDatabase, ref, child, get, set } from "firebase/database";
+import { getStorage, ref as sRef } from "firebase/storage";
 import { Auth } from "./auth.js";
 import { OrbitControls } from "three/examples/jsm/controls/OrbitControls";
 
@@ -24,6 +25,9 @@ export default class Object {
   camera = null;
   controls = null;
   model;
+  storage = getStorage();
+  floorUrl =
+    "https://firebasestorage.googleapis.com/v0/b/da-dhmt.appspot.com/o/models%2FfloorPlan.glb?alt=media&token=55f0fde5-5419-438b-9dd4-87b15da442ff";
   constructor() {
     this.initLoader();
     this.fetchData();
@@ -49,7 +53,8 @@ export default class Object {
 
   loadFloor() {
     let floor;
-    this.gltfLoader.loadAsync("/models/floorPlan.glb").then((gltf) => {
+    // const httpsReference = sRef(this.storage, 'gs://da-dhmt.appspot.com/models/floorPlan.glb');
+    this.gltfLoader.loadAsync(this.floorUrl).then((gltf) => {
       floor = gltf.scene;
       for (let i = 0; i < floor.children.length; i++) {
         floor.children[i].userData.name = "Plane";
@@ -68,13 +73,10 @@ export default class Object {
 
   async fetchData() {
     var modelList = document.getElementById("model");
-    await fetch("./data/data.json")
-      .then((response) => response.json())
-      .then((json) => {
-        this.listModel = [...json];
-        let stringHtml = "";
-        this.listModel.forEach((item) => {
-          stringHtml += `
+    this.listModel = JSON.parse(localStorage.getItem("data"));
+    let stringHtml = "";
+    this.listModel.forEach((item) => {
+      stringHtml += `
           <div class="flex flex-column list-model">
           <div class="row">
           <div class="col col-12">
@@ -102,9 +104,8 @@ export default class Object {
           </div>
           </div>
             `;
-        });
-        modelList.innerHTML = stringHtml;
-      });
+    });
+    modelList.innerHTML = stringHtml;
   }
 
   loadDetailObject(data) {
@@ -112,25 +113,27 @@ export default class Object {
     data.list.forEach((item) => {
       stringHtml += `
       <div class="card-body">
-        <div class="d-flex row">
-          <div class="col col-5 ">
+          <div class="d-flex row">
+            <div class="col col-5 ">
             <div class="img-wrap" style="cursor: pointer"  id=but-${item.id}>
               <img class="img-content w-100" height="80px"  src="${item.photoUrl}">
               <p class="img-des m-0 text-center" >
-                <span class="fw-bold" style="line-height: 80px;">Load</span>
-                <div class="spinner" style="display:none">
-                  <span class="spinner-border spinner-border-sm me-2" role="status" aria-hidden="true"></span>
-                </div>
+              <span class="fw-bold" style="line-height: 80px;">Load</span>
+              <div class="spinner" style="display:none">
+              <span class="spinner-border spinner-border-sm me-2" role="status" aria-hidden="true"></span>
               </p>
+              </div>
             </div>
-          </div>
-          <div class="col col-7">
+            </div>
+            <div class="col col-7">
             <span class="fw-bold">${item.name}</span>
             <button  data-bs-toggle="modal" data-bs-target="#preview-modal" data-preview-id=pre-${item.id}>Preview</button>
             <p class="fst-italic">${item.description}</p>
           </div>
-        </div>
-      </div>
+          </div>
+          </div>
+        
+         
      `;
     });
     stringHtml += ` <div class="modal modal-lg" tabindex="-1" id="preview-modal">
@@ -154,17 +157,17 @@ export default class Object {
   }
 
   async fetchModel() {
-    const data = JSON.parse(localStorage.getItem("models"));
+    const data = JSON.parse(localStorage.getItem("userModels"));
     if (data) {
       this.storeModel = [...data];
       for (const item of data) {
         // Cannot async/ await forEach, map func
-        await this.loadModelFromStore(item.id, this.setUp.scene);
+        await this.loadUserModels(item.id, this.setUp.scene);
       }
     }
   }
 
-  async loadModelFromList(id) {
+  async loadListModels(id) {
     this.listModel.every((item) => {
       this.model = item.list.find((x) => x.id == id);
       if (this.model) return false;
@@ -173,7 +176,7 @@ export default class Object {
     await this.loadModelByUrl(this.model.url, this.setUp.scene);
   }
 
-  async loadModelFromStore(id, scene) {
+  async loadUserModels(id, scene) {
     this.loading.style.display = "block";
     this.model = this.storeModel.find((item) => item.id == id);
     await this.loadModelByUrl(this.model.url, scene);
@@ -237,7 +240,7 @@ export default class Object {
     }
     loadBtn.setAttribute("disabled", true);
     const id = event.currentTarget.id.slice(4);
-    await this.loadModelFromList(id);
+    await this.loadListModels(id);
     for (let item of loadingState) {
       item.style.display = "none";
     }
@@ -295,15 +298,14 @@ export default class Object {
     this.setCamera();
     this.previewModal.addEventListener("shown.bs.modal", async (e) => {
       var previewId = $(e.relatedTarget).data("preview-id").slice(4);
-      debugger
-      const geometry = new THREE.BoxGeometry( 1, 1, 1 );
-      const material = new THREE.MeshBasicMaterial( { color: 0x00ff00 } );
-			const cube = new THREE.Mesh( geometry, material );
-			this.scene.add( cube );
-      // await this.loadModelFromStore(previewId, this.scene);
-        this.renderer.render(this.scene, this.camera);
+      debugger;
+      const geometry = new THREE.BoxGeometry(1, 1, 1);
+      const material = new THREE.MeshBasicMaterial({ color: 0x00ff00 });
+      const cube = new THREE.Mesh(geometry, material);
+      this.scene.add(cube);
+      // await this.loadUserModels(previewId, this.scene);
+      this.renderer.render(this.scene, this.camera);
       this.animate();
-
     });
     this.animate();
   }
@@ -336,7 +338,7 @@ export default class Object {
       models: data,
     }).then(() => {
       this.loading.style.display = "none";
-      localStorage.setItem("models", JSON.stringify(data));
+      localStorage.setItem("userModels", JSON.stringify(data));
     });
     const toast = new bootstrap.Toast(this.toastLiveExample);
     toast.show();
