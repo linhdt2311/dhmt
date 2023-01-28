@@ -18,12 +18,14 @@ export default class Object {
   storeModel = [];
   loading = document.getElementById("loading");
   toastLiveExample = document.getElementById("liveToast");
-  previewCanvas = null;
-  previewModal = null;
-  scene = null;
-  camera = null;
-  controls = null;
+  previewCanvas = document.getElementById("previewCanvas");
+  previewModal;
+  scene;
+  renderer;
+  camera;
+  controls;
   model;
+  
   constructor() {
     this.initLoader();
     this.fetchData();
@@ -33,7 +35,10 @@ export default class Object {
       this.addModel();
       this.previewCanvas = document.getElementById("previewCanvas");
       this.previewModal = document.getElementById("preview-modal");
-      // this.renderer = new THREE.WebGLRenderer({ canvas: previewCanvas });
+      this.scene = new THREE.Scene();
+      this.renderer = new THREE.WebGLRenderer({ canvas: this.previewCanvas });
+      this.camera = new THREE.PerspectiveCamera( 75, window.innerWidth / window.innerHeight, 0.1, 1000 );
+      this.controls = new OrbitControls(this.camera, this.renderer.domElement);
       this.onPreviewModel();
     }, 2000);
     this.saveModel();
@@ -267,43 +272,30 @@ export default class Object {
   }
 
   onPreviewModel() {
-    this.scene = new THREE.Scene();
-    this.renderer = new THREE.WebGLRenderer({ canvas: this.previewCanvas });
-    this.camera = new THREE.PerspectiveCamera(
-      75,
-      window.innerWidth / window.innerHeight,
-      0.1,
-      1000
-    );
-
-    this.controls = new OrbitControls(this.camera, this.renderer.domElement);
+    this.previewModal.addEventListener("shown.bs.modal", async (e) => {
     this.camera.position.set(20, 20, 25);
     this.camera.lookAt(new THREE.Vector3(0, 0, 20));
-
-    this.renderer.domElement = this.previewCanvas;
-    this.renderer.setPixelRatio(window.devicePixelRatio);
+    const loader = new THREE.TextureLoader();
+    loader.load("./assets/images/gradient.png", (texture) => {
+      this.scene.background = texture;
+    });
     this.previewCanvas.style.width = "100%";
     this.previewCanvas.style.height = "300px";
-    this.renderer.setSize(
-      this.previewCanvas.innerWidth,
-      this.previewCanvas.innerHeight
-    );
-    this.camera.aspect =
-      this.previewCanvas.innerWidth / this.previewCanvas.innerHeight;
+    this.renderer.domElement = this.previewCanvas;
+    this.renderer.setPixelRatio(window.devicePixelRatio);
+    this.renderer.setSize( this.previewCanvas.offsetWidth, this.previewCanvas.offsetHeight );
+    this.camera.aspect = this.previewCanvas.offsetWidth / this.previewCanvas.offsetHeight;
     this.renderer.shadowMap.enabled = true;
     this.setLight();
     this.setCamera();
-    this.previewModal.addEventListener("shown.bs.modal", async (e) => {
       var previewId = $(e.relatedTarget).data("preview-id").slice(4);
-      debugger
-      const geometry = new THREE.BoxGeometry( 1, 1, 1 );
+      const geometry = new THREE.BoxGeometry(1, 1, 1);
       const material = new THREE.MeshBasicMaterial( { color: 0x00ff00 } );
 			const cube = new THREE.Mesh( geometry, material );
 			this.scene.add( cube );
       // await this.loadModelFromStore(previewId, this.scene);
         this.renderer.render(this.scene, this.camera);
       this.animate();
-
     });
     this.animate();
   }

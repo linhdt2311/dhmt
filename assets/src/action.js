@@ -63,18 +63,6 @@ export default class Experience {
         this.deleteBtn.style.display = "block";
         this.addTransformControl(this.draggable);
         this.viewDetailObject();
-        const scaleForm = document.getElementById("scale-form");
-        const positionForm = document.getElementById("position-form");
-        const rotationForm = document.getElementById("rotation-form");
-        positionForm.elements["xAsis"].value = Math.round(this.draggable.position.x * 100) / 100;
-        positionForm.elements["yAsis"].value = Math.round(this.draggable.position.y * 100) / 100;
-        positionForm.elements["zAsis"].value = Math.round(this.draggable.position.z * 100) / 100;
-        scaleForm.elements["xAsis"].value = Math.round(this.draggable.scale.x * 100) / 100;
-        scaleForm.elements["yAsis"].value = Math.round(this.draggable.scale.y * 100) / 100;
-        scaleForm.elements["zAsis"].value = Math.round(this.draggable.scale.z * 100) / 100;
-        rotationForm.elements["xAsis"].value = Math.round(this.draggable.rotation.x * 100) / 100;
-        rotationForm.elements["yAsis"].value = Math.round(this.draggable.rotation.y * 100) / 100;
-        rotationForm.elements["zAsis"].value = Math.round(this.draggable.rotation.z * 100) / 100;
         this.onChangeScale();
         this.onChangePosition();
         this.onChangeRotation();
@@ -252,6 +240,18 @@ export default class Experience {
   </div>
   `;
     objectInfo.innerHTML = stringHtml;
+    const scaleForm = document.getElementById("scale-form");
+    const positionForm = document.getElementById("position-form");
+    const rotationForm = document.getElementById("rotation-form");
+    positionForm.elements["xAsis"].value = Math.round(this.draggable.position.x * 100) / 100;
+    positionForm.elements["yAsis"].value = Math.round(this.draggable.position.y * 100) / 100;
+    positionForm.elements["zAsis"].value = Math.round(this.draggable.position.z * 100) / 100;
+    scaleForm.elements["xAsis"].value = Math.round(this.draggable.scale.x * 100) / 100;
+    scaleForm.elements["yAsis"].value = Math.round(this.draggable.scale.y * 100) / 100;
+    scaleForm.elements["zAsis"].value = Math.round(this.draggable.scale.z * 100) / 100;
+    rotationForm.elements["xAsis"].value = Math.round(this.draggable.rotation.x * 100) / 100;
+    rotationForm.elements["yAsis"].value = Math.round(this.draggable.rotation.y * 100) / 100;
+    rotationForm.elements["zAsis"].value = Math.round(this.draggable.rotation.z * 100) / 100;
   }
 
   deleteObject() {
