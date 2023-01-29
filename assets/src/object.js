@@ -3,7 +3,6 @@ import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader.js";
 import { DRACOLoader } from "three/examples/jsm/loaders/DRACOLoader";
 import SetUp from "./setup";
 import { getDatabase, ref, child, get, set } from "firebase/database";
-import { getStorage, ref as sRef } from "firebase/storage";
 import { Auth } from "./auth.js";
 import { OrbitControls } from "three/examples/jsm/controls/OrbitControls";
 
@@ -19,15 +18,14 @@ export default class Object {
   storeModel = [];
   loading = document.getElementById("loading");
   toastLiveExample = document.getElementById("liveToast");
-  previewCanvas = null;
-  previewModal = null;
-  scene = null;
-  camera = null;
-  controls = null;
+  previewCanvas = document.getElementById("previewCanvas");
+  previewModal;
+  scene;
+  renderer;
+  camera;
+  controls;
   model;
-  storage = getStorage();
-  floorUrl =
-    "https://firebasestorage.googleapis.com/v0/b/da-dhmt.appspot.com/o/models%2FfloorPlan.glb?alt=media&token=55f0fde5-5419-438b-9dd4-87b15da442ff";
+
   constructor() {
     this.initLoader();
     this.fetchData();
@@ -37,7 +35,15 @@ export default class Object {
       this.addModel();
       this.previewCanvas = document.getElementById("previewCanvas");
       this.previewModal = document.getElementById("preview-modal");
-      // this.renderer = new THREE.WebGLRenderer({ canvas: previewCanvas });
+      this.scene = new THREE.Scene();
+      this.renderer = new THREE.WebGLRenderer({ canvas: this.previewCanvas });
+      this.camera = new THREE.PerspectiveCamera(
+        75,
+        window.innerWidth / window.innerHeight,
+        0.1,
+        1000
+      );
+      this.controls = new OrbitControls(this.camera, this.renderer.domElement);
       this.onPreviewModel();
     }, 2000);
     this.saveModel();
@@ -53,8 +59,7 @@ export default class Object {
 
   loadFloor() {
     let floor;
-    // const httpsReference = sRef(this.storage, 'gs://da-dhmt.appspot.com/models/floorPlan.glb');
-    this.gltfLoader.loadAsync(this.floorUrl).then((gltf) => {
+    this.gltfLoader.loadAsync("/models/floorPlan.glb").then((gltf) => {
       floor = gltf.scene;
       for (let i = 0; i < floor.children.length; i++) {
         floor.children[i].userData.name = "Plane";
@@ -73,8 +78,26 @@ export default class Object {
 
   async fetchData() {
     var modelList = document.getElementById("model");
+
     this.listModel = JSON.parse(localStorage.getItem("data"));
     let stringHtml = "";
+    stringHtml += ` <div class="modal modal-lg" tabindex="-1" id="preview-modal">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Preview model</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cancel"></button>
+            </div>
+            <div class="modal-body">
+              <canvas width="100%" height="300px" id="previewCanvas"></canvas>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <a class="btn btn-primary btn-delete" data-bs-dismiss="modal"  id="load" >Load</a>
+            </div>
+        </div>
+    </div>
+  </div>`;
     this.listModel.forEach((item) => {
       stringHtml += `
           <div class="flex flex-column list-model">
@@ -110,49 +133,33 @@ export default class Object {
 
   loadDetailObject(data) {
     let stringHtml = "";
+  
     data.list.forEach((item) => {
       stringHtml += `
       <div class="card-body">
-          <div class="d-flex row">
-            <div class="col col-5 ">
+        <div class="d-flex row">
+          <div class="col col-5 ">
             <div class="img-wrap" style="cursor: pointer"  id=but-${item.id}>
               <img class="img-content w-100" height="80px"  src="${item.photoUrl}">
               <p class="img-des m-0 text-center" >
-              <span class="fw-bold" style="line-height: 80px;">Load</span>
-              <div class="spinner" style="display:none">
-              <span class="spinner-border spinner-border-sm me-2" role="status" aria-hidden="true"></span>
+                <span class="fw-bold" style="line-height: 80px;">Load</span>
+                <div class="spinner" style="display:none">
+                  <span class="spinner-border spinner-border-sm me-2" role="status" aria-hidden="true"></span>
+                </div>
               </p>
-              </div>
             </div>
-            </div>
-            <div class="col col-7">
+          </div>
+          <div class="col col-7">
             <span class="fw-bold">${item.name}</span>
-            <button  data-bs-toggle="modal" data-bs-target="#preview-modal" data-preview-id=pre-${item.id}>Preview</button>
+            <br>
+            <a style="color: #08f; cursor: pointer" id="preview-${item.id}" data-bs-toggle="modal" data-bs-target="#preview-modal" data-preview-id=pre-${item.id}><i class="far fa-eye"></i>&nbsp Preview</a>
             <p class="fst-italic">${item.description}</p>
           </div>
-          </div>
-          </div>
-        
-         
+        </div>
+      </div>
      `;
     });
-    stringHtml += ` <div class="modal modal-lg" tabindex="-1" id="preview-modal">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title">Preview model</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cancel"></button>
-            </div>
-            <div class="modal-body">
-              <canvas width="100%" height="300px" id="previewCanvas"></canvas>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                <a class="btn btn-danger btn-delete" data-bs-dismiss="modal"  id="load" >Load</a>
-            </div>
-        </div>
-    </div>
-  </div>`;
+    
     return stringHtml;
   }
 
@@ -167,13 +174,13 @@ export default class Object {
     }
   }
 
-  async loadListModels(id) {
+  async loadListModels(id, scene) {
     this.listModel.every((item) => {
       this.model = item.list.find((x) => x.id == id);
       if (this.model) return false;
       else return true;
     });
-    await this.loadModelByUrl(this.model.url, this.setUp.scene);
+    await this.loadModelByUrl(this.model.url, scene);
   }
 
   async loadUserModels(id, scene) {
@@ -188,7 +195,7 @@ export default class Object {
       const model = gltf.scene;
       model.castShadow = true;
       model.receiveShadow = true;
-      if (this.model.position) {
+      if (this.model.position && this.model.scale && this.model.rotation) {
         model.position.set(
           this.model.position.x,
           this.model.position.y,
@@ -240,7 +247,7 @@ export default class Object {
     }
     loadBtn.setAttribute("disabled", true);
     const id = event.currentTarget.id.slice(4);
-    await this.loadListModels(id);
+    await this.loadListModels(id, this.setUp.scene);
     for (let item of loadingState) {
       item.style.display = "none";
     }
@@ -269,41 +276,57 @@ export default class Object {
     });
   }
 
+  resetScene() {
+    while (this.scene.children.length) {
+      this.scene.remove(this.scene.children[0]);
+    }
+  }
+
+  setSky() {
+    var skyGeo = new THREE.SphereGeometry(100000, 25, 25);
+    const loader = new THREE.TextureLoader();
+    loader.load("./assets/images/gradient.png", (texture) => {
+      var material = new THREE.MeshPhongMaterial({
+        map: texture,
+      });
+      var sky = new THREE.Mesh(skyGeo, material);
+      sky.material.side = THREE.BackSide;
+      this.scene.add(sky);
+    });
+  }
+
   onPreviewModel() {
-    this.scene = new THREE.Scene();
-    this.renderer = new THREE.WebGLRenderer({ canvas: this.previewCanvas });
-    this.camera = new THREE.PerspectiveCamera(
-      75,
-      window.innerWidth / window.innerHeight,
-      0.1,
-      1000
-    );
-
-    this.controls = new OrbitControls(this.camera, this.renderer.domElement);
-    this.camera.position.set(20, 20, 25);
-    this.camera.lookAt(new THREE.Vector3(0, 0, 20));
-
-    this.renderer.domElement = this.previewCanvas;
-    this.renderer.setPixelRatio(window.devicePixelRatio);
-    this.previewCanvas.style.width = "100%";
-    this.previewCanvas.style.height = "300px";
-    this.renderer.setSize(
-      this.previewCanvas.innerWidth,
-      this.previewCanvas.innerHeight
-    );
-    this.camera.aspect =
-      this.previewCanvas.innerWidth / this.previewCanvas.innerHeight;
-    this.renderer.shadowMap.enabled = true;
-    this.setLight();
-    this.setCamera();
     this.previewModal.addEventListener("shown.bs.modal", async (e) => {
+      this.resetScene();
+      this.setSky();
+
+      this.camera.position.set(10, 20, 10);
+      this.camera.lookAt(new THREE.Vector3(0, 0, 20));
+
+      const colorWhite = new THREE.Color(255, 255, 255);
+      this.scene.background = colorWhite;
+
+      const gridHelper = new THREE.GridHelper(
+        this.previewCanvas.offsetWidth,
+        10
+      );
+      this.scene.add(gridHelper);
+      this.previewCanvas.style.width = "100%";
+      this.previewCanvas.style.height = "300px";
+      this.renderer.domElement = this.previewCanvas;
+      this.renderer.setPixelRatio(window.devicePixelRatio);
+      this.renderer.setSize(
+        this.previewCanvas.offsetWidth,
+        this.previewCanvas.offsetHeight
+      );
+      this.camera.aspect =
+        this.previewCanvas.offsetWidth / this.previewCanvas.offsetHeight;
+      this.renderer.shadowMap.enabled = true;
+      this.setLight();
+      this.setCamera();
       var previewId = $(e.relatedTarget).data("preview-id").slice(4);
-      debugger;
-      const geometry = new THREE.BoxGeometry(1, 1, 1);
-      const material = new THREE.MeshBasicMaterial({ color: 0x00ff00 });
-      const cube = new THREE.Mesh(geometry, material);
-      this.scene.add(cube);
-      // await this.loadUserModels(previewId, this.scene);
+
+      await this.loadListModels(previewId, this.scene);
       this.renderer.render(this.scene, this.camera);
       this.animate();
     });
@@ -311,8 +334,8 @@ export default class Object {
   }
 
   setLight() {
-    const light = new THREE.AmbientLight(0xffaaff);
-    light.position.set(10, 10, 10);
+    const light = new THREE.AmbientLight();
+    light.position.set(10, 10, 30);
     this.scene.add(light);
   }
 
