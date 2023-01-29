@@ -258,7 +258,7 @@ export default class Object {
     saveBtn.addEventListener("click", (event) => {
       let data = [];
       this.setUp.animate();
-      this.scene.children.forEach((item) => {
+      this.setUp.scene.children.forEach((item) => {
         if (item.type === "Group" && item.userData.type !== "Plane") {
           data.push({
             ...item.userData,
