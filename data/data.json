@@ -4,8 +4,8 @@
         "list": [
             {
                 "id": "04813e74-2d67-400c-80b5-682e43d4a5b4",
-                "url": "/models/bed_type_1.glb",
-                "photoUrl": "/assets/images/bed_type_1.png",
+                "url": "https://firebasestorage.googleapis.com/v0/b/da-dhmt.appspot.com/o/models%2Fbed_type_1.glb?alt=media&token=efbc61e6-4158-40c1-96f8-d60da7c1c3d5",
+                "photoUrl": "https://firebasestorage.googleapis.com/v0/b/da-dhmt.appspot.com/o/images%2Fbed_type_1.png?alt=media&token=f26e3d03-b2d3-4623-a9e8-e1dc7045731a",
                 "name": "Giường đôi",
                 "description": "Giường đôi rộng 2m chống ẩm",
                 "material": "Wood",
@@ -17,8 +17,8 @@
             },
             {
                 "id": "1fc5631d-4169-4350-9586-c2164100dd71",
-                "url": "/models/bed_type_2.glb",
-                "photoUrl": "/assets/images/bed_type_2.png",
+                "url": "https://firebasestorage.googleapis.com/v0/b/da-dhmt.appspot.com/o/models%2Fbed_type_2.glb?alt=media&token=a3d58458-a382-43f0-a040-9629b87bab19",
+                "photoUrl": "https://firebasestorage.googleapis.com/v0/b/da-dhmt.appspot.com/o/images%2Fbed_type_2.png?alt=media&token=0ab0655f-e9c4-4871-9ea6-9c554da2175e",
                 "name": "Giường đôi",
                 "description": "Combo giường tủ gỗ công nghiệp",
                 "material": "Wood",
@@ -30,8 +30,8 @@
             },
             {
                 "id": "2d71eb21-2689-4e47-b8ee-07f2e0f7ae42",
-                "url": "/models/bed_type_3.glb",
-                "photoUrl": "/assets/images/bed_type_3.png",
+                "url": "https://firebasestorage.googleapis.com/v0/b/da-dhmt.appspot.com/o/models%2Fbed_type_3.glb?alt=media&token=3122c0d9-fb4b-4f41-b215-8b58903bf5ed",
+                "photoUrl": "https://firebasestorage.googleapis.com/v0/b/da-dhmt.appspot.com/o/images%2Fbed_type_3.png?alt=media&token=825f7ba5-c66e-447d-8ec6-8a3350f79941",
                 "name": "Giường đôi",
                 "description": "Giường đôi bệt 2m",
                 "material": "Silver",
@@ -43,8 +43,8 @@
             },
             {
                 "id": "c35af059-5806-4963-998a-ef8c3c6166d8",
-                "url": "/models/bed_type_4.glb",
-                "photoUrl": "/assets/images/bed_type_4.png",
+                "url": "https://firebasestorage.googleapis.com/v0/b/da-dhmt.appspot.com/o/models%2Fbed_type_4.glb?alt=media&token=646f37bb-4d99-434a-9425-c0a770ba1e41",
+                "photoUrl": "https://firebasestorage.googleapis.com/v0/b/da-dhmt.appspot.com/o/images%2Fbed_type_4.png?alt=media&token=bf6b3c38-7617-4ab7-8c72-155de0cb4181",
                 "name": "Giường đôi",
                 "description": "Giường đôi không có đầu giường",
                 "material": "Master",
@@ -56,8 +56,8 @@
             },
             {
                 "id": "b5136791-e4e1-440b-8e95-8f7e26eed6b2",
-                "url": "/models/bed_type_5.glb",
-                "photoUrl": "/assets/images/bed_type_5.png",
+                "url": "https://firebasestorage.googleapis.com/v0/b/da-dhmt.appspot.com/o/models%2Fbed_type_5.glb?alt=media&token=69b4cd0e-c083-400b-85cd-d5a1a374e4d8",
+                "photoUrl": "https://firebasestorage.googleapis.com/v0/b/da-dhmt.appspot.com/o/images%2Fbed_type_5.png?alt=media&token=078cf24e-f5ba-4d6c-98e0-08c24f427457",
                 "name": "Giường đơn",
                 "description": "Giường đơn cho trẻ em",
                 "material": "Golden",
@@ -69,8 +69,8 @@
             },
             {
                 "id": "049e3d95-997f-4a27-8e30-04a68092c05f",
-                "url": "/models/bed_type_6.glb",
-                "photoUrl": "/assets/images/bed_type_6.png",
+                "url": "https://firebasestorage.googleapis.com/v0/b/da-dhmt.appspot.com/o/models%2Fbed_type_6.glb?alt=media&token=2e859169-8372-4d1e-ad73-dda7d451bbfb",
+                "photoUrl": "https://firebasestorage.googleapis.com/v0/b/da-dhmt.appspot.com/o/images%2Fbed_type_6.png?alt=media&token=934706f2-33e1-4829-b935-c2b28f07ffef",
                 "name": "Giường đơn",
                 "description": "Giường đôi như giường đơn",
                 "material": "Wood",
@@ -82,8 +82,8 @@
             },
             {
                 "id": "444ca806-b9e6-44c7-b2a1-2609a7a9f7b4",
-                "url": "/models/bed_type_7.glb",
-                "photoUrl": "/assets/images/bed_type_7.png",
+                "url": "https://firebasestorage.googleapis.com/v0/b/da-dhmt.appspot.com/o/models%2Fbed_type_7.glb?alt=media&token=01375df0-a074-4146-9499-9a4b742d67ba",
+                "photoUrl": "https://firebasestorage.googleapis.com/v0/b/da-dhmt.appspot.com/o/images%2Fbed_type_7.png?alt=media&token=75baf810-bfd0-421a-b918-fd80b2c2f76a",
                 "name": "Giường đơn",
                 "description": "Giường đơn cho phong cách yeah",
                 "material": "Vibranium",
@@ -95,8 +95,8 @@
             },
             {
                 "id": "636b485d-74ce-4ccc-bee9-4b03bbb992e4",
-                "url": "/models/bed_type_8.glb",
-                "photoUrl": "/assets/images/bed_type_8.png",
+                "url": "https://firebasestorage.googleapis.com/v0/b/da-dhmt.appspot.com/o/models%2Fbed_type_8.glb?alt=media&token=1ce4f381-59bf-4cd5-abc6-dbe86119ce9b",
+                "photoUrl": "https://firebasestorage.googleapis.com/v0/b/da-dhmt.appspot.com/o/images%2Fbed_type_8.png?alt=media&token=ac1c28aa-3816-4b3d-b5ca-8767bf4eb298",
                 "name": "Giường đôi",
                 "description": "Giường rẻ rách cho thằng Bình",
                 "material": "Iron",
@@ -113,8 +113,8 @@
         "list": [
             {
                 "id": "ae55c400-1c35-4203-92d6-3ecb2d8f49a5",
-                "url": "/models/cabinet_type_1.glb",
-                "photoUrl": "/assets/images/cabinet_type_1.png",
+                "url": "https://firebasestorage.googleapis.com/v0/b/da-dhmt.appspot.com/o/models%2Fcabinet_type_1.glb?alt=media&token=c3b88475-5900-4aa7-8b68-49470b5788b8",
+                "photoUrl": "https://firebasestorage.googleapis.com/v0/b/da-dhmt.appspot.com/o/images%2Fcabinet_type_1.png?alt=media&token=a3b29f3f-5f4f-4e65-9296-627f82374385",
                 "name": "Tủ cạnh giường",
                 "description": "Tủ tròn",
                 "material": "Wood",
@@ -126,8 +126,8 @@
             },
             {
                 "id": "e1e49fdf-2cac-4404-afb2-c41fbd60a314",
-                "url": "/models/cabinet_type_2.glb",
-                "photoUrl": "/assets/images/cabinet_type_2.png",
+                "url": "https://firebasestorage.googleapis.com/v0/b/da-dhmt.appspot.com/o/models%2Fcabinet_type_2.glb?alt=media&token=6e243ab8-f7e3-41fc-957d-cf5d86e5349d",
+                "photoUrl": "https://firebasestorage.googleapis.com/v0/b/da-dhmt.appspot.com/o/images%2Fcabinet_type_2.png?alt=media&token=b7f15979-f2cd-4fca-a3a4-45449cd29342",
                 "name": "Tủ TV",
                 "description": "Tủ dài để TV",
                 "material": "Wood",
@@ -139,8 +139,8 @@
             },
             {
                 "id": "6c9313de-9d23-4439-a843-a5d2732aed6c",
-                "url": "/models/cabinet_type_3.glb",
-                "photoUrl": "/assets/images/cabinet_type_3.png",
+                "url": "https://firebasestorage.googleapis.com/v0/b/da-dhmt.appspot.com/o/models%2Fcabinet_type_3.glb?alt=media&token=0cd07faa-ec67-46a8-a156-91be6212f30b",
+                "photoUrl": "https://firebasestorage.googleapis.com/v0/b/da-dhmt.appspot.com/o/images%2Fcabinet_type_3.png?alt=media&token=f29ed787-5470-4424-b6ea-1eda53e5f6a2",
                 "name": "Kệ để sách",
                 "description": "Tủ,kệ để đầu giường vuông ngăn màu gỗ 40 x 26 x 32.5cm",
                 "material": "Wood",
@@ -152,8 +152,8 @@
             },
             {
                 "id": "ee1a637c-fcef-4a63-b3f5-1fd26f50f135",
-                "url": "/models/cabinet_type_4.glb",
-                "photoUrl": "/assets/images/cabinet_type_4.png",
+                "url": "https://firebasestorage.googleapis.com/v0/b/da-dhmt.appspot.com/o/models%2Fcabinet_type_4.glb?alt=media&token=e7d2d15e-1a20-42ea-ac65-ca40237e4457",
+                "photoUrl": "https://firebasestorage.googleapis.com/v0/b/da-dhmt.appspot.com/o/images%2Fcabinet_type_4.png?alt=media&token=4a0d3cff-d758-470b-8ebc-9b1153664cb8",
                 "name": "Kệ để sách",
                 "description": "Kệ gỗ tủ sách nhiều màu",
                 "material": "Iron",
@@ -165,8 +165,8 @@
             },
             {
                 "id": "e2529b52-b99a-46ab-8d93-f331f47342a5",
-                "url": "/models/cabinet_type_5.glb",
-                "photoUrl": "/assets/images/cabinet_type_5.png",
+                "url": "https://firebasestorage.googleapis.com/v0/b/da-dhmt.appspot.com/o/models%2Fcabinet_type_5.glb?alt=media&token=61c29bee-7706-4d9b-86dd-eaed45d2aed6",
+                "photoUrl": "https://firebasestorage.googleapis.com/v0/b/da-dhmt.appspot.com/o/images%2Fcabinet_type_5.png?alt=media&token=afd4e14a-e605-4a74-a61b-6054facfe02c",
                 "name": "Tủ",
                 "description": "Tủ gỗ để đồ",
                 "material": "Wood",
@@ -178,8 +178,8 @@
             },
             {
                 "id": "45aebfe8-95ed-468b-a5c8-230ecb732038",
-                "url": "/models/cabinet_type_6.glb",
-                "photoUrl": "/assets/images/cabinet_type_6.png",
+                "url": "https://firebasestorage.googleapis.com/v0/b/da-dhmt.appspot.com/o/models%2Fcabinet_type_6.glb?alt=media&token=df4d4f2d-80be-4131-b139-2dc5393911d7",
+                "photoUrl": "https://firebasestorage.googleapis.com/v0/b/da-dhmt.appspot.com/o/images%2Fcabinet_type_6.png?alt=media&token=a6e32a04-6556-440a-a119-a0da78946d76",
                 "name": "Tủ để giày",
                 "description": "Tủ giày gỗ nhiều tầng",
                 "material": "Wood",
@@ -191,8 +191,8 @@
             },
             {
                 "id": "7c22aa5a-f2fc-4a09-b292-cefc7b190872",
-                "url": "/models/cabinet_type_7.glb",
-                "photoUrl": "/assets/images/cabinet_type_7.png",
+                "url": "https://firebasestorage.googleapis.com/v0/b/da-dhmt.appspot.com/o/models%2Fcabinet_type_7.glb?alt=media&token=412ea122-1237-4a2c-956b-6f27b299682e",
+                "photoUrl": "https://firebasestorage.googleapis.com/v0/b/da-dhmt.appspot.com/o/images%2Fcabinet_type_7.png?alt=media&token=18dccf74-29ab-47d2-b4e3-eeada78858e6",
                 "name": "Kệ để sách",
                 "description": "Kệ để sách 3 tầng",
                 "material": "Iron",
@@ -204,8 +204,8 @@
             },
             {
                 "id": "a2d45057-cfae-4fae-929e-8655f763bbb7",
-                "url": "/models/cabinet_type_8.glb",
-                "photoUrl": "/assets/images/cabinet_type_8.png",
+                "url": "https://firebasestorage.googleapis.com/v0/b/da-dhmt.appspot.com/o/models%2Fcabinet_type_8.glb?alt=media&token=b5d31bb1-79a0-4591-b77c-465d912aa078",
+                "photoUrl": "https://firebasestorage.googleapis.com/v0/b/da-dhmt.appspot.com/o/images%2Fcabinet_type_8.png?alt=media&token=b0a97158-60e9-4559-830f-bef9e315b4a0",
                 "name": "Tủ TV",
                 "description": "Tủ tv cỡ nhỏ",
                 "material": "Wood",
@@ -217,8 +217,8 @@
             },
             {
                 "id": "523c9da4-cbba-4cc2-9d18-524d1edca361",
-                "url": "/models/cabinet_type_9.glb",
-                "photoUrl": "/assets/images/cabinet_type_9.png",
+                "url": "https://firebasestorage.googleapis.com/v0/b/da-dhmt.appspot.com/o/models%2Fcabinet_type_9.glb?alt=media&token=ccd2df79-c5b1-4f20-8cca-57d34f19c0a8",
+                "photoUrl": "https://firebasestorage.googleapis.com/v0/b/da-dhmt.appspot.com/o/images%2Fcabinet_type_9.png?alt=media&token=2964d70f-4eda-4748-829b-83093fb4cddd",
                 "name": "Tủ TV",
                 "description": "Tủ rẻ rách cho thằng Bình",
                 "material": "Aluminum",
@@ -235,8 +235,8 @@
         "list": [
             {
                 "id": "dd5ca73b-d8c8-44cb-9d6e-d0a7815377a3",
-                "url": "/models/lamp_type_1.glb",
-                "photoUrl": "/assets/images/lamp_type_1.png",
+                "url": "https://firebasestorage.googleapis.com/v0/b/da-dhmt.appspot.com/o/models%2Flamp_type_1.glb?alt=media&token=c99810b4-f6de-466d-87d0-f27a1b92ff57",
+                "photoUrl": "https://firebasestorage.googleapis.com/v0/b/da-dhmt.appspot.com/o/images%2Flamp_type_1.png?alt=media&token=71c73f28-facb-4458-b48b-6ca9270c7ea7",
                 "name": "Đèn ngủ",
                 "description": "Đèn ngủ kiểu Nhật",
                 "material": "Wood",
@@ -248,8 +248,8 @@
             },
             {
                 "id": "6eaaafb4-4d7c-4567-9bee-27827c804b44",
-                "url": "/models/lamp_type_2.glb",
-                "photoUrl": "/assets/images/lamp_type_2.png",
+                "url": "https://firebasestorage.googleapis.com/v0/b/da-dhmt.appspot.com/o/models%2Flamp_type_2.glb?alt=media&token=5f071c01-adff-4002-beed-58e3d59b32e3",
+                "photoUrl": "https://firebasestorage.googleapis.com/v0/b/da-dhmt.appspot.com/o/images%2Flamp_type_2.png?alt=media&token=163919b4-8b56-46d4-8feb-b7f0eb2cf1fd",
                 "name": "Đèn ngủ",
                 "description": "Đèn ngủ Vintage",
                 "material": "Vibranium",
@@ -261,8 +261,8 @@
             },
             {
                 "id": "867b03cc-7b69-4eb7-92e3-7b369059731c",
-                "url": "/models/lamp_type_3.glb",
-                "photoUrl": "/assets/images/lamp_type_3.png",
+                "url": "https://firebasestorage.googleapis.com/v0/b/da-dhmt.appspot.com/o/models%2Flamp_type_3.glb?alt=media&token=c78a8b26-8317-4f3e-8d25-b7dd059c3213",
+                "photoUrl": "https://firebasestorage.googleapis.com/v0/b/da-dhmt.appspot.com/o/images%2Flamp_type_3.png?alt=media&token=d2382c68-3a09-47c6-9166-090a615eb98f",
                 "name": "Đèn ngủ",
                 "description": "Đèn thờ man",
                 "material": "Wood",
@@ -274,8 +274,8 @@
             },
             {
                 "id": "68248e16-590f-4ff7-a8a9-9bf04aa6af11",
-                "url": "/models/lamp_type_4.glb",
-                "photoUrl": "/assets/images/lamp_type_4.png",
+                "url": "https://firebasestorage.googleapis.com/v0/b/da-dhmt.appspot.com/o/models%2Flamp_type_4.glb?alt=media&token=6572b5cb-22ad-4322-a20d-0c24154263e3",
+                "photoUrl": "https://firebasestorage.googleapis.com/v0/b/da-dhmt.appspot.com/o/images%2Flamp_type_4.png?alt=media&token=595ba830-6b8f-4c44-bde5-86f6094f620d",
                 "name": "Đèn ngủ",
                 "description": "Đèn ngủ hình cây cảnh yêu thiên nhiên",
                 "material": "Tree",
@@ -287,8 +287,8 @@
             },
             {
                 "id": "76df5d4c-2a11-4cb8-9a81-893a3352d036",
-                "url": "/models/lamp_type_5.glb",
-                "photoUrl": "/assets/images/lamp_type_5.png",
+                "url": "https://firebasestorage.googleapis.com/v0/b/da-dhmt.appspot.com/o/models%2Flamp_type_5.glb?alt=media&token=7b3c80b3-1623-44de-8e58-21daebe4d024",
+                "photoUrl": "https://firebasestorage.googleapis.com/v0/b/da-dhmt.appspot.com/o/images%2Flamp_type_5.png?alt=media&token=117f310f-b494-4a01-9d7b-2c285a082c9f",
                 "name": "Đèn ngủ",
                 "description": "Đèn trang trí phòng khách",
                 "material": "Wood",
@@ -300,8 +300,8 @@
             },
             {
                 "id": "0a45915f-b932-4074-97d6-6890c1202574",
-                "url": "/models/lamp_type_6.glb",
-                "photoUrl": "/assets/images/lamp_type_6.png",
+                "url": "https://firebasestorage.googleapis.com/v0/b/da-dhmt.appspot.com/o/models%2Flamp_type_6.glb?alt=media&token=12959f15-6775-4951-ad04-822d0a2912ad",
+                "photoUrl": "https://firebasestorage.googleapis.com/v0/b/da-dhmt.appspot.com/o/images%2Flamp_type_6.png?alt=media&token=e78277cb-304e-443a-824f-9cbd7e1b226c",
                 "name": "Đèn ngủ",
                 "description": "Đèn ngủ sang trọng hiện đại",
                 "material": "Iron",
@@ -313,8 +313,8 @@
             },
             {
                 "id": "9d9ebc3a-74ae-44d0-998b-2b31ddca5d51",
-                "url": "/models/lamp_type_7.glb",
-                "photoUrl": "/assets/images/lamp_type_7.png",
+                "url": "https://firebasestorage.googleapis.com/v0/b/da-dhmt.appspot.com/o/models%2Flamp_type_7.glb?alt=media&token=1aef4502-164c-4d07-b82f-39cc5c405141",
+                "photoUrl": "https://firebasestorage.googleapis.com/v0/b/da-dhmt.appspot.com/o/images%2Flamp_type_7.png?alt=media&token=8fa11c2d-7885-46e9-b355-ce392709ed4a",
                 "name": "Đèn ngủ",
                 "description": "Đèn tròn trang trí cực đẹp",
                 "material": "Iron",
@@ -326,8 +326,8 @@
             },
             {
                 "id": "fef8f806-4b96-4f2d-a431-29fc97afe4bb",
-                "url": "/models/lamp_type_8.glb",
-                "photoUrl": "/assets/images/lamp_type_8.png",
+                "url": "https://firebasestorage.googleapis.com/v0/b/da-dhmt.appspot.com/o/models%2Flamp_type_8.glb?alt=media&token=1652d8ef-f0c2-42bb-8cc4-59da8d4bb769",
+                "photoUrl": "https://firebasestorage.googleapis.com/v0/b/da-dhmt.appspot.com/o/images%2Flamp_type_8.png?alt=media&token=15c2ca84-8586-4ba7-849e-d970fdd104bb",
                 "name": "Đèn ngủ",
                 "description": "Đèn chùm 5 tia",
                 "material": "Iron",
@@ -339,8 +339,8 @@
             },
             {
                 "id": "6ead7636-2805-47a4-b07e-3d396dab3be6",
-                "url": "/models/lamp_type_9.glb",
-                "photoUrl": "/assets/images/lamp_type_9.png",
+                "url": "https://firebasestorage.googleapis.com/v0/b/da-dhmt.appspot.com/o/models%2Flamp_type_9.glb?alt=media&token=27c04a5d-6ecc-405c-8e7a-2f54dd29de55",
+                "photoUrl": "https://firebasestorage.googleapis.com/v0/b/da-dhmt.appspot.com/o/images%2Flamp_type_9.png?alt=media&token=b6643b16-3cd2-4b7f-9aa0-292035edee38",
                 "name": "Đèn ngủ",
                 "description": "Đèn hình thùng rác cho thằng Bình",
                 "material": "Master",
@@ -352,8 +352,8 @@
             },
             {
                 "id": "8c97bd0e-a92a-4d43-b7c7-2fec13243c02",
-                "url": "/models/lamp_type_10.glb",
-                "photoUrl": "/assets/images/lamp_type_10.png",
+                "url": "https://firebasestorage.googleapis.com/v0/b/da-dhmt.appspot.com/o/models%2Flamp_type_10.glb?alt=media&token=82f14355-9b2e-4e88-b565-192ead2433a9",
+                "photoUrl": "https://firebasestorage.googleapis.com/v0/b/da-dhmt.appspot.com/o/images%2Flamp_type_10.png?alt=media&token=c2fdda85-c1e1-402b-b87c-f3b4b04c0f08",
                 "name": "Đèn ngủ",
                 "description": "Đèn treo tường",
                 "material": "Iron",
@@ -370,8 +370,8 @@
         "list": [
             {
                 "id": "70f028fc-56b7-44c6-943c-16d1f1195b8f",
-                "url": "/models/carpet_type_1.glb",
-                "photoUrl": "/assets/images/carpet_type_1.png",
+                "url": "https://firebasestorage.googleapis.com/v0/b/da-dhmt.appspot.com/o/models%2Fcarpet_type_1.glb?alt=media&token=c86f4409-e10b-4ec5-b56b-a8e3b7a99544",
+                "photoUrl": "https://firebasestorage.googleapis.com/v0/b/da-dhmt.appspot.com/o/images%2Fcarpet_type_1.png?alt=media&token=ffe4c4a9-b37d-45c9-aafc-56c2cdb81ce6",
                 "name": "Thảm",
                 "description": "Thảm để chân họa tiết",
                 "material": "Fabric",
@@ -383,8 +383,8 @@
             },
             {
                 "id": "080147f5-939b-482e-9e7e-f3884ece6341",
-                "url": "/models/carpet_type_2.glb",
-                "photoUrl": "/assets/images/carpet_type_2.png",
+                "url": "https://firebasestorage.googleapis.com/v0/b/da-dhmt.appspot.com/o/models%2Fcarpet_type_2.glb?alt=media&token=6e4e4dae-0682-460e-a757-c9ef65b7fc3a",
+                "photoUrl": "https://firebasestorage.googleapis.com/v0/b/da-dhmt.appspot.com/o/images%2Fcarpet_type_2.png?alt=media&token=11f275e5-70de-45c5-aa1b-34a496387e3d",
                 "name": "Thảm",
                 "description": "Thảm để chân họa tiết bò sữa",
                 "material": "Fabric",
@@ -396,8 +396,8 @@
             },
             {
                 "id": "1a3b4209-595e-4d11-a540-9db3ab08450c",
-                "url": "/models/carpet_type_3.glb",
-                "photoUrl": "/assets/images/carpet_type_3.png",
+                "url": "https://firebasestorage.googleapis.com/v0/b/da-dhmt.appspot.com/o/models%2Fcarpet_type_3.glb?alt=media&token=44615e7c-c1e3-477a-9690-003321b1935f",
+                "photoUrl": "https://firebasestorage.googleapis.com/v0/b/da-dhmt.appspot.com/o/images%2Fcarpet_type_3.png?alt=media&token=e76c9bd0-bfe9-4bd7-8041-53c2cfecc646",
                 "name": "Thảm",
                 "description": "Thảm thiết",
                 "material": "Fabric",
@@ -409,8 +409,8 @@
             },
             {
                 "id": "a6680c3f-5c78-424e-ba80-dd356983dc4c",
-                "url": "/models/carpet_type_4.glb",
-                "photoUrl": "/assets/images/carpet_type_4.png",
+                "url": "https://firebasestorage.googleapis.com/v0/b/da-dhmt.appspot.com/o/models%2Fcarpet_type_4.glb?alt=media&token=8d385f85-fdd3-44c8-906e-17a789c7d182",
+                "photoUrl": "https://firebasestorage.googleapis.com/v0/b/da-dhmt.appspot.com/o/images%2Fcarpet_type_4.png?alt=media&token=9f1172d1-c3c9-4ea1-bcc4-b0942ea14ec8",
                 "name": "Thảm",
                 "description": "Rẻ rách",
                 "material": "Cheap",
@@ -427,8 +427,8 @@
         "list": [
             {
                 "id": "4503babe-e410-4291-b8a8-12f5f8b543ad",
-                "url": "/models/toilet_type_1.glb",
-                "photoUrl": "/assets/images/toilet_type_1.png",
+                "url": "https://firebasestorage.googleapis.com/v0/b/da-dhmt.appspot.com/o/models%2Ftoilet_type_1.glb?alt=media&token=89c2f3cb-21af-44cf-9da6-833658a0ff3c",
+                "photoUrl": "https://firebasestorage.googleapis.com/v0/b/da-dhmt.appspot.com/o/images%2Ftoilet_type_1.png?alt=media&token=2a9b06f8-ba7f-41b0-bd46-99c3d9c4aa20",
                 "name": "Bồn cầu",
                 "description": "Bồn cầu thiết kế mềm mại đẹp mắt",
                 "material": "Fabric",
@@ -440,8 +440,8 @@
             },
             {
                 "id": "6bc347ac-e942-4cc5-9f13-b358875e6deb",
-                "url": "/models/toilet_type_2.glb",
-                "photoUrl": "/assets/images/toilet_type_2.png",
+                "url": "https://firebasestorage.googleapis.com/v0/b/da-dhmt.appspot.com/o/models%2Ftoilet_type_2.glb?alt=media&token=8962db2f-c5c6-4581-81fb-5946a184fb3c",
+                "photoUrl": "https://firebasestorage.googleapis.com/v0/b/da-dhmt.appspot.com/o/images%2Ftoilet_type_2.png?alt=media&token=b0fdd334-dd5e-4cda-a73f-ece83d2f8d94",
                 "name": "Bồn cầu",
                 "description": "Bồn cầu hiện đại đơn giản",
                 "material": "Fabric",
@@ -453,8 +453,8 @@
             },
             {
                 "id": "6c8152ad-fa11-4a5e-9058-c6b2a90c8c8a",
-                "url": "/models/toilet_type_3.glb",
-                "photoUrl": "/assets/images/toilet_type_3.png",
+                "url": "https://firebasestorage.googleapis.com/v0/b/da-dhmt.appspot.com/o/models%2Ftoilet_type_3.glb?alt=media&token=1e93d7b9-6b6a-4415-9463-50bdc3a71bb6",
+                "photoUrl": "https://firebasestorage.googleapis.com/v0/b/da-dhmt.appspot.com/o/images%2Ftoilet_type_3.png?alt=media&token=fd1b4fc0-99ff-4086-91bf-1f91ac18fcdd",
                 "name": "Bồn cầu",
                 "description": "Bồn cầu hệ thống man",
                 "material": "Fabric",
@@ -471,8 +471,8 @@
         "list": [
             {
                 "id": "a3dcdc47-5624-4fe3-9f6f-d7eb19c870f4",
-                "url": "/models/bathtub_type_3.glb",
-                "photoUrl": "/assets/images/bathtub_type_3.png",
+                "url": "https://firebasestorage.googleapis.com/v0/b/da-dhmt.appspot.com/o/models%2Fbathtub_type_3.glb?alt=media&token=336dc2fd-417c-45bf-9f66-0ddb9770a4d5",
+                "photoUrl": "https://firebasestorage.googleapis.com/v0/b/da-dhmt.appspot.com/o/images%2Fbathtub_type_3.png?alt=media&token=6cb7c966-d3d1-4480-9abf-fd1b6f5f7972",
                 "name": "Bồn tắm",
                 "description": "Bồn tắm cho trẻ em cực dễ thương",
                 "material": "Fabric",
@@ -489,8 +489,8 @@
         "list": [
             {
                 "id": "dc5e20d2-9e21-4daa-be84-32a2e3a9274e",
-                "url": "/models/kitchen_type_1.glb",
-                "photoUrl": "/assets/images/kitchen_type_1.png",
+                "url": "https://firebasestorage.googleapis.com/v0/b/da-dhmt.appspot.com/o/models%2Fkitchen_type_1.glb?alt=media&token=940bf323-4c18-4403-abf7-09b50a0cf137",
+                "photoUrl": "https://firebasestorage.googleapis.com/v0/b/da-dhmt.appspot.com/o/images%2Fkitchen_type_1.png?alt=media&token=df8c3a1f-bbd4-452c-a54c-80fb88c63a34",
                 "name": "Tủ bếp",
                 "description": "Set combo tủ bếp",
                 "material": "Acrylic",
@@ -507,8 +507,8 @@
         "list": [
             {
                 "id": "50c71c4c-9eed-494a-8273-e401a1417319",
-                "url": "/models/bathroom_type_1.glb",
-                "photoUrl": "/assets/images/bathroom_type_1.png",
+                "url": "https://firebasestorage.googleapis.com/v0/b/da-dhmt.appspot.com/o/models%2Fbathroom_type_1.glb?alt=media&token=1eb9736f-11f5-4371-b009-0a8971bd822c",
+                "photoUrl": "https://firebasestorage.googleapis.com/v0/b/da-dhmt.appspot.com/o/images%2Fbathroom_type_1.png?alt=media&token=3f796092-ab22-40bb-9adf-febae1d69b6b",
                 "name": "Kệ gương",
                 "description": "Kệ gương phòng tắm vintage",
                 "material": "Acrylic",
@@ -520,8 +520,8 @@
             },
             {
                 "id": "1a989f88-f0c1-4547-891e-468198417314",
-                "url": "/models/bathroom_type_2.glb",
-                "photoUrl": "/assets/images/bathroom_type_2.png",
+                "url": "https://firebasestorage.googleapis.com/v0/b/da-dhmt.appspot.com/o/models%2Fbathroom_type_2.glb?alt=media&token=b5ee7d3e-67ec-4cf1-a7f3-bdd3361ecf43",
+                "photoUrl": "https://firebasestorage.googleapis.com/v0/b/da-dhmt.appspot.com/o/images%2Fbathroom_type_2.png?alt=media&token=22378658-2417-4317-a645-1188af8f5038",
                 "name": "Kệ gương",
                 "description": "Tủ gương để phòng tắm cực đẹp",
                 "material": "Acrylic",
@@ -533,8 +533,8 @@
             },
             {
                 "id": "51b285b1-d6d9-4850-8a28-a6bfed0a3d7f",
-                "url": "/models/bathroom_type_3.glb",
-                "photoUrl": "/assets/images/bathroom_type_3.png",
+                "url": "https://firebasestorage.googleapis.com/v0/b/da-dhmt.appspot.com/o/models%2Fbathroom_type_3.glb?alt=media&token=379e8c71-8416-4030-9f49-f875edae611e",
+                "photoUrl": "https://firebasestorage.googleapis.com/v0/b/da-dhmt.appspot.com/o/images%2Fbathroom_type_3.png?alt=media&token=0983a97f-f8f1-4b8f-a0ba-1d4dd4c1e729",
                 "name": "Kệ gương",
                 "description": "Kệ gương phòng tắm đơn giản, đẹp",
                 "material": "Acrylic",
@@ -551,8 +551,8 @@
         "list": [
             {
                 "id": "aa50c1b5-3371-4877-96c5-c775a59d77f1",
-                "url": "/models/sofa_type_1.glb",
-                "photoUrl": "/assets/images/sofa_type_1.png",
+                "url": "https://firebasestorage.googleapis.com/v0/b/da-dhmt.appspot.com/o/models%2Fsofa_type_1.glb?alt=media&token=42c72ab8-09f0-4a94-be76-57deb6c2207a",
+                "photoUrl": "https://firebasestorage.googleapis.com/v0/b/da-dhmt.appspot.com/o/images%2Fsofa_type_1.png?alt=media&token=0453fa0f-624f-46fd-988b-1c52811dc066",
                 "name": "Sofa",
                 "description": "Combo sofa màu trắng xanh hiện đại",
                 "material": "Acrylic",
@@ -564,8 +564,8 @@
             },
             {
                 "id": "141588ec-8f4c-4eb0-b017-395bae7495f7",
-                "url": "/models/sofa_type_2.glb",
-                "photoUrl": "/assets/images/sofa_type_2.png",
+                "url": "https://firebasestorage.googleapis.com/v0/b/da-dhmt.appspot.com/o/models%2Fsofa_type_2.glb?alt=media&token=f0e3d118-8d37-4bc2-bd42-6bffe8ec6f96",
+                "photoUrl": "https://firebasestorage.googleapis.com/v0/b/da-dhmt.appspot.com/o/images%2Fsofa_type_2.png?alt=media&token=fd00317a-50fb-454e-b296-b6d7ff59080b",
                 "name": "Sofa",
                 "description": "Sofa màu trắng tinh khiết",
                 "material": "Acrylic",
@@ -577,8 +577,8 @@
             },
             {
                 "id": "7a982d7e-310a-4f9a-933d-07009682f517",
-                "url": "/models/sofa_type_3.glb",
-                "photoUrl": "/assets/images/sofa_type_3.png",
+                "url": "https://firebasestorage.googleapis.com/v0/b/da-dhmt.appspot.com/o/models%2Fsofa_type_3.glb?alt=media&token=a5f7efac-c7d0-4e5c-966c-7ec299ce9994",
+                "photoUrl": "https://firebasestorage.googleapis.com/v0/b/da-dhmt.appspot.com/o/images%2Fsofa_type_3.png?alt=media&token=cd358281-9177-4bb0-8b96-6b8abe42360d",
                 "name": "Sofa",
                 "description": "Sofa kiểu dáng chữ S độc lạ Bình Dương",
                 "material": "Acrylic",
@@ -595,8 +595,8 @@
         "list": [
             {
                 "id": "ff76092f-cb2b-4b2a-b2c7-72d86bbe156c",
-                "url": "/models/table_type_1.glb",
-                "photoUrl": "/assets/images/table_type_1.png",
+                "url": "https://firebasestorage.googleapis.com/v0/b/da-dhmt.appspot.com/o/models%2Ftable_type_1.glb?alt=media&token=61f317a9-75a0-4182-8175-cdb945fabd3e",
+                "photoUrl": "https://firebasestorage.googleapis.com/v0/b/da-dhmt.appspot.com/o/images%2Ftable_type_1.png?alt=media&token=52764e33-c443-475d-9c54-64482843e705",
                 "name": "Bàn học",
                 "description": "Bàn học kết hợp tủ sách cực tiện lợi",
                 "material": "Wood",
@@ -608,8 +608,8 @@
             },
             {
                 "id": "1f2b47dc-cb7d-4f92-8302-9d870f15f760",
-                "url": "/models/table_type_2.glb",
-                "photoUrl": "/assets/images/table_type_2.png",
+                "url": "https://firebasestorage.googleapis.com/v0/b/da-dhmt.appspot.com/o/models%2Ftable_type_2.glb?alt=media&token=88099be0-9d4a-4ab4-ab99-f09a14d097a6",
+                "photoUrl": "https://firebasestorage.googleapis.com/v0/b/da-dhmt.appspot.com/o/images%2Ftable_type_2.png?alt=media&token=061c7e43-9419-415f-9ce9-89591ecbfce3",
                 "name": "Bàn bếp",
                 "description": "Combo bàn ghế phòng ăn hiện đại",
                 "material": "Acrylic",
@@ -621,8 +621,8 @@
             },
             {
                 "id": "af99c0d8-36dd-41f9-9a11-dc3ff7f7c669",
-                "url": "/models/table_type_3.glb",
-                "photoUrl": "/assets/images/table_type_3.png",
+                "url": "https://firebasestorage.googleapis.com/v0/b/da-dhmt.appspot.com/o/models%2Ftable_type_3.glb?alt=media&token=56da8c77-aa90-4030-9b55-70560e415dd2",
+                "photoUrl": "https://firebasestorage.googleapis.com/v0/b/da-dhmt.appspot.com/o/images%2Ftable_type_3.png?alt=media&token=41b51b18-4c3f-4b1f-918b-7102bf26fc3e",
                 "name": "Bàn coffee",
                 "description": "Bàn tròn để uống cà phê cực chill",
                 "material": "Acrylic",
@@ -639,8 +639,8 @@
         "list": [
             {
                 "id": "b100a9be-4bb5-436c-9474-8f2bc8ac2aeb",
-                "url": "/models/tree_type_1.glb",
-                "photoUrl": "/assets/images/tree_type_1.png",
+                "url": "https://firebasestorage.googleapis.com/v0/b/da-dhmt.appspot.com/o/models%2Ftree_type_1.glb?alt=media&token=cb45a368-03ca-4a44-8acf-df361eb4af66",
+                "photoUrl": "https://firebasestorage.googleapis.com/v0/b/da-dhmt.appspot.com/o/images%2Ftree_type_1.png?alt=media&token=646921c0-37d7-420d-b17d-5442a55005b4",
                 "name": "Cây cảnh",
                 "description": "Combo 3 kệ cây cảnh trang trí",
                 "material": "Acrylic",
@@ -652,8 +652,8 @@
             },
             {
                 "id": "7f39da5e-be9c-4451-8918-6790a096c6ad",
-                "url": "/models/tree_type_2.glb",
-                "photoUrl": "/assets/images/tree_type_2.png",
+                "url": "https://firebasestorage.googleapis.com/v0/b/da-dhmt.appspot.com/o/models%2Ftree_type_2.glb?alt=media&token=0ac24345-a6b6-408f-97a0-a01e60b6a308",
+                "photoUrl": "https://firebasestorage.googleapis.com/v0/b/da-dhmt.appspot.com/o/images%2Ftree_type_2.png?alt=media&token=56bfcdc4-d26f-409f-a949-e4e23fa27ec4",
                 "name": "Cây cảnh",
                 "description": "Cây cảnh mini",
                 "material": "Acrylic",
@@ -665,8 +665,8 @@
             },
             {
                 "id": "0f00a518-25f4-4743-810d-5cfe88ecd07a",
-                "url": "/models/tree_type_3.glb",
-                "photoUrl": "/assets/images/tree_type_3.png",
+                "url": "https://firebasestorage.googleapis.com/v0/b/da-dhmt.appspot.com/o/models%2Ftree_type_3.glb?alt=media&token=b2e3eaa7-41f1-4e9b-8afc-d987b0591b82",
+                "photoUrl": "https://firebasestorage.googleapis.com/v0/b/da-dhmt.appspot.com/o/images%2Ftree_type_3.png?alt=media&token=25dedaa3-6247-415b-8d5d-968086874410",
                 "name": "Cây cảnh",
                 "description": "Cây cảnh xương rồng bảo vệ môi trường",
                 "material": "Acrylic",
@@ -683,8 +683,8 @@
         "list": [
             {
                 "id": "7a5105a1-e67d-41e3-9fd2-774401384221",
-                "url": "/models/decor_type_1.glb",
-                "photoUrl": "/assets/images/decor_type_1.png",
+                "url": "https://firebasestorage.googleapis.com/v0/b/da-dhmt.appspot.com/o/models%2Fdecor_type_1.glb?alt=media&token=0840c0f1-2722-49d9-99af-759bd58d6d71",
+                "photoUrl": "https://firebasestorage.googleapis.com/v0/b/da-dhmt.appspot.com/o/images%2Fdecor_type_1.png?alt=media&token=37cf2896-c491-41a8-a4a1-489449104d45",
                 "name": "Bàn trang trí",
                 "description": "Bàn trang trí phòng khách cực đẹp",
                 "material": "Acrylic",
@@ -696,8 +696,8 @@
             },
             {
                 "id": "8cfd496d-39dc-4935-98e9-e99a75c0ffee",
-                "url": "/models/decor_type_2.glb",
-                "photoUrl": "/assets/images/decor_type_2.png",
+                "url": "https://firebasestorage.googleapis.com/v0/b/da-dhmt.appspot.com/o/models%2Fdecor_type_2.glb?alt=media&token=3bc31780-5223-43e1-af49-5fe233c57978",
+                "photoUrl": "https://firebasestorage.googleapis.com/v0/b/da-dhmt.appspot.com/o/images%2Fdecor_type_2.png?alt=media&token=6e9c9f50-b1f1-4573-982a-dfe4d71a4d47",
                 "name": "Rương kho báu",
                 "description": "Rương kho báu trang trí cho hải tặc",
                 "material": "Acrylic",
@@ -709,8 +709,8 @@
             },
             {
                 "id": "c0da1023-efd3-481d-b5fd-a8e5822a6b26",
-                "url": "/models/decor_type_3.glb",
-                "photoUrl": "/assets/images/decor_type_3.png",
+                "url": "https://firebasestorage.googleapis.com/v0/b/da-dhmt.appspot.com/o/models%2Fdecor_type_3.glb?alt=media&token=255fca1d-2966-462a-bfdb-53458e7805f2",
+                "photoUrl": "https://firebasestorage.googleapis.com/v0/b/da-dhmt.appspot.com/o/images%2Fdecor_type_3.png?alt=media&token=f48fe1af-1cb5-4409-b51a-0e5892436521",
                 "name": "Địa cầu",
                 "description": "Mô hình địa cầu tỉ lệ 1000000000000000:2",
                 "material": "Acrylic",
@@ -727,8 +727,8 @@
         "list": [
             {
                 "id": "6ee89972-f854-4374-a4bc-b027a0b0e551",
-                "url": "/models/pet_type_1.glb",
-                "photoUrl": "/assets/images/pet_type_1.png",
+                "url": "https://firebasestorage.googleapis.com/v0/b/da-dhmt.appspot.com/o/models%2Fpet_type_1.glb?alt=media&token=297b2adc-5b67-456d-9e15-df347e9bf58f",
+                "photoUrl": "https://firebasestorage.googleapis.com/v0/b/da-dhmt.appspot.com/o/images%2Fpet_type_1.png?alt=media&token=0dcf130f-64b5-4576-aca0-e020366addf8",
                 "name": "Chó cảnh",
                 "description": "Chó Pitpull nhìn như Border Collie",
                 "material": "Acrylic",
@@ -740,8 +740,8 @@
             },
             {
                 "id": "b402d8b9-63ed-4cdc-bf57-31b5b7498e8b",
-                "url": "/models/pet_type_2.glb",
-                "photoUrl": "/assets/images/pet_type_2.png",
+                "url": "https://firebasestorage.googleapis.com/v0/b/da-dhmt.appspot.com/o/models%2Fpet_type_2.glb?alt=media&token=5e5d391d-65d3-4bac-94dd-413633cb0e64",
+                "photoUrl": "https://firebasestorage.googleapis.com/v0/b/da-dhmt.appspot.com/o/images%2Fpet_type_2.png?alt=media&token=40a1ed09-b1a6-4e37-ba80-9eb16d7bad6e",
                 "name": "Nhím ngu",
                 "description": "Thú cưng nhím cực ngu",
                 "material": "Acrylic",
@@ -753,8 +753,8 @@
             },
             {
                 "id": "0ad94c35-a32f-4ace-856b-716617f2b62d",
-                "url": "/models/pet_type_3.glb",
-                "photoUrl": "/assets/images/pet_type_3.png",
+                "url": "https://firebasestorage.googleapis.com/v0/b/da-dhmt.appspot.com/o/models%2Fpet_type_3.glb?alt=media&token=f369be0a-f1dd-45b4-be42-56b0172df798",
+                "photoUrl": "https://firebasestorage.googleapis.com/v0/b/da-dhmt.appspot.com/o/images%2Fpet_type_3.png?alt=media&token=b680de62-f8db-4b31-a967-f1eb9c84dbcd",
                 "name": "Chó cảnh",
                 "description": "Chú chó trắng giữa trời đông cô đơn",
                 "material": "Acrylic",
@@ -771,8 +771,8 @@
         "list": [
             {
                 "id": "1d5d20a9-bd05-4582-b5e3-aa04e862fec6",
-                "url": "/models/vehicle_type_1.glb",
-                "photoUrl": "/assets/images/vehicle_type_1.png",
+                "url": "https://firebasestorage.googleapis.com/v0/b/da-dhmt.appspot.com/o/models%2Fvehicle_type_1.glb?alt=media&token=f1d8ea38-9c11-4146-af90-aef3dabe9a39",
+                "photoUrl": "https://firebasestorage.googleapis.com/v0/b/da-dhmt.appspot.com/o/images%2Fvehicle_type_1.png?alt=media&token=1f3d17e2-96be-451c-a54d-8846ed487500",
                 "name": "Xe điện",
                 "description": "Xe máy điện hiện đại thân thiện môi trường",
                 "material": "Vibranium",
@@ -789,8 +789,8 @@
         "list": [
             {
                 "id": "66362883-2d5d-406b-9e18-fd0cf217fec3",
-                "url": "/models/refrigerator_type_1.glb",
-                "photoUrl": "/assets/images/refrigerator_type_1.PNG",
+                "url": "https://firebasestorage.googleapis.com/v0/b/da-dhmt.appspot.com/o/models%2Frefrigerator_type_1.glb?alt=media&token=ead77f08-cb9e-4dd8-b1e7-488a52ebe556",
+                "photoUrl": "https://firebasestorage.googleapis.com/v0/b/da-dhmt.appspot.com/o/images%2Frefrigerator_type_1.PNG?alt=media&token=8392286a-a628-46e1-84e4-61078cdc4a98",
                 "name": "Tủ lạnh",
                 "description": "Tủ lạnh",
                 "material": "Acrylic",
@@ -802,8 +802,8 @@
             },
             {
                 "id": "66362883-2d5d-406b-9e18-fd0cf217fec3",
-                "url": "/models/refrigerator_type_2.glb",
-                "photoUrl": "/assets/images/refrigerator_type_2.PNG",
+                "url": "https://firebasestorage.googleapis.com/v0/b/da-dhmt.appspot.com/o/models%2Frefrigerator_type_2.glb?alt=media&token=fb4351fd-8bb1-4f0e-904e-8bfe25e74a3d",
+                "photoUrl": "https://firebasestorage.googleapis.com/v0/b/da-dhmt.appspot.com/o/images%2Frefrigerator_type_2.PNG?alt=media&token=a9e1d2f9-0d9b-4c74-8fec-a66975163f76",
                 "name": "Tủ lạnh",
                 "description": "Tủ lạnh hiện đại",
                 "material": "Acrylic",
@@ -820,7 +820,7 @@
         "list": [
             {
                 "id": "66362883-2d5d-406b-9e18-fd0cf217fec3",
-                "url": "/models/woman.glb",
+                "url": "https://firebasestorage.googleapis.com/v0/b/da-dhmt.appspot.com/o/models%2Fwoman.glb?alt=media&token=3163321e-f583-4507-bf0f-397d50229059",
                 "photoUrl": "/assets/images/woman.png",
                 "name": "Woman",
                 "description": "Woman",
