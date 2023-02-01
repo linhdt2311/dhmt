@@ -300,12 +300,12 @@ export default class Object {
     // });
     var geometry = new THREE.BoxGeometry(1000, 1000, 1000);
     var cubeMaterials = [
-      new THREE.MeshBasicMaterial({ map: new THREE.TextureLoader().load("/assets/images/bathroom_type_1.png"), side: THREE.DoubleSide }),
-      new THREE.MeshBasicMaterial({ map: new THREE.TextureLoader().load("/assets/images/bathroom_type_2.png"), side: THREE.DoubleSide }),
-      new THREE.MeshBasicMaterial({ map: new THREE.TextureLoader().load("/assets/images/bathroom_type_3.png"), side: THREE.DoubleSide }),
-      new THREE.MeshBasicMaterial({ map: new THREE.TextureLoader().load("/assets/images/bathtub_type_3.png"), side: THREE.DoubleSide }),
-      new THREE.MeshBasicMaterial({ map: new THREE.TextureLoader().load("/assets/images/bed_type_1.png"), side: THREE.DoubleSide }),
-      new THREE.MeshBasicMaterial({ map: new THREE.TextureLoader().load("/assets/images/bed_type_4.png"), side: THREE.DoubleSide }),
+      new THREE.MeshBasicMaterial({ map: new THREE.TextureLoader().load("/assets/images/zeus_ft.jpg"), side: THREE.DoubleSide }),
+      new THREE.MeshBasicMaterial({ map: new THREE.TextureLoader().load("/assets/images/zeus_bk.jpg"), side: THREE.DoubleSide }),
+      new THREE.MeshBasicMaterial({ map: new THREE.TextureLoader().load("/assets/images/zeus_up.jpg"), side: THREE.DoubleSide }),
+      new THREE.MeshBasicMaterial({ map: new THREE.TextureLoader().load("/assets/images/zeus_dn.jpg"), side: THREE.DoubleSide }),
+      new THREE.MeshBasicMaterial({ map: new THREE.TextureLoader().load("/assets/images/zeus_rt.jpg"), side: THREE.DoubleSide }),
+      new THREE.MeshBasicMaterial({ map: new THREE.TextureLoader().load("/assets/images/zeus_lf.jpg"), side: THREE.DoubleSide }),
     ];
     var cube = new THREE.Mesh(geometry, cubeMaterials);
     this.scene.add(cube);
