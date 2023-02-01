@@ -372,3 +372,10 @@ input.number{
   cursor: ns-resize;
   background-color: transparent;
 }
+
+#loading-model {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 222px;
+}

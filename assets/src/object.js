@@ -25,6 +25,7 @@ export default class Object {
   camera;
   controls;
   model;
+  previewId;
 
   constructor() {
     this.initLoader();
@@ -47,6 +48,7 @@ export default class Object {
       this.onPreviewModel();
     }, 2000);
     this.saveModel();
+    this.loadOnlyModel();
   }
 
   initLoader() {
@@ -93,38 +95,38 @@ export default class Object {
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                <a class="btn btn-primary btn-delete" data-bs-dismiss="modal"  id="load" >Load</a>
+                <a class="btn btn-primary btn-delete" data-bs-dismiss="modal" id="load">Load</a>
             </div>
         </div>
     </div>
-  </div>`;
+    <div class="d-flex justify-content-center" id="loading-model" style="visibility: hidden">
+      <div class="spinner-border" role="status">
+        <span class="visually-hidden">Loading...</span>
+      </div>
+    </div>
+  </div>
+  `;
     this.listModel.forEach((item) => {
       stringHtml += `
           <div class="flex flex-column list-model">
-          <div class="row">
-          <div class="col col-12">
-          <div class="card p-0 border-0" style="border-radius: unset !important">
-          <div class="card-header border-0 " id="heading-${item.type}">
-          <h5 class="mb-0">
-          <a style="color: #888" role="button" data-bs-toggle="collapse" href="#${
-            item.type
-          }"
-          aria-expanded="false" aria-controls="${item.type}"
-          class="text-uppercase">
-           ${item.type}
-          </a>
-          </h5>
-          </div>
-            <div id="${
-              item.type
-            }" class="collapse" style="transition: 0.8s ease-in-out;
-            border-radius: 0 !important;
-            " data-parent="#accordion" aria-labelledby="heading-${item.type}">
-              ${this.loadDetailObject(item)}
+            <div class="row">
+              <div class="col col-12">
+                <div class="card p-0 border-0" style="border-radius: unset !important">
+                  <div class="card-header border-0 " id="heading-${item.type}">
+                    <h5 class="mb-0">
+                      <a style="color: #888" role="button" data-bs-toggle="collapse" href="#${item.type}"
+                        aria-expanded="false" aria-controls="${item.type}" class="text-uppercase">
+                        ${item.type}
+                      </a>
+                    </h5>
+                  </div>
+                  <div id="${item.type}" class="collapse" style="transition: 0.8s ease-in-out;
+                    border-radius: 0 !important;" data-parent="#accordion" aria-labelledby="heading-${item.type}">
+                    ${this.loadDetailObject(item)}
+                  </div>
+                </div>
+              </div>
             </div>
-          </div>
-          </div>
-          </div>
           </div>
             `;
     });
@@ -133,14 +135,14 @@ export default class Object {
 
   loadDetailObject(data) {
     let stringHtml = "";
-  
+
     data.list.forEach((item) => {
       stringHtml += `
       <div class="card-body">
         <div class="d-flex row">
           <div class="col col-5 ">
-            <div class="img-wrap" style="cursor: pointer"  id=but-${item.id}>
-              <img class="img-content w-100" height="80px"  src="${item.photoUrl}">
+            <div class="img-wrap" style="cursor: pointer" id=but-${item.id}>
+              <img class="img-content w-100" height="80px" src="${item.photoUrl}">
               <p class="img-des m-0 text-center" >
                 <span class="fw-bold" style="line-height: 80px;">Load</span>
                 <div class="spinner" style="display:none">
@@ -159,7 +161,6 @@ export default class Object {
       </div>
      `;
     });
-    
     return stringHtml;
   }
 
@@ -297,6 +298,10 @@ export default class Object {
 
   onPreviewModel() {
     this.previewModal.addEventListener("shown.bs.modal", async (e) => {
+      const loadingState = document.getElementById("loading-model");
+      console.log(loadingState.style.visibility);
+      loadingState.style.visibility = "visible";
+      console.log(loadingState.style.visibility);
       this.resetScene();
       this.setSky();
 
@@ -324,11 +329,12 @@ export default class Object {
       this.renderer.shadowMap.enabled = true;
       this.setLight();
       this.setCamera();
-      var previewId = $(e.relatedTarget).data("preview-id").slice(4);
-
-      await this.loadListModels(previewId, this.scene);
+      this.previewId = $(e.relatedTarget).data("preview-id").slice(4);
+      await this.loadListModels(this.previewId, this.scene);
       this.renderer.render(this.scene, this.camera);
       this.animate();
+      loadingState.style.visibility = "hidden";
+      console.log(loadingState.style.visibility);
     });
     this.animate();
   }
@@ -365,5 +371,10 @@ export default class Object {
     });
     const toast = new bootstrap.Toast(this.toastLiveExample);
     toast.show();
+  }
+
+  loadOnlyModel() {
+    const btn = document.getElementById('load');
+    btn.addEventListener("click", (e) => this.loadListModels(this.previewId, this.setUp.scene));
   }
 }
