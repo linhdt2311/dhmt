@@ -324,11 +324,11 @@ export default class Object {
       const colorWhite = new THREE.Color(255, 255, 255);
       this.scene.background = colorWhite;
 
-      const gridHelper = new THREE.GridHelper(
-        this.previewCanvas.offsetWidth,
-        10
-      );
-      this.scene.add(gridHelper);
+      // const gridHelper = new THREE.GridHelper(
+      //   this.previewCanvas.offsetWidth,
+      //   10
+      // );
+      // this.scene.add(gridHelper);
       this.previewCanvas.style.width = "100%";
       this.previewCanvas.style.height = "300px";
       this.renderer.domElement = this.previewCanvas;
