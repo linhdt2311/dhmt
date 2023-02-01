@@ -284,24 +284,37 @@ export default class Object {
   }
 
   setSky() {
-    var skyGeo = new THREE.SphereGeometry(100000, 25, 25);
-    const loader = new THREE.TextureLoader();
-    loader.load("./assets/images/gradient.png", (texture) => {
-      var material = new THREE.MeshPhongMaterial({
-        map: texture,
-      });
-      var sky = new THREE.Mesh(skyGeo, material);
-      sky.material.side = THREE.BackSide;
-      this.scene.add(sky);
-    });
+    // var skyGeo = new THREE.SphereGeometry(100000, 25, 25);
+    // const loader = new THREE.TextureLoader();
+    // loader.load("./assets/images/gradient.png", (texture) => {
+    //   var material = new THREE.MeshPhongMaterial({
+    //     map: texture,
+    //   });
+    //   var sky = new THREE.Mesh(skyGeo, material);
+    //   sky.material.side = THREE.BackSide;
+    //   this.scene.add(sky);
+    // // });
+    // const loader = new THREE.TextureLoader();
+    // loader.load("./assets/images/gradient.png", (texture) => {
+    //   this.scene.background = texture;
+    // });
+    var geometry = new THREE.BoxGeometry(1000, 1000, 1000);
+    var cubeMaterials = [
+      new THREE.MeshBasicMaterial({ map: new THREE.TextureLoader().load("/assets/images/bathroom_type_1.png"), side: THREE.DoubleSide }),
+      new THREE.MeshBasicMaterial({ map: new THREE.TextureLoader().load("/assets/images/bathroom_type_2.png"), side: THREE.DoubleSide }),
+      new THREE.MeshBasicMaterial({ map: new THREE.TextureLoader().load("/assets/images/bathroom_type_3.png"), side: THREE.DoubleSide }),
+      new THREE.MeshBasicMaterial({ map: new THREE.TextureLoader().load("/assets/images/bathtub_type_3.png"), side: THREE.DoubleSide }),
+      new THREE.MeshBasicMaterial({ map: new THREE.TextureLoader().load("/assets/images/bed_type_1.png"), side: THREE.DoubleSide }),
+      new THREE.MeshBasicMaterial({ map: new THREE.TextureLoader().load("/assets/images/bed_type_4.png"), side: THREE.DoubleSide }),
+    ];
+    var cube = new THREE.Mesh(geometry, cubeMaterials);
+    this.scene.add(cube);
   }
 
   onPreviewModel() {
     this.previewModal.addEventListener("shown.bs.modal", async (e) => {
       const loadingState = document.getElementById("loading-model");
-      console.log(loadingState.style.visibility);
       loadingState.style.visibility = "visible";
-      console.log(loadingState.style.visibility);
       this.resetScene();
       this.setSky();
 
@@ -334,7 +347,6 @@ export default class Object {
       this.renderer.render(this.scene, this.camera);
       this.animate();
       loadingState.style.visibility = "hidden";
-      console.log(loadingState.style.visibility);
     });
     this.animate();
   }
