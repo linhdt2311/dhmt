@@ -274,12 +274,16 @@
                   </div>
                 </div>
                 </form>
-                
-
               </div>
               <div class="modal-footer">
-                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                  <a class="btn btn-primary btn-delete" id="uploadBtn">Upload</a>
+                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" id="close">Close</button>
+                  <button class="btn btn-primary btn-delete" type="button" id="uploadBtn">
+                    <span id="loading-upload" style="display: none;">
+                      <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+                      <span class="visually-hidden">Loading...</span>
+                    </span>
+                    Upload
+                  </button>
               </div>
           </div>
       </div>

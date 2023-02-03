@@ -24,6 +24,7 @@ export default class Upload {
   dropArea = document.querySelector(".drag-area");
   inputModel = document.getElementById("inputModel");
   inputImage = document.getElementById("inputImage");
+  loading = document.getElementById("loading-upload");
   file = null;
   image = null;
   modelUrl = null;
@@ -39,6 +40,8 @@ export default class Upload {
 
   upload() {
     this.uploadBtn.addEventListener("click", async (e) => {
+      this.uploadBtn.setAttribute('disabled', true);
+      this.loading.style.display = 'block';
       const formElement = document.querySelector("form");
       const formData = new FormData(formElement);
       await this.uploadToCloud(this.image, "image");
@@ -67,9 +70,11 @@ export default class Upload {
       }).then(async () => {
         localStorage.setItem("data", JSON.stringify(data));
         window.dispatchEvent(new Event("storage"));
-
-       
       });
+      this.uploadBtn.removeAttribute('disabled');
+      this.loading.style.display = 'none';
+      const close = document.getElementById('close');
+      close.click();
     });
   }
 
