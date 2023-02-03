@@ -330,6 +330,17 @@ h1 {
   background-color: #ccc;
 }
 
+.uploadBtn{
+  border: 1px solid #ccc;
+  color: #ccc;
+  margin-right: 240px;
+}
+
+.uploadBtn:hover{
+  border: 1px solid #ccc;
+  background-color: #ccc;
+}
+
 .img-wrap {
   position: relative;
 }
@@ -371,4 +382,51 @@ input.number{
   padding: 2px;
   cursor: ns-resize;
   background-color: transparent;
+}
+
+.drag-area{
+  Border: 2px Dashed #0fb8ac;
+  Height: 200px;
+  Width: 100%;
+  Border-Radius: 5px;
+  Display: Flex;
+  Align-Items: Center;
+  Justify-Content: Center;
+  Flex-Direction: Column;
+}
+.drag-area.active{
+  Border: 2px solid #0fb8ac;
+}
+.drag-area .icon{
+  Font-Size: 30px;
+  Color: #0fb8ac;
+}
+
+.drag-area header{
+  Font-Size: 20px;
+  Font-Weight: 500;
+  Color: #0fb8ac;
+}
+.drag-area span{
+  Font-Size: 20px;
+  Font-Weight: 500;
+  Color: #0fb8ac;
+  Margin: 10px 0 15px 0;
+}
+.drag-area button{
+  Padding: 10px 25px;
+  Font-Size: 15px;
+  Font-Weight: 500;
+  Border: None;
+  Outline: None;
+  Background: #0fb8ac;
+  Color: #fff;
+  Border-Radius: 5px;
+  Cursor: Pointer;
+}
+.drag-area img{
+  Height: 100%;
+  Width: 100%;
+  Object-Fit: Cover;
+  Border-Radius: 5px;
 }

@@ -57,7 +57,7 @@ export class Auth {
         }).catch((error) => {
           console.error(error);
         });
-        await get(child(dbRef, 'data')).then((snapshot) => {
+        await get(child(dbRef, 'data/data')).then((snapshot) => {
           if (snapshot.exists()) {
             localStorage.setItem("data", JSON.stringify(snapshot.val()));
           } else {

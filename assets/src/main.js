@@ -1,6 +1,10 @@
 import "../css/style.css";
 import Action from "./action.js"
+import Upload from "./upload"
+
 new Action();
+new Upload();
+
 // import * as THREE from "three";
 // import { OrbitControls } from "three/examples/jsm/controls/OrbitControls";
 // import { TransformControls } from "three/examples/jsm/controls/TransformControls";

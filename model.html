@@ -2,7 +2,6 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -71,6 +70,7 @@
       <!-- <button id="signOut" class="button">Log Out</button> -->
     </div>
     <button id="saveBtn" class="mainBtn saveBtn"><i class="far fa-save me-2"></i><span>Save</span></button>
+   
     <button class="mainBtn exportBtn dropdown-toggle" type="button" data-bs-toggle="dropdown"> 
       <span>Export</span></button>
       <ul class="dropdown-menu p-0">
@@ -78,6 +78,10 @@
         <li><a class="dropdown-item" id="export-gltf" href="#">GLTF</a></li>
         <li><a class="dropdown-item" id="export-img" href="#">IMG</a></li>
       </ul>
+      <button
+      class="mainBtn uploadBtn"
+      data-bs-toggle="modal" data-bs-target="#upload-model">
+        <span>Upload</span></button>
     <div class="row no-gutters">
       <div class="col col-10 p-0">
         <canvas id="myCanvas"></canvas>
@@ -125,25 +129,27 @@
           <img  width="80px" height="80px" src="${this.draggable.userData.photoUrl}">
         </div>
       </div> -->
-      <div class="modal" tabindex="-1" id="confirm-delete">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title">Delete confirm</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cancel"></button>
-                </div>
-                <div class="modal-body">
-                    <p>Do you want to delete this model?</p>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                    <a class="btn btn-danger btn-delete" data-bs-dismiss="modal" id="delete-confirm">Delete</a>
-                </div>
-            </div>
-        </div>
-    </div>
+   
 
     <!-- Modal -->
+    <div class="modal" tabindex="-1" id="confirm-delete">
+      <div class="modal-dialog">
+          <div class="modal-content">
+              <div class="modal-header">
+                  <h5 class="modal-title">Delete confirm</h5>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cancel"></button>
+              </div>
+              <div class="modal-body">
+                  <p>Do you want to delete this model?</p>
+              </div>
+              <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                  <a class="btn btn-danger btn-delete" data-bs-dismiss="modal" id="delete-confirm">Delete</a>
+              </div>
+          </div>
+      </div>
+  </div>
+
     <div class="modal" tabindex="-1" id="confirm-logout">
       <div class="modal-dialog">
           <div class="modal-content">
@@ -161,6 +167,123 @@
           </div>
       </div>
     </div>
+
+    <div class="modal modal-xl" tabindex="-1" id="upload-model">
+      <div class="modal-dialog">
+          <div class="modal-content">
+              <div class="modal-header">
+                  <h5 class="modal-title">Upload model</h5>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cancel"></button>
+              </div>
+              <div class="modal-body">
+                <form>
+                  <div class="row">
+                  <div class="col col-6">
+                    <div class="row">
+                      <div class="col col-6">
+                        <div class="form-floating mb-3">
+                          <input required type="text" class="form-control" name="title" id="title" placeholder="Title">
+                          <label for="title">Title</label>
+                        </div>
+                      </div>
+                      <div class="col col-6">
+                        <div class="form-floating">
+                          <select required class="form-select" name="type" id="types" aria-label="Floating label select example">
+                            <option selected>Open this select menu</option>
+                            <option value="bed">Bed</option>
+                            <option value="cabinet">Cabinet</option>
+                            <option value="lamp">Lamp</option>
+                            <option value="carpet">Carpet</option>
+                            <option value="toilet">Toilet</option>
+                            <option value="bathtub">Bathtub</option>
+                            <option value="kitchen">Kitchen</option>
+                            <option value="refrigerator">Refrigerator</option>
+                            <option value="bathroom">Bathroom</option>
+                            <option value="sofa">Sofa</option>
+                            <option value="tree">Plant</option>
+                            <option value="decor">Decoration</option>
+                            <option value="pet">Pet</option>
+                            <option value="vehicle">Vehicle</option>
+                          </select>
+                          <label for="floatingSelect">Type</label>
+                        </div>
+                      </div>
+                    </div>
+                   
+                    <div class="row">
+                      <div class="col col-6">
+                        <div class="form-floating mb-3">
+                          <input required type="text" name="material" class="form-control" id="material" placeholder="Material">
+                          <label for="material">Material</label>
+                        </div>
+                      </div>
+                      <div class="col col-6">
+                        <div class="form-floating mb-3">
+                          <input required type="text" name="size" class="form-control" id="size" placeholder="Size">
+                          <label for="size">Size</label>
+                        </div>
+                      </div>
+                    </div>
+                  
+                    <div class="row">
+                      <div class="col col-6">
+                        <div class="form-floating mb-3">
+                          <input required type="text" name="origin" class="form-control" id="origin" placeholder="Origin">
+                          <label for="origin">Origin</label>
+                        </div>
+                      </div>
+                      <div class="col col-6">
+                        <div class="form-floating mb-3">
+                          <input required type="number" name="price" class="form-control" id="price" placeholder="Price"  aria-describedby="basic-addon2">
+                          <label for="price">Price</label>
+                        </div>
+                      </div>
+                    </div>
+  
+                    <div class="row">
+                      <div class="col col-6">
+                        <div class="form-floating mb-3">
+                          <input type="text" name="insurance" class="form-control" id="insurance" placeholder="Insurance">
+                          <label for="insurance">Insurance</label>
+                        </div>
+                      </div>
+                      <div class="col col-6">
+                        <div class="form-floating mb-3">
+                          <textarea class="form-control" name="description" id="description" ></textarea>
+                          <label for="description">Description</label>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col col-6">
+                    <div class="input-group">
+                      <div class="custom-file mb-3">
+                        <input type="file" id="inputImage" name="image" class="custom-file-input" id="uploadImage"
+                          aria-describedby="inputGroupFileAddon01">
+                      </div>
+                    </div>
+                    <div class="drag-area">
+                      <div class="icon ">
+                        <i class="fas fa-cloud-upload-alt"></i>
+                      </div>
+                      <header>Drag & Drop To Upload File</header>
+                      <span>OR</span>
+                      <button>Browse File</button>
+                      <input type="file" id="inputModel" name="model" hidden>
+                    </div>
+                  </div>
+                </div>
+                </form>
+                
+
+              </div>
+              <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                  <a class="btn btn-primary btn-delete" id="uploadBtn">Upload</a>
+              </div>
+          </div>
+      </div>
+  </div>
 
   
 
@@ -182,6 +305,7 @@
   </body>
 </html>
 <script type="module" src="./assets/src/model.js"></script>
+<script type="module" src="./assets/src/upload.js"></script>
 <script type="module">
   import { Auth } from "./assets/src/auth.js";
   $(function()

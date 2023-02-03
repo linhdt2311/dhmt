@@ -1,6 +1,7 @@
 import Object from "./object.js";
 import canvasToImage from "canvas-to-image";
 import { GLTFExporter } from "three/addons/exporters/GLTFExporter.js";
+import Upload from "./upload.js";
 export default class Experience {
   object = new Object();
   camera = this.object.setUp.camera;

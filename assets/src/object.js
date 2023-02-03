@@ -29,6 +29,7 @@ export default class Object {
   constructor() {
     this.initLoader();
     this.fetchData();
+    this.onChangeStorage();
     setTimeout(() => {
       this.loadFloor();
       this.fetchModel();
@@ -78,6 +79,7 @@ export default class Object {
 
   async fetchData() {
     var modelList = document.getElementById("model");
+    modelList.innerHTML = '';
 
     this.listModel = JSON.parse(localStorage.getItem("data"));
     let stringHtml = "";
@@ -231,6 +233,18 @@ export default class Object {
       scene.add(model);
     });
   }
+  
+   onChangeStorage(){
+    window.addEventListener("storage",async (e) => {
+      // do your checks to detect
+      // changes in "e1", "e2" & "e3" here
+      debugger
+      await this.fetchData();
+      this.addModel();
+      this.previewModal = document.getElementById("preview-modal");
+      this.onPreviewModel();
+  });
+  }
 
   addModel() {
     const btns = document.querySelectorAll("div[id^=but]");
@@ -361,7 +375,7 @@ export default class Object {
       models: data,
     }).then(() => {
       this.loading.style.display = "none";
-      localStorage.setItem("userModels", JSON.stringify(data));
+      window.localStorage.setItem("userModels", JSON.stringify(data));
     });
     const toast = new bootstrap.Toast(this.toastLiveExample);
     toast.show();
