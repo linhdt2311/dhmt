@@ -2,7 +2,7 @@ import * as THREE from "three";
 import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader.js";
 import { DRACOLoader } from "three/examples/jsm/loaders/DRACOLoader";
 import SetUp from "./setup";
-import { getDatabase, ref, child, get, set } from "firebase/database";
+import { ref, set } from "firebase/database";
 import { Auth } from "./auth.js";
 import { OrbitControls } from "three/examples/jsm/controls/OrbitControls";
 
@@ -26,6 +26,7 @@ export default class Object {
   controls;
   model;
   previewId;
+  previewModel;
 
   constructor() {
     this.initLoader();
@@ -102,7 +103,7 @@ export default class Object {
         </div>
     </div>
     <div class="d-flex justify-content-center" id="loading-model" style="visibility: hidden">
-      <div class="spinner-border" role="status">
+      <div class="spinner-border text-light" role="status">
         <span class="visually-hidden">Loading...</span>
       </div>
     </div>
@@ -195,7 +196,9 @@ export default class Object {
 
   async loadModelByUrl(url, scene) {
     await this.gltfLoader.loadAsync(url).then((gltf) => {
+      this.loading.style.display = 'block';
       const model = gltf.scene;
+      this.previewModel = gltf.scene;
       model.castShadow = true;
       model.receiveShadow = true;
       if (this.model.position && this.model.scale && this.model.rotation) {
@@ -232,6 +235,7 @@ export default class Object {
       model.userData.insurance = this.model.insurance;
       model.userData.url = this.model.url;
       scene.add(model);
+      this.loading.style.display = 'none';
     });
   }
   
@@ -298,21 +302,7 @@ export default class Object {
   }
 
   setSky() {
-    // var skyGeo = new THREE.SphereGeometry(100000, 25, 25);
-    // const loader = new THREE.TextureLoader();
-    // loader.load("./assets/images/gradient.png", (texture) => {
-    //   var material = new THREE.MeshPhongMaterial({
-    //     map: texture,
-    //   });
-    //   var sky = new THREE.Mesh(skyGeo, material);
-    //   sky.material.side = THREE.BackSide;
-    //   this.scene.add(sky);
-    // // });
-    // const loader = new THREE.TextureLoader();
-    // loader.load("./assets/images/gradient.png", (texture) => {
-    //   this.scene.background = texture;
-    // });
-    var geometry = new THREE.BoxGeometry(1000, 1000, 1000);
+    var geometry = new THREE.BoxGeometry(999, 999, 999);
     var cubeMaterials = [
       new THREE.MeshBasicMaterial({ map: new THREE.TextureLoader().load("/assets/images/zeus_ft.jpg"), side: THREE.DoubleSide }),
       new THREE.MeshBasicMaterial({ map: new THREE.TextureLoader().load("/assets/images/zeus_bk.jpg"), side: THREE.DoubleSide }),
@@ -338,11 +328,6 @@ export default class Object {
       const colorWhite = new THREE.Color(255, 255, 255);
       this.scene.background = colorWhite;
 
-      // const gridHelper = new THREE.GridHelper(
-      //   this.previewCanvas.offsetWidth,
-      //   10
-      // );
-      // this.scene.add(gridHelper);
       this.previewCanvas.style.width = "100%";
       this.previewCanvas.style.height = "300px";
       this.renderer.domElement = this.previewCanvas;
@@ -401,6 +386,6 @@ export default class Object {
 
   loadOnlyModel() {
     const btn = document.getElementById('load');
-    btn.addEventListener("click", (e) => this.loadListModels(this.previewId, this.setUp.scene));
+    btn.addEventListener("click", (e) => this.setUp.scene.add(this.previewModel));
   }
 }

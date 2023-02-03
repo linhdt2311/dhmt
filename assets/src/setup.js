@@ -1,4 +1,5 @@
 import * as THREE from "three";
+import { AmbientLight } from "three";
 import { OrbitControls } from "three/examples/jsm/controls/OrbitControls";
 import { TransformControls } from "three/examples/jsm/controls/TransformControls";
 
@@ -74,22 +75,27 @@ export default class SetUp {
   }
 
   setLight() {
-    let hemiLight = new THREE.HemisphereLight(0x0000ff, 0x00ff00, 0.8);
-    hemiLight.color.setHSL(0.6, 1, 0.6);
-    hemiLight.groundColor.setHSL(0.095, 1, 0.75);
-    hemiLight.position.set(0, 100, 300);
-    this.scene.add(hemiLight);
+    // const hemiLight = new THREE.HemisphereLight(0xffffff, 0xffffff, 0);
+    // hemiLight.color.setHSL(0, 0, 0);
+    // hemiLight.groundColor.setHSL(0.095, 1, 0.75);
+    // hemiLight.position.set(0, 100, 0);
 
-    let dirLight = new THREE.DirectionalLight(0xffffff, 1);
-    dirLight.position.set(-30, 50, -30);
-    this.scene.add(dirLight);
+    const dirLight = new THREE.DirectionalLight(0xffffff, 1.75);
+    dirLight.position.set(10, 10, 10);
+		dirLight.target.position.set(0, 0, 0)
     dirLight.castShadow = true;
-    dirLight.shadow.mapSize.width = 2048;
-    dirLight.shadow.mapSize.height = 2048;
-    dirLight.shadow.camera.left = -70;
-    dirLight.shadow.camera.right = 70;
-    dirLight.shadow.camera.top = 70;
-    dirLight.shadow.camera.bottom = -70;
+    // dirLight.shadow.mapSize.width = 2048;
+    // dirLight.shadow.mapSize.height = 2048;
+    // dirLight.shadow.camera.left = -70;
+    // dirLight.shadow.camera.right = 70;
+    // dirLight.shadow.camera.top = 70;
+    // dirLight.shadow.camera.bottom = -70;
+
+    // const topDownSpotLight = new SpotLight(0xffffff, 1, 10);
+
+    const ambientLight = new AmbientLight(0xffffff, 0.3)
+
+    this.scene.add(ambientLight, dirLight);
   }
 
   setCamera() {

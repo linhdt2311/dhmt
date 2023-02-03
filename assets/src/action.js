@@ -330,31 +330,9 @@ export default class Experience {
     this.exportGlbBtn.addEventListener("click", () => {
       this.exportGlb();
     });
-    this.exporGltfBtn.addEventListener("click", () => {
-      this.exportGltf();
-    });
     this.exportImgBtn.addEventListener("click", () => {
       this.exportImg();
     });
-  }
-
-  exportGltf() {
-    const exporter = new GLTFExporter();
-    const options = {};
-    this.object.loading.style.display = "block";
-    exporter.parse(
-      this.scene,
-      (result) => {
-        const output = JSON.stringify(result, null, 2);
-        console.log(output);
-        this.save(new Blob([output], { type: "text/plain" }), "scene.gltf");
-        this.object.loading.style.display = "none";
-      },
-      function (error) {
-        console.log("An error happened during parsing", error);
-      },
-      options
-    );
   }
 
   exportGlb() {
