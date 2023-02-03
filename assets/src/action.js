@@ -33,7 +33,6 @@ export default class Experience {
     this.deleteObject();
     //this.onClickScaleAdjust();
     this.export();
-
   }
 
   foundObject() {
@@ -227,9 +226,6 @@ export default class Experience {
       <div class="col col-7">
         <form class="d-flex row" id="rotation-form">
           <div class="col col-4">
-                              
-      
-
             <input class='number' (blur)="onChangeScale()" name="xAsis" min="0" max="3" type="number" placeholder="X" >
           </div>
           <div class="col col-4">

@@ -130,3 +130,9 @@ button:focus-visible {
   left: 40%;
   transform: translate(-50%, -40%);
 }
+#loading-model {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 222px;
+}
