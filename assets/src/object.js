@@ -191,55 +191,56 @@ export default class Object {
   }
 
   async loadUserModels(id, scene) {
-    this.loading.style.display = "block";
     this.model = this.storeModel.find((item) => item.id == id);
     await this.loadModelByUrl(this.model.url, scene);
-    this.loading.style.display = "none";
   }
 
   async loadModelByUrl(url, scene) {
-    await this.gltfLoader.loadAsync(url).then((gltf) => {
+    if(this.loading.style.display === 'none'){
       this.loading.style.display = 'block';
-      const model = gltf.scene;
-      this.previewModel = gltf.scene;
-      model.castShadow = true;
-      model.receiveShadow = true;
-      if (this.model.position && this.model.scale && this.model.rotation) {
-        model.position.set(
-          this.model.position.x,
-          this.model.position.y,
-          this.model.position.z
-        );
-        model.scale.set(
-          this.model.scale.x,
-          this.model.scale.y,
-          this.model.scale.z
-        );
-        model.rotation.set(
-          this.model.rotation.x,
-          this.model.rotation.y,
-          this.model.rotation.z
-        );
-      } else {
-        model.position.set(0, 0, 1);
-        model.scale.set(10, 10, 10);
-        model.rotation.set(0, 0, 0);
-      }
-      model.userData.draggable = true;
-      model.userData.id = this.model.id;
-      model.userData.name = this.model.name;
-      model.userData.description = this.model.description;
-      model.userData.size = this.model.size;
-      model.userData.material = this.model.material;
-      model.userData.origin = this.model.origin;
-      model.userData.price = this.model.price;
-      model.userData.photoUrl = this.model.photoUrl;
-      model.userData.type = this.model.type;
-      model.userData.insurance = this.model.insurance;
-      model.userData.url = this.model.url;
-      scene.add(model);
-      this.loading.style.display = 'none';
-    });
+      await this.gltfLoader.loadAsync(url).then((gltf) => {
+        const model = gltf.scene;
+        this.previewModel = gltf.scene;
+        model.castShadow = true;
+        model.receiveShadow = true;
+        if (this.model.position && this.model.scale && this.model.rotation) {
+          model.position.set(
+            this.model.position.x,
+            this.model.position.y,
+            this.model.position.z
+          );
+          model.scale.set(
+            this.model.scale.x,
+            this.model.scale.y,
+            this.model.scale.z
+          );
+          model.rotation.set(
+            this.model.rotation.x,
+            this.model.rotation.y,
+            this.model.rotation.z
+          );
+        } else {
+          model.position.set(0, 0, 1);
+          model.scale.set(10, 10, 10);
+          model.rotation.set(0, 0, 0);
+        }
+        model.userData.draggable = true;
+        model.userData.id = this.model.id;
+        model.userData.name = this.model.name;
+        model.userData.description = this.model.description;
+        model.userData.size = this.model.size;
+        model.userData.material = this.model.material;
+        model.userData.origin = this.model.origin;
+        model.userData.price = this.model.price;
+        model.userData.photoUrl = this.model.photoUrl;
+        model.userData.type = this.model.type;
+        model.userData.insurance = this.model.insurance;
+        model.userData.url = this.model.url;
+        scene.add(model);
+      }).finally(() => {
+        this.loading.style.display = 'none';
+      });
+    }
   }
   
    onChangeStorage(){
@@ -261,16 +262,18 @@ export default class Object {
   }
 
   async handleLoad(event) {
-    const loadBtn = document.getElementById(event.currentTarget.id);
-    const loadingState = document.getElementsByClassName("spinner");
-    for (let item of loadingState) {
-      item.style.display = "block";
-    }
-    loadBtn.setAttribute("disabled", true);
-    const id = event.currentTarget.id.slice(4);
-    await this.loadListModels(id, this.setUp.scene);
-    for (let item of loadingState) {
-      item.style.display = "none";
+    if(this.loading.style.display === 'none'){
+      const loadBtn = document.getElementById(event.currentTarget.id);
+      const loadingState = document.getElementsByClassName("spinner");
+      for (let item of loadingState) {
+        item.style.display = "block";
+      }
+      loadBtn.setAttribute("disabled", true);
+      const id = event.currentTarget.id.slice(4);
+      await this.loadListModels(id, this.setUp.scene);
+      for (let item of loadingState) {
+        item.style.display = "none";
+      }
     }
   }
 
