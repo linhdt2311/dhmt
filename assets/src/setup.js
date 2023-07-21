@@ -10,6 +10,7 @@ export default class SetUp {
     2,
     1500
   );
+  gradiantBackGroundUrl = "https://firebasestorage.googleapis.com/v0/b/da-dhmt.appspot.com/o/images%2Fgradient.png?alt=media&token=3acf96bc-369a-40a8-a7fa-cf081d289b52";
   canvas = document.getElementById("myCanvas");
   renderer = new THREE.WebGLRenderer({ canvas: this.canvas });
   scene = new THREE.Scene();
@@ -31,11 +32,12 @@ export default class SetUp {
     this.animate();
   }
 
+
   init() {
     this.camera.position.set(-35, 100, 200);
     this.camera.lookAt(new THREE.Vector3(0, 0, 20));
     const loader = new THREE.TextureLoader();
-    loader.load("./assets/images/gradient.png", (texture) => {
+    loader.load(this.gradiantBackGroundUrl, (texture) => {
       this.scene.background = texture;
     });
     this.controls.enableDamping = true; // an animation loop is required when either damping or auto-rotation are enabled

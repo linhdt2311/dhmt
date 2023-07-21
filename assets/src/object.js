@@ -11,6 +11,10 @@ export default class Object {
   auth = new Auth();
   dracoLoader = new DRACOLoader();
   gltfLoader = new GLTFLoader();
+  dracoLoaderPath = "https://www.gstatic.com/draco/v1/decoders/";
+  floorModelPath = "https://firebasestorage.googleapis.com/v0/b/da-dhmt.appspot.com/o/models%2FfloorPlan.glb?alt=media&token=2ee1ff51-e03e-4e5d-8542-08a5c7174fa9";
+  //TODO: Set dynamic path with each account
+  
   database = this.auth.database;
   group = this.setUp.group;
   groupModel = this.setUp.groupModel;
@@ -54,16 +58,15 @@ export default class Object {
   }
 
   initLoader() {
-    this.dracoLoader.setDecoderPath(
-      "../node_modules/three/examples/js/libs/draco/gltf/"
-    );
+    this.dracoLoader.setDecoderPath(this.dracoLoaderPath);
     this.dracoLoader.setDecoderConfig({ type: "js" });
     this.gltfLoader.setDRACOLoader(this.dracoLoader);
   }
 
   loadFloor() {
     let floor;
-    this.gltfLoader.loadAsync("/models/floorPlan.glb").then((gltf) => {
+    this.gltfLoader.loadAsync(this.floorModelPath)
+    .then((gltf) => {
       floor = gltf.scene;
       for (let i = 0; i < floor.children.length; i++) {
         floor.children[i].userData.name = "Plane";
@@ -218,7 +221,7 @@ export default class Object {
           this.model.rotation.z
         );
       } else {
-        model.position.set(0, 0, 0);
+        model.position.set(0, 0, 1);
         model.scale.set(10, 10, 10);
         model.rotation.set(0, 0, 0);
       }
@@ -243,7 +246,6 @@ export default class Object {
     window.addEventListener("storage",async (e) => {
       // do your checks to detect
       // changes in "e1", "e2" & "e3" here
-      debugger
       await this.fetchData();
       this.addModel();
       this.previewModal = document.getElementById("preview-modal");
@@ -304,12 +306,12 @@ export default class Object {
   setSky() {
     var geometry = new THREE.BoxGeometry(999, 999, 999);
     var cubeMaterials = [
-      new THREE.MeshBasicMaterial({ map: new THREE.TextureLoader().load("/assets/images/zeus_ft.jpg"), side: THREE.DoubleSide }),
-      new THREE.MeshBasicMaterial({ map: new THREE.TextureLoader().load("/assets/images/zeus_bk.jpg"), side: THREE.DoubleSide }),
-      new THREE.MeshBasicMaterial({ map: new THREE.TextureLoader().load("/assets/images/zeus_up.jpg"), side: THREE.DoubleSide }),
-      new THREE.MeshBasicMaterial({ map: new THREE.TextureLoader().load("/assets/images/zeus_dn.jpg"), side: THREE.DoubleSide }),
-      new THREE.MeshBasicMaterial({ map: new THREE.TextureLoader().load("/assets/images/zeus_rt.jpg"), side: THREE.DoubleSide }),
-      new THREE.MeshBasicMaterial({ map: new THREE.TextureLoader().load("/assets/images/zeus_lf.jpg"), side: THREE.DoubleSide }),
+      new THREE.MeshBasicMaterial({ map: new THREE.TextureLoader().load("https://firebasestorage.googleapis.com/v0/b/da-dhmt.appspot.com/o/images%2Fzeus_ft.jpg?alt=media&token=93e3ddd0-9578-4d7a-9b83-34f1d87f808f"), side: THREE.DoubleSide }),
+      new THREE.MeshBasicMaterial({ map: new THREE.TextureLoader().load("https://firebasestorage.googleapis.com/v0/b/da-dhmt.appspot.com/o/images%2Fzeus_bk.jpg?alt=media&token=7cbf1d6f-6772-45f9-8779-2a6b97007aa4"), side: THREE.DoubleSide }),
+      new THREE.MeshBasicMaterial({ map: new THREE.TextureLoader().load("https://firebasestorage.googleapis.com/v0/b/da-dhmt.appspot.com/o/images%2Fzeus_up.jpg?alt=media&token=a4ee370e-ed90-45fc-9fd5-921a3e4022da"), side: THREE.DoubleSide }),
+      new THREE.MeshBasicMaterial({ map: new THREE.TextureLoader().load("https://firebasestorage.googleapis.com/v0/b/da-dhmt.appspot.com/o/images%2Fzeus_dn.jpg?alt=media&token=6b50e5f4-2f2a-43e1-b1b9-45fae79f1888"), side: THREE.DoubleSide }),
+      new THREE.MeshBasicMaterial({ map: new THREE.TextureLoader().load("https://firebasestorage.googleapis.com/v0/b/da-dhmt.appspot.com/o/images%2Fzeus_rt.jpg?alt=media&token=4a713bb5-35af-4579-b827-5b147074bff1"), side: THREE.DoubleSide }),
+      new THREE.MeshBasicMaterial({ map: new THREE.TextureLoader().load("https://firebasestorage.googleapis.com/v0/b/da-dhmt.appspot.com/o/images%2Fzeus_lf.jpg?alt=media&token=e0b97054-491c-45af-a9b8-4d6ff564d721"), side: THREE.DoubleSide }),
     ];
     var cube = new THREE.Mesh(geometry, cubeMaterials);
     this.scene.add(cube);

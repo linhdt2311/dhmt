@@ -111,6 +111,7 @@ export default class Upload {
     this.inputModel.addEventListener("change", (e) => {
       //Getting User Select File And [0] This Means If User Select Multiple Files Then We'll Select Only The First One
       this.file = e.target.files[0];
+      this.afterUpload(this.file);
       //showFile(); //Calling Function
     });
   }

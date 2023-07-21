@@ -4,6 +4,7 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
+    "postbuild": "cp -R node_modules lib/node_modules",
     "dev": "vite",
     "build": "vite build",
     "preview": "vite preview"
@@ -14,6 +15,7 @@
   "dependencies": {
     "canvas-to-image": "^2.2.5",
     "firebase": "^9.15.0",
+    "firebase-tools": "^12.4.2",
     "js-guid": "^1.0.2",
     "three": "^0.147.0"
   }
